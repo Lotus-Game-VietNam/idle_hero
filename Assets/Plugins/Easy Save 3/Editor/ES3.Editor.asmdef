@@ -1,0 +1,16 @@
+{
+    "name": "ES3.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7bdd90b39d674d34a96556a795b0c22e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

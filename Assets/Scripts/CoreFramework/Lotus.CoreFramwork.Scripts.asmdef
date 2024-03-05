@@ -1,0 +1,21 @@
+{
+    "name": "Lotus.CoreFramwork",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1e6244f8091e6864a9e7410d6ac546ee",
+        "GUID:9e24947de15b9834991c9d8411ea37cf",
+        "GUID:84651a3751eca9349aac36a66bba901b",
+        "GUID:78b9f9006012b1e47b8f73b68d911ab8",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:7bdd90b39d674d34a96556a795b0c22e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
