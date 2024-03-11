@@ -7,6 +7,15 @@ namespace Lotus.CoreFramework
 {
     public static class Utilities
     {
+        public static bool IsMovement(AnimationStates state)
+        {
+            return (int)state >= (int)AnimationStates.Idle && (int)state <= (int)AnimationStates.Run;
+        }
+
+        public static bool IsAttack(AnimationStates state)
+        {
+            return (int)state >= (int)AnimationStates.NormalAttack && (int)state <= (int)AnimationStates.SkillThird;
+        }
 
 
         public static void Stop(this Tween tween)

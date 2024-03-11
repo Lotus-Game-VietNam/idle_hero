@@ -5,6 +5,43 @@ namespace Lotus.CoreFramework
     public static class DataManager
     {
 
+        private static HeroData _heroData = null;
+        public static HeroData HeroData
+        {
+            get
+            {
+                if (!ES3.KeyExists(GameConstants.heroDataKey))
+                {
+                    _heroData = new HeroData();
+                    ES3.Save(GameConstants.heroDataKey, _heroData);
+                }
+
+                if (_heroData == null)
+                    _heroData = ES3.Load<HeroData>(GameConstants.heroDataKey);
+
+                return _heroData;
+            }
+        }
+
+
+
+        private static WorldData _worldData = null;
+        public static WorldData WorldData
+        {
+            get
+            {
+                if (!ES3.KeyExists(GameConstants.worldDataKey))
+                {
+                    _worldData = new WorldData();
+                    ES3.Save(GameConstants.worldDataKey, _worldData);
+                }
+
+                if (_worldData == null)
+                    _worldData = ES3.Load<WorldData>(GameConstants.worldDataKey);
+
+                return _worldData;
+            }
+        }
     }
 }
 

@@ -1,12 +1,16 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
-
 
 
 namespace Lotus.CoreFramework
 {
     public class AnimatorStates : MonoBehaviour
     {
+        [Title("State Debug")]
         public AnimationStates currentState;
+
+        [Title("Parameter")]
+        public string[] parameter = null;
 
 
 
@@ -26,6 +30,13 @@ namespace Lotus.CoreFramework
 
 
 
+        public void Initialized(AnimationStates initialState)
+        {
+            
+        }
+
+
+
         public void OnStateEnter(AnimationEvent state)
         {
             if (currentState == (AnimationStates)state.intParameter)
@@ -40,8 +51,29 @@ namespace Lotus.CoreFramework
 
 
 
+        public void ChangeState(AnimationStates state)
+        {
+            if (currentState == state)
+                return;
+
+            if (Utilities.IsMovement(state))
+                SetBlend(state, AnimationStates.Idle, "Speed");
+            else if (Utilities.IsAttack(state))
+                SetBlend(state, AnimationStates.NormalAttack, "AttackType");
+
+            Ator.SetTrigger(GetParam(state));
+        }
 
 
+
+        private void SetBlend(AnimationStates state, AnimationStates firstBlend, string param)
+        {
+            float value = (int)state - (int)firstBlend;
+            Ator.SetFloat(param, value);
+        }
+
+
+        private string GetParam(AnimationStates state) => parameter[(int)state];
     }
 }
 

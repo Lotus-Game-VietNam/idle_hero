@@ -10,14 +10,15 @@ namespace Lotus.CoreFramework
 
         #region ObjectPooling
 
-        public static void ResetTransform(this IPool obj)
+        public static CharacterBrain DequeueCharacter(this MonoBehaviour mono, string type, Transform newParent = null)
         {
-            obj.transform.position = Vector3.zero;
-            obj.transform.rotation = Quaternion.identity;
-            obj.transform.localScale = Vector3.one;
+            return ObjectPooling.Instance.DequeueCharacter(type, newParent);
         }
 
-
+        public static void PushCharacter(this MonoBehaviour mono, CharacterBrain character)
+        {
+            ObjectPooling.Instance.PushCharacter(character);
+        }
 
         #endregion
 
@@ -27,7 +28,7 @@ namespace Lotus.CoreFramework
 
         public static PopupBase DequeuePopup(MonoBehaviour mono, string popupName) => PopupManager.Instance.Dequeue(popupName);
 
-        public static PopupBase voidGetPopupVisible(MonoBehaviour mono, string popupName) => PopupManager.Instance.GetPopupVisible(popupName);
+        public static PopupBase GetPopupVisible(MonoBehaviour mono, string popupName) => PopupManager.Instance.GetPopupVisible(popupName);
 
         #endregion
 

@@ -20,6 +20,9 @@ namespace Lotus.CoreFramework
                 return _gameConfig;
             }
         }
+
+
+        public static ItemData GetItem(ItemType type, int level) => level >= GameConfig.ItemsConfig[type].Length ? null : GameConfig.ItemsConfig[type][level];
     }
 }
 

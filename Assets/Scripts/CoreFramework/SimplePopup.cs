@@ -12,9 +12,4 @@ public class SimplePopup : PopupBase
         title.text = "Warning";
         message.text = "No message";
     }
-
-    protected override void UpdateContent<T>(T data)
-    {
-
-    }
 }

@@ -1,5 +1,238 @@
 {
 	"DefaultResources" : {
 		"Gold" : 100
+	},
+	"ItemsConfig" : {
+		"Armour" : [
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 0,
+				"valueAdded" : 50
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 1,
+				"valueAdded" : 100
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 2,
+				"valueAdded" : 150
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 3,
+				"valueAdded" : 200
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 4,
+				"valueAdded" : 250
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 5,
+				"valueAdded" : 300
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 6,
+				"valueAdded" : 350
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 7,
+				"valueAdded" : 400
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 8,
+				"valueAdded" : 450
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 9,
+				"valueAdded" : 500
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 10,
+				"valueAdded" : 550
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 11,
+				"valueAdded" : 600
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 12,
+				"valueAdded" : 650
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 13,
+				"valueAdded" : 700
+			},
+			{
+				"itemType" : "Armour",
+				"itemLevel" : 14,
+				"valueAdded" : 750
+			}
+		],
+		"Bow" : [
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 0,
+				"valueAdded" : 5
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 1,
+				"valueAdded" : 10
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 2,
+				"valueAdded" : 15
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 3,
+				"valueAdded" : 20
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 4,
+				"valueAdded" : 25
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 5,
+				"valueAdded" : 30
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 6,
+				"valueAdded" : 35
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 7,
+				"valueAdded" : 40
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 8,
+				"valueAdded" : 45
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 9,
+				"valueAdded" : 50
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 10,
+				"valueAdded" : 55
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 11,
+				"valueAdded" : 60
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 12,
+				"valueAdded" : 65
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 13,
+				"valueAdded" : 70
+			},
+			{
+				"itemType" : "Bow",
+				"itemLevel" : 14,
+				"valueAdded" : 75
+			}
+		],
+		"Wing" : [
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 0,
+				"valueAdded" : 2
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 1,
+				"valueAdded" : 4
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 2,
+				"valueAdded" : 6
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 3,
+				"valueAdded" : 8
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 4,
+				"valueAdded" : 10
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 5,
+				"valueAdded" : 12
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 6,
+				"valueAdded" : 14
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 7,
+				"valueAdded" : 16
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 8,
+				"valueAdded" : 18
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 9,
+				"valueAdded" : 20
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 10,
+				"valueAdded" : 22
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 11,
+				"valueAdded" : 24
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 12,
+				"valueAdded" : 26
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 13,
+				"valueAdded" : 28
+			},
+			{
+				"itemType" : "Wing",
+				"itemLevel" : 14,
+				"valueAdded" : 30
+			}
+		]
 	}
 }

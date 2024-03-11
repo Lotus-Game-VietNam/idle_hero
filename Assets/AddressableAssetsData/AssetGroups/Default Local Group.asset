@@ -16,7 +16,22 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 4769610922bb87d4d991da432004575b
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: f182c2b077cd78d4a9b3aaffc0e93c6e
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Character/MainHero.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fba5175307234bf488ba3148e265f9c4
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Character/Monster_1_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce3d0132f6f5b1949a2dce4d0dd27f81
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Character/Monster_1_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3ece1e13ae2be25429cf299318a1d498, type: 2}
   m_SchemaSet:
