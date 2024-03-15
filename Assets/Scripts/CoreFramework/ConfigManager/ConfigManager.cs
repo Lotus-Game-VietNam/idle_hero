@@ -23,6 +23,8 @@ namespace Lotus.CoreFramework
 
 
         public static ItemData GetItem(ItemType type, int level) => level >= GameConfig.ItemsConfig[type].Length ? null : GameConfig.ItemsConfig[type][level];
+
+        public static CharacterConfig GetMonster(string monsterName) => !GameConfig.MonstersConfig.ContainsKey(monsterName) ? null : GameConfig.MonstersConfig[monsterName];
     }
 }
 

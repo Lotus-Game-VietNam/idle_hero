@@ -234,5 +234,19 @@
 				"valueAdded" : 30
 			}
 		]
+	},
+	"MonstersConfig" : {
+		"Monster_1_1" : {
+			"attributes" : {
+				"HP" : 100,
+				"ATK" : 2
+			}
+		},
+		"Monster_1_2" : {
+			"attributes" : {
+				"HP" : 100,
+				"ATK" : 2
+			}
+		}
 	}
 }

@@ -12,7 +12,7 @@ public class CharacterStats : MonoBehaviour
 
     public float ATK => attributes[CharacterAttributes.ATK];
 
-    public float SPD => attributes[CharacterAttributes.SPD];
+    public float SPD => attributes.ContainsKey(CharacterAttributes.SPD) ? attributes[CharacterAttributes.SPD] : 1;
 
 
     public void Initialized(Dictionary<CharacterAttributes, float> attributes)

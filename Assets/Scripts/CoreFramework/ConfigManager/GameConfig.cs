@@ -7,6 +7,7 @@ namespace Lotus.CoreFramework
     {
         public Dictionary<ResourceType, float> DefaultResources = null;
         public Dictionary<ItemType, ItemData[]> ItemsConfig = null;
+        public Dictionary<string, CharacterConfig> MonstersConfig = null;
 
 
         public GameConfig()
