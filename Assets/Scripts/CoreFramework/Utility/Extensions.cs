@@ -20,6 +20,16 @@ namespace Lotus.CoreFramework
             ObjectPooling.Instance.PushCharacter(character);
         }
 
+        public static ProjectileVfx DequeueProjectileVfx(this MonoBehaviour mono, string type, Transform newParent = null)
+        {
+            return ObjectPooling.Instance.DequeueProjectileVfx(type, newParent);
+        }
+
+        public static void PushProjectileVfx(this MonoBehaviour mono, ProjectileVfx projectile)
+        {
+            ObjectPooling.Instance.PushProjectileVfx(projectile);
+        }
+
         #endregion
 
 
@@ -80,6 +90,24 @@ namespace Lotus.CoreFramework
         public static void RemoveListener(this MonoBehaviour mono, EventName eventName) => EventDispatcher.RemoveListener(eventName.ToString(), mono.GetType().Name);
 
         public static void RemoveAllListener(this MonoBehaviour mono, EventName eventName) => EventDispatcher.RemoveAllListener(eventName.ToString());
+
+        #endregion
+
+
+
+        #region Helper
+
+        public static void PlayVfx(this ParticleSystem vfx)
+        {
+            if (vfx != null)
+                vfx.Play();
+        }
+
+        public static void StopVfx(this ParticleSystem vfx)
+        {
+            if (vfx != null)
+                vfx.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
 
         #endregion
     }

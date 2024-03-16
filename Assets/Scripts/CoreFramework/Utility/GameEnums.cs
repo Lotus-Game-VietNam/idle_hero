@@ -32,6 +32,15 @@ public enum ResourceType
 }
 
 
+public enum AttackType
+{
+    NormalAttack,
+    SkillOne,
+    SkillTrue,
+    SkillThird,
+}
+
+
 public enum AnimationStates
 {
     None,

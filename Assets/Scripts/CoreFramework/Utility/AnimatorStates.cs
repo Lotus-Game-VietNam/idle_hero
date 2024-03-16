@@ -18,6 +18,10 @@ namespace Lotus.CoreFramework
         public Animator Ator => this.TryGetComponent(ref _ator);
 
 
+        private AnimationEvents _events = null;
+        public AnimationEvents events => this.TryGetComponent(ref _events);
+
+
         public bool ApplyRootMotion
         {
             get => Ator.applyRootMotion;

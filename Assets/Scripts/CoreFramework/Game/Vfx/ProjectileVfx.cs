@@ -1,0 +1,91 @@
+﻿using Lotus.CoreFramework;
+using Sirenix.OdinInspector;
+using UnityEngine;
+
+
+[RequireComponent(typeof(Rigidbody))]
+public class ProjectileVfx : IPool<ProjectileData>
+{
+    [DetailedInfoBox("Deactive prefab này khi set up", "Object này đang sử dụng object pooling, khi setup xong prefab này hãy Deactive game object đi để Pooling xử lý đúng logic")]
+
+    [Title("Object Reference")]
+    public ParticleSystem modelFx = null;
+    public ParticleSystem muzzleFx = null;
+    public ParticleSystem hitFx = null;
+
+    [Title("Projectile Setting")]
+    public float hideAffterTime = 4f;
+    public float moveSpeed = 1000f;
+
+
+    private Rigidbody _body = null;
+    public Rigidbody body => this.TryGetComponent(ref _body);
+
+    private SphereCollider _sphereCollider = null;
+    public SphereCollider sphereCollider => this.TryGetComponent(ref _sphereCollider);
+
+    public ProjectileData data { get; private set; }
+
+    private Coroutine hideCrt = null;
+
+
+    protected override void Initialized(ProjectileData data)
+    {
+        this.data = data;
+    }
+
+    protected override void OnHide()
+    {
+        modelFx.StopVfx();
+        muzzleFx.StopVfx();
+        hitFx.StopVfx();
+    }
+
+    protected override void OnShow()
+    {
+        modelFx.gameObject.SetActive(true);
+        Firing();
+        WaitToHide();
+    }
+
+    protected virtual void Firing()
+    {
+        if (data == null)
+        {
+            LogTool.LogErrorEditorOnly("Chưa truyền project data!");
+            return;
+        }
+
+        transform.position = data.startPoint;
+        transform.LookAt(data.target.characterAttack.body);
+        muzzleFx.PlayVfx();
+        modelFx.PlayVfx();
+        body.AddForce(transform.forward * moveSpeed);
+    }
+
+    private void WaitToHide()
+    {
+        if (hideCrt != null)
+            StopCoroutine(hideCrt);
+        hideCrt = this.DelayCall(hideAffterTime, () =>
+        {
+            this.PushProjectileVfx(this);
+        });
+    }
+
+    private void Explosition()
+    {
+        modelFx.gameObject.SetActive(false);
+        hitFx.PlayVfx();
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (data == null)
+            LogTool.LogErrorEditorOnly("Chưa truyền project data!");
+        else if (data != null && other == data.target.characterAttack.Collider)
+            data.target.TakedDamage(data.damage, data.sender);
+
+        Explosition();
+    }
+}

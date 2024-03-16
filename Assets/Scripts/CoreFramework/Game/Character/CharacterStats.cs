@@ -19,4 +19,9 @@ public class CharacterStats : MonoBehaviour
     {
         this.attributes = attributes;
     }
+
+    public void OnHealthChanged(float changeValue)
+    {
+        attributes[CharacterAttributes.HP] += changeValue;
+    }
 }

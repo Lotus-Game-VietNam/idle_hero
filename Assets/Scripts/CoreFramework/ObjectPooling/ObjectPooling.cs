@@ -10,12 +10,15 @@ namespace Lotus.CoreFramework
     public class ObjectPooling : Singleton<ObjectPooling>
     {
         private readonly string charactersPath = "Assets/AddressableLocalAssets/Prefabs/Character/{0}.prefab";
+        private readonly string projectileVfxsPath = "Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/{0}.prefab";
 
 
         private Dictionary<string, List<CharacterBrain>> characters = new Dictionary<string, List<CharacterBrain>>();
+        private Dictionary<string, List<ProjectileVfx>> projectileVfxs = new Dictionary<string, List<ProjectileVfx>>();
 
 
         private Transform  charactersContainer = null;
+        private Transform projectileVfxsContainer = null;
 
 
 
@@ -31,7 +34,14 @@ namespace Lotus.CoreFramework
         private void CreateContainersParent()
         {
             this.CreateContainer("Characters", ref charactersContainer);
+            this.CreateContainer("ProjectileVfs", ref projectileVfxsContainer);
         }
+
+
+        public ProjectileVfx DequeueProjectileVfx(string projectileName, Transform newParent = null) => Dequeue(projectileName, projectileVfxs, string.Format(projectileVfxsPath, projectileName), newParent);
+
+        public void PushProjectileVfx(ProjectileVfx projectileVfx) => Push(projectileVfx, projectileVfxs, projectileVfxsContainer).Hide();
+
 
 
         public CharacterBrain DequeueCharacter(string characterName, Transform newParent = null) => Dequeue(characterName, characters, string.Format(charactersPath, characterName), newParent);
