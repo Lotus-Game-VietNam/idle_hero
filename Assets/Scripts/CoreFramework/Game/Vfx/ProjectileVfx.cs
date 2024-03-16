@@ -36,14 +36,16 @@ public class ProjectileVfx : IPool<ProjectileData>
 
     protected override void OnHide()
     {
-        modelFx.StopVfx();
-        muzzleFx.StopVfx();
-        hitFx.StopVfx();
+        
     }
 
     protected override void OnShow()
     {
+        modelFx.StopVfx();
+        muzzleFx.StopVfx();
+        hitFx.StopVfx();
         modelFx.gameObject.SetActive(true);
+        muzzleFx.transform.localPosition = Vector3.zero;
         Firing();
         WaitToHide();
     }
@@ -56,8 +58,8 @@ public class ProjectileVfx : IPool<ProjectileData>
             return;
         }
 
-        transform.position = data.startPoint;
-        transform.LookAt(data.target.characterAttack.body);
+        transform.LookAt(data.target.characterAttack.body.position + (Vector3.up * (data.target.characterAttack.Collider.GetComponent<CapsuleCollider>().height / 2)));
+        muzzleFx.transform.SetParent(null);
         muzzleFx.PlayVfx();
         modelFx.PlayVfx();
         body.AddForce(transform.forward * moveSpeed);
@@ -69,23 +71,25 @@ public class ProjectileVfx : IPool<ProjectileData>
             StopCoroutine(hideCrt);
         hideCrt = this.DelayCall(hideAffterTime, () =>
         {
+            muzzleFx.transform.SetParent(transform);
             this.PushProjectileVfx(this);
         });
     }
 
     private void Explosition()
     {
+        body.velocity = Vector3.zero;
         modelFx.gameObject.SetActive(false);
         hitFx.PlayVfx();
     }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
+        Explosition();
+
         if (data == null)
             LogTool.LogErrorEditorOnly("Chưa truyền project data!");
         else if (data != null && other == data.target.characterAttack.Collider)
             data.target.TakedDamage(data.damage, data.sender);
-
-        Explosition();
     }
 }

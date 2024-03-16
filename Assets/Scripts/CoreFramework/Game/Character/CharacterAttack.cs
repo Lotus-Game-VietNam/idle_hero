@@ -1,43 +1,26 @@
 using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class CharacterAttack : MonoBehaviour
 {
-    [System.Serializable]
-    public class Data
-    {
-        public AttackType attackType = AttackType.NormalAttack;
-        public string vfxName;
-        public Transform spawnVfxPoint;
-    }
-
-
     [Title("Object Reference")]
-    [SerializeField] protected Collider collider = null;
-
-    [Title("Configuration")]
-    [SerializeField] protected Data[] _attackData = null;
+    [SerializeField] protected Transform[] spawnProjectilePoint = null;
+    [SerializeField] protected Collider _collider = null;
 
 
     public Transform body => Collider.transform;
 
-    public Collider Collider => collider;
-
-    public Dictionary<AttackType, Data> attackData { get; private set; } = new Dictionary<AttackType, Data>();
+    public Collider Collider => _collider;
 
 
-    private void Awake()
+
+
+    public virtual void OnShot(AttackType type, ProjectileData projectileData)
     {
-        foreach (var data in _attackData)
-            attackData.Add(data.attackType, data);
+        this.DequeueProjectileVfx(projectileData.projectileName).Initial(projectileData).SetPosition(GetProjectilePoint(type)).Show();
+
     }
 
-    public virtual void OnShot(AttackType type, float damage, CharacterBrain sender, CharacterBrain target)
-    {
-        this.DequeueProjectileVfx(attackData[type].vfxName).Initial(new ProjectileData(damage, attackData[type].spawnVfxPoint.position, sender, target)).Show();
-
-    }
+    private Vector3 GetProjectilePoint(AttackType type) => spawnProjectilePoint[(int)type].position;
 }

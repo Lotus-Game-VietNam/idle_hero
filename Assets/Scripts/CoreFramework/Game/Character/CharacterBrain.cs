@@ -73,7 +73,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected virtual void OnNormalShot()
     {
-        characterAttack.OnShot(AttackType.NormalAttack, characterStats.ATK, this, target);
+        characterAttack.OnShot(AttackType.NormalAttack, new ProjectileData("Projectile_1_1", characterStats.ATK, this, target));
     }
 
     [Button("Normal Shot")]

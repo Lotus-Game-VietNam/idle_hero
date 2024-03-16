@@ -824,8 +824,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71693d3930fa8ac4a8e825b49cdf22ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 7524597689732288108}
-  _attackData: []
+  spawnProjectilePoint: []
+  _collider: {fileID: 7524597689732288108}
 --- !u!1 &9072489708578353122
 GameObject:
   m_ObjectHideFlags: 0

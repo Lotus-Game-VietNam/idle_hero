@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ProjectileData
 {
+    public string projectileName;
     public float damage;
-    public Vector3 startPoint;
     public CharacterBrain sender;
     public CharacterBrain target;
 
@@ -14,9 +14,9 @@ public class ProjectileData
         
     }
 
-    public ProjectileData(float damage, Vector3 startPoint, CharacterBrain sender, CharacterBrain target)
+    public ProjectileData(string projectileName, float damage, CharacterBrain sender, CharacterBrain target)
     {
-        this.startPoint = startPoint;
+        this.projectileName = projectileName;
         this.damage = damage;
         this.sender = sender;
         this.target = target;
