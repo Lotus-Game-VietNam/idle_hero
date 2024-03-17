@@ -62,7 +62,10 @@ namespace Lotus.CoreFramework
 
             if (Utilities.IsMovement(state))
                 SetBlend(state, AnimationStates.Idle, "Speed");
-            else if (Utilities.IsAttack(state))
+            else
+                Ator.SetFloat("Speed", 0);
+
+            if (Utilities.IsAttack(state))
                 SetBlend(state, AnimationStates.NormalAttack, "AttackType");
 
             Ator.SetTrigger(GetParam(state));

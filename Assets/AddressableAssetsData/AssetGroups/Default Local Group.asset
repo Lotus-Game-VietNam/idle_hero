@@ -33,7 +33,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 76c261865f96078458f192fd6dcfaabb
-    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Projectile_1_1.prefab
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_1_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 64b31b4b3527ae94eba1caef81758124
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Monster_Projectile_1_1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

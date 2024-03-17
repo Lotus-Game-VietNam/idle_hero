@@ -59,7 +59,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected virtual void InitEvents()
     {
-        animatorState.events.OnNormalShotEvent = OnNormalShot;
+        animatorState.events.OnShotEvent = OnShot;
     }
 
     public IPool<CharacterConfig> SetTargetAttack(CharacterBrain target)
@@ -85,9 +85,9 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     }
 
-    protected virtual void OnNormalShot()
+    protected virtual void OnShot(int type)
     {
-        characterAttack.Shot(AttackType.NormalAttack, new ProjectileData("Projectile_1_1", characterStats.ATK, this, targetAttack));
+        characterAttack.Shot((AttackType)type, new ProjectileData(GetProjectileName((AttackType)type), characterStats.ATK, this, targetAttack));
     }
 
     protected virtual void Shot(AttackType type)
@@ -146,5 +146,6 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
         return false;
     }
 
+    protected abstract string GetProjectileName(AttackType type);
     #endregion
 }

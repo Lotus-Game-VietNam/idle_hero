@@ -15,7 +15,7 @@ public class ProjectileVfx : IPool<ProjectileData>
 
     [Title("Projectile Setting")]
     public float hideAffterTime = 4f;
-    public float moveSpeed = 1000f;
+    public float moveSpeed = 300f;
 
 
     private Rigidbody _body = null;
@@ -28,6 +28,11 @@ public class ProjectileVfx : IPool<ProjectileData>
 
     private Coroutine hideCrt = null;
 
+
+    private void Awake()
+    {
+        body.useGravity = false;
+    }
 
     protected override void Initialized(ProjectileData data)
     {

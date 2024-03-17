@@ -6,8 +6,10 @@ public class HeroBrain : CharacterBrain
 {
     public override CharacterType CharacterType => CharacterType.Hero;
 
-
-
+    protected override string GetProjectileName(AttackType type)
+    {
+        return "Hero_Projectile_1_1";
+    }
 
     protected override void OnUpdate()
     {

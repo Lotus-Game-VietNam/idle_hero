@@ -6,10 +6,10 @@ public class MonsterBrain : CharacterBrain
 {
     public override CharacterType CharacterType => CharacterType.Monster;
 
-
-
-
-
+    protected override string GetProjectileName(AttackType type)
+    {
+        return "Monster_Projectile_1_1";
+    }
 
     protected override void OnUpdate()
     {

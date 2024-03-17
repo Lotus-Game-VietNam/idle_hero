@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class AnimationEvents : MonoBehaviour
 {
-    public Action OnNormalShotEvent = null;
+    public Action<int> OnShotEvent = null;
 
 
-    public void OnNormalShot()
+    public void OnShot(int type)
     {
-        OnNormalShotEvent?.Invoke();
+        OnShotEvent?.Invoke(type);
     }
 }
