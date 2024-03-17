@@ -9,15 +9,9 @@ public class HeroBrain : CharacterBrain
 
 
 
-    private void OnAutoFarm()
+    protected override void OnUpdate()
     {
-
-    }
-
-
-    protected override void Update()
-    {
-        base.Update();
-        OnAutoFarm();
+        base.OnUpdate();
+        Shot(AttackType.NormalAttack);
     }
 }

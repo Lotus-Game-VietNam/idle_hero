@@ -9,18 +9,18 @@ public class CharacterAttack : MonoBehaviour
     [SerializeField] protected CapsuleCollider _collider = null;
 
     [Title("Configuration")]
-    [SerializeField] protected float attackRange = 3f;
+    [SerializeField] protected float _attackRange = 3f;
 
 
-    public CapsuleCollider collider => _collider;
+    public float attackRange => _attackRange;
 
-    public Transform body => collider.transform;
+    public CapsuleCollider capsuleCollider => _collider;
 
-    public float height => collider.height * collider.transform.localScale.y;
+    public float height => capsuleCollider.height * capsuleCollider.transform.localScale.y;
 
 
 
-    public virtual void OnShot(AttackType type, ProjectileData projectileData)
+    public virtual void Shot(AttackType type, ProjectileData projectileData)
     {
         this.DequeueProjectileVfx(projectileData.projectileName).Initial(projectileData).SetPosition(GetProjectilePoint(type)).Show();
 
@@ -28,5 +28,5 @@ public class CharacterAttack : MonoBehaviour
 
     private Vector3 GetProjectilePoint(AttackType type) => spawnProjectilePoint[(int)type].position;
 
-    public bool OnAttackRange(Vector3 target) => Vector3.Distance(body.position, target) <= attackRange; 
+    public bool OnAttackRange(Vector3 target) => Vector3.Distance(transform.position, target) <= attackRange; 
 }

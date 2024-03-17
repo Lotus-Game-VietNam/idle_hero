@@ -477,8 +477,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71693d3930fa8ac4a8e825b49cdf22ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnProjectilePoint: []
+  spawnProjectilePoint:
+  - {fileID: 6745912157148467371}
   _collider: {fileID: 7514977686137458273}
+  _attackRange: 3
 --- !u!1 &2838182545223739699
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +705,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2acc6bbacba96714dbd427ffe2016b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 2
+  angularSpeed: 60
 --- !u!1 &3549069130907949714
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +786,7 @@ Transform:
   - {fileID: 111460419210677346}
   - {fileID: 3284360660255707090}
   - {fileID: 1103253132483405124}
+  - {fileID: 6745912157148467371}
   m_Father: {fileID: 3100980749143045233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &870590332254445041
@@ -1208,6 +1213,37 @@ Transform:
   - {fileID: 5595043441733202995}
   m_Father: {fileID: 7124259961207036875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6053361160767018609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6745912157148467371}
+  m_Layer: 8
+  m_Name: Projectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6745912157148467371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6053361160767018609}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.443, z: 1.02}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3143026700915850145}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6270294754138898116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,6 +1390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3100980749143045233}
+  - component: {fileID: 187371300471260114}
   - component: {fileID: 8547059811244927624}
   m_Layer: 8
   m_Name: Monster_1_2
@@ -1361,7 +1398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3100980749143045233
 Transform:
   m_ObjectHideFlags: 0
@@ -1381,6 +1418,28 @@ Transform:
   - {fileID: 3143026700915850145}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 100, z: 0}
+--- !u!195 &187371300471260114
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6750227252859525358}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.325
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.105
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &8547059811244927624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1393,7 +1452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a5275c361173049b4d04561cde4f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!1 &6885394644702654222
 GameObject:
   m_ObjectHideFlags: 0

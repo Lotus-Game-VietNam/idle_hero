@@ -7,6 +7,8 @@ namespace Lotus.CoreFramework
 {
     public static class Utilities
     {
+        public static AnimationStates Convert(this AttackType type) => (AnimationStates)((int)AnimationStates.NormalAttack + (int)type);
+
         public static bool IsMovement(AnimationStates state)
         {
             return (int)state >= (int)AnimationStates.Idle && (int)state <= (int)AnimationStates.Run;

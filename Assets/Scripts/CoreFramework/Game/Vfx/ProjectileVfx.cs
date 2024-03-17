@@ -59,7 +59,7 @@ public class ProjectileVfx : IPool<ProjectileData>
             return;
         }
 
-        transform.LookAt(data.target.body.position + (Vector3.up * (data.target.characterAttack.height / 2)));
+        transform.LookAt(data.target.center + (Vector3.up * (data.target.characterAttack.height / 2)));
         muzzleFx.transform.SetParent(null);
         muzzleFx.PlayVfx();
         modelFx.PlayVfx();
@@ -90,7 +90,7 @@ public class ProjectileVfx : IPool<ProjectileData>
 
         if (data == null)
             LogTool.LogErrorEditorOnly("Chưa truyền project data!");
-        else if (data != null && other == data.target.characterAttack.collider)
+        else if (data != null && other == data.target.characterAttack.capsuleCollider)
             data.target.TakedDamage(data.damage, data.sender);
     }
 }

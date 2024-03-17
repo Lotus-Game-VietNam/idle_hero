@@ -5,4 +5,16 @@ using UnityEngine;
 public class MonsterBrain : CharacterBrain
 {
     public override CharacterType CharacterType => CharacterType.Monster;
+
+
+
+
+
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+        FollowTarget();
+        Shot(AttackType.NormalAttack);
+    }
 }

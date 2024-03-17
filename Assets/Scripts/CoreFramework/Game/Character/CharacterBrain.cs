@@ -1,6 +1,7 @@
 ﻿using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class CharacterBrain : IPool<CharacterConfig>
 {
@@ -35,17 +36,20 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
 
     #region Constructor
+    private bool hasInitialized = false;
+
     protected override void Initialized(CharacterConfig data)
     {
         InitEvents();
-        characterMovement.Initialized(body);
+        characterMovement.Initialized(GetComponent<NavMeshAgent>());
         characterStats.Initialized(data.GetAttributes());
         animatorState.Initialized(AnimationStates.Idle);
+        hasInitialized = true;
     }
 
     protected override void OnHide()
     {
-        
+        hasInitialized = false;
     }
 
     protected override void OnShow()
@@ -68,9 +72,11 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
 
     #region Attack
-    public CharacterBrain targetAttack { get; private set; }
+    public Vector3 center => transform.position;
 
-    public Transform body => animatorState.transform;
+    public bool onFollowTarget { get; private set; }
+
+    public virtual CharacterBrain targetAttack { get; private set; }
 
 
     public virtual void TakedDamage(float damage, CharacterBrain sender)
@@ -81,20 +87,64 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected virtual void OnNormalShot()
     {
-        characterAttack.OnShot(AttackType.NormalAttack, new ProjectileData("Projectile_1_1", characterStats.ATK, this, targetAttack));
+        characterAttack.Shot(AttackType.NormalAttack, new ProjectileData("Projectile_1_1", characterStats.ATK, this, targetAttack));
     }
 
-    protected void Shot()
+    protected virtual void Shot(AttackType type)
     {
-        characterMovement.RotateToTargetCoroutine(targetAttack.body.position, 0.1f, () => 
+        if (TargetIsNull())
+            return;
+
+        if (onFollowTarget || animatorState.currentState == type.Convert() || characterMovement.crtRotating)
+            return;
+
+        characterMovement.RotateToCrt(targetAttack.center, 0.1f, () => 
         {
-            animatorState.ChangeState(AnimationStates.NormalAttack);
+            animatorState.ChangeState(type.Convert());
         });
     }
 
-    protected virtual void Update()
+    protected virtual void FollowTarget()
+    {
+        if (TargetIsNull())
+            return;
+
+        onFollowTarget = !characterAttack.OnAttackRange(targetAttack.center);
+
+        if (!onFollowTarget)
+            return;
+
+        animatorState.ChangeState(AnimationStates.Run);
+        characterMovement.MoveTo(targetAttack.center, characterAttack.attackRange);
+    }
+
+
+    protected virtual void OnUpdate()
     {
 
     }
+
+    protected void Update()
+    {
+        if (!hasInitialized)
+            return;
+
+        OnUpdate();
+    }
+    #endregion
+
+
+    #region Support
+
+    protected bool TargetIsNull()
+    {
+        if (targetAttack == null)
+        {
+            LogTool.LogErrorEditorOnly("TargetAttack is Null");
+            return true;
+        }
+        return false;
+    }
+
     #endregion
 }
