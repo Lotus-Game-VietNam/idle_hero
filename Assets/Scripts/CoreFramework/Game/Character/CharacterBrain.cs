@@ -4,9 +4,7 @@ using UnityEngine;
 
 public abstract class CharacterBrain : IPool<CharacterConfig>
 {
-    [DetailedInfoBox("Deactive prefab này khi set up", "Object này đang sử dụng object pooling, khi setup xong prefab này hãy Deactive game object đi để Pooling xử lý đúng logic")]
-
-    public CharacterBrain target = null;
+    [DetailedInfoBox("Deactive prefab này khi set up...", "Object này đang sử dụng object pooling, khi setup xong prefab này hãy Deactive game object đi để Pooling xử lý đúng logic")]
 
 
     #region Component
@@ -39,10 +37,10 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
     #region Constructor
     protected override void Initialized(CharacterConfig data)
     {
-        characterStats.Initialized(data.GetAttributes());
-        characterMovement.Initialized(characterStats.SPD);
-        animatorState.Initialized(AnimationStates.Idle);
         InitEvents();
+        characterMovement.Initialized(body);
+        characterStats.Initialized(data.GetAttributes());
+        animatorState.Initialized(AnimationStates.Idle);
     }
 
     protected override void OnHide()
@@ -59,11 +57,21 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
     {
         animatorState.events.OnNormalShotEvent = OnNormalShot;
     }
+
+    public IPool<CharacterConfig> SetTargetAttack(CharacterBrain target)
+    {
+        this.targetAttack = target;
+        return this;
+    }
     #endregion
 
 
 
     #region Attack
+    public CharacterBrain targetAttack { get; private set; }
+
+    public Transform body => animatorState.transform;
+
 
     public virtual void TakedDamage(float damage, CharacterBrain sender)
     {
@@ -73,13 +81,20 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected virtual void OnNormalShot()
     {
-        characterAttack.OnShot(AttackType.NormalAttack, new ProjectileData("Projectile_1_1", characterStats.ATK, this, target));
+        characterAttack.OnShot(AttackType.NormalAttack, new ProjectileData("Projectile_1_1", characterStats.ATK, this, targetAttack));
     }
 
-    [Button("Normal Shot")]
-    public void Shot()
+    protected void Shot()
     {
-        animatorState.ChangeState(AnimationStates.NormalAttack);
+        characterMovement.RotateToTargetCoroutine(targetAttack.body.position, 0.1f, () => 
+        {
+            animatorState.ChangeState(AnimationStates.NormalAttack);
+        });
+    }
+
+    protected virtual void Update()
+    {
+
     }
     #endregion
 }

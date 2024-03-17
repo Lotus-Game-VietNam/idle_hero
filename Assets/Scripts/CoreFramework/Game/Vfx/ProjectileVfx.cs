@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class ProjectileVfx : IPool<ProjectileData>
 {
-    [DetailedInfoBox("Deactive prefab này khi set up", "Object này đang sử dụng object pooling, khi setup xong prefab này hãy Deactive game object đi để Pooling xử lý đúng logic")]
+    [DetailedInfoBox("Deactive prefab này khi set up...", "Object này đang sử dụng object pooling, khi setup xong prefab này hãy Deactive game object đi để Pooling xử lý đúng logic")]
 
     [Title("Object Reference")]
     public ParticleSystem modelFx = null;
@@ -41,6 +41,7 @@ public class ProjectileVfx : IPool<ProjectileData>
 
     protected override void OnShow()
     {
+        body.velocity = Vector3.zero;
         modelFx.StopVfx();
         muzzleFx.StopVfx();
         hitFx.StopVfx();
@@ -58,7 +59,7 @@ public class ProjectileVfx : IPool<ProjectileData>
             return;
         }
 
-        transform.LookAt(data.target.characterAttack.body.position + (Vector3.up * (data.target.characterAttack.Collider.GetComponent<CapsuleCollider>().height / 2)));
+        transform.LookAt(data.target.body.position + (Vector3.up * (data.target.characterAttack.height / 2)));
         muzzleFx.transform.SetParent(null);
         muzzleFx.PlayVfx();
         modelFx.PlayVfx();
@@ -89,7 +90,7 @@ public class ProjectileVfx : IPool<ProjectileData>
 
         if (data == null)
             LogTool.LogErrorEditorOnly("Chưa truyền project data!");
-        else if (data != null && other == data.target.characterAttack.Collider)
+        else if (data != null && other == data.target.characterAttack.collider)
             data.target.TakedDamage(data.damage, data.sender);
     }
 }

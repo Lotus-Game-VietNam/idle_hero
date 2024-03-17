@@ -6,13 +6,17 @@ public class CharacterAttack : MonoBehaviour
 {
     [Title("Object Reference")]
     [SerializeField] protected Transform[] spawnProjectilePoint = null;
-    [SerializeField] protected Collider _collider = null;
+    [SerializeField] protected CapsuleCollider _collider = null;
+
+    [Title("Configuration")]
+    [SerializeField] protected float attackRange = 3f;
 
 
-    public Transform body => Collider.transform;
+    public CapsuleCollider collider => _collider;
 
-    public Collider Collider => _collider;
+    public Transform body => collider.transform;
 
+    public float height => collider.height * collider.transform.localScale.y;
 
 
 
@@ -23,4 +27,6 @@ public class CharacterAttack : MonoBehaviour
     }
 
     private Vector3 GetProjectilePoint(AttackType type) => spawnProjectilePoint[(int)type].position;
+
+    public bool OnAttackRange(Vector3 target) => Vector3.Distance(body.position, target) <= attackRange; 
 }
