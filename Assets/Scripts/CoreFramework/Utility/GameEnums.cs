@@ -57,5 +57,5 @@ public enum AnimationStates
 
 public enum EventName
 {
-    DemoEvent
+    OnCharacterDead
 }

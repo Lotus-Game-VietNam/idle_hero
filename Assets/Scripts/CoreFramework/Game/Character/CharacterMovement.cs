@@ -34,9 +34,11 @@ public class CharacterMovement : MonoBehaviour
     public void Initialized(NavMeshAgent agent)
     {
         this.agent = agent;
+        ActiveAgent(true);
         hit = new NavMeshHit();
         navmeshPath = new NavMeshPath();
         walkableArea = NavMesh.GetAreaFromName("Walkable");
+        transform.localPosition = transform.localEulerAngles = Vector3.zero;
     }
 
     public void MoveTo(Vector3 target) => MoveTo(target, agent.radius * 2);
@@ -72,10 +74,10 @@ public class CharacterMovement : MonoBehaviour
     /// <param name="Callback"></param>
     public void RotateTo(Vector3 target)
     {
-        direction = target - transform.position;
-        direction.y = transform.forward.y;
+        direction = target - body.position;
+        direction.y = body.forward.y;
         targetQuaternion = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetQuaternion, angularSpeed * Time.deltaTime);
+        body.rotation = Quaternion.Slerp(body.rotation, targetQuaternion, angularSpeed * Time.deltaTime);
     }
 
     /// <summary>
@@ -122,4 +124,12 @@ public class CharacterMovement : MonoBehaviour
     }
 
     public float DistanceToTarget(Vector3 target) => Vector3.Distance(transform.position, new Vector3(target.x, transform.position.y, target.z));
+
+    public void ActiveAgent(bool value)
+    {
+        if (value)
+            agent.enabled = true;
+        else
+            agent.enabled = false;
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -43,7 +44,8 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
         InitEvents();
         characterMovement.Initialized(GetComponent<NavMeshAgent>());
         characterStats.Initialized(data.GetAttributes());
-        animatorState.Initialized(AnimationStates.Idle);
+        animatorState.Initialized();
+        characterAttack.Initialized();
         hasInitialized = true;
     }
 
@@ -54,12 +56,13 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected override void OnShow()
     {
-        
+
     }
 
     protected virtual void InitEvents()
     {
         animatorState.events.OnShotEvent = OnShot;
+        characterStats.OnDead = OnDead;
     }
 
     public IPool<CharacterConfig> SetTargetAttack(CharacterBrain target)
@@ -92,11 +95,11 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected virtual void Shot(AttackType type)
     {
-        if (TargetIsNull())
-            return;
+        if (TargetIsNull()) return;
 
-        if (onFollowTarget || animatorState.currentState == type.Convert() || characterMovement.crtRotating)
-            return;
+         if (!targetAttack.characterStats.Alive || !characterStats.Alive) return;
+
+        if (onFollowTarget || animatorState.currentState == type.Convert() || characterMovement.crtRotating) return;
 
         characterMovement.RotateToCrt(targetAttack.center, 0.1f, () => 
         {
@@ -106,16 +109,31 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected virtual void FollowTarget()
     {
-        if (TargetIsNull())
-            return;
+        if (TargetIsNull()) return;
+
+        if (!targetAttack.characterStats.Alive || !characterStats.Alive) return;
 
         onFollowTarget = !characterAttack.OnAttackRange(targetAttack.center);
 
-        if (!onFollowTarget)
-            return;
+        if (!onFollowTarget) return;
 
         animatorState.ChangeState(AnimationStates.Run);
         characterMovement.MoveTo(targetAttack.center, characterAttack.attackRange);
+    }
+
+    protected virtual void OnDead()
+    {
+        characterAttack.ActiveCollider(false);
+        characterMovement.ActiveAgent(false);
+
+        animatorState.ChangeState(AnimationStates.Die);
+
+        this.SendMessage(EventName.OnCharacterDead, this);
+
+        this.DelayCall(2, () => 
+        {
+            this.PushCharacter();
+        });
     }
 
 
@@ -126,8 +144,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected void Update()
     {
-        if (!hasInitialized)
-            return;
+        if (!hasInitialized || !characterStats.Alive) return;
 
         OnUpdate();
     }

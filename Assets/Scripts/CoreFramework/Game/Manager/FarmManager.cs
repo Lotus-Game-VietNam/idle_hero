@@ -16,7 +16,7 @@ public class FarmManager : MonoBehaviour
 
     public CharacterBrain hero { get; private set; }
 
-    public CharacterBrain enemyFarm { get; private set; }
+    public CharacterBrain monsterFarm { get; private set; }
     
 
     private void Awake()
@@ -27,21 +27,44 @@ public class FarmManager : MonoBehaviour
 
     private void InitEvents()
     {
-
+        this.AddListener<CharacterBrain>(EventName.OnCharacterDead, OnCharacterDead);
     }
 
     private void InitializedCharacter()
     {
-        GameObject heroObj = heroAsset.InstantiateAsync(spawnPoint[(int)SpawnPoint.Hero].position, spawnPoint[(int)SpawnPoint.Hero].rotation, null).WaitForCompletion();
-        hero = heroObj.GetComponent<CharacterBrain>();
+        hero = SpawnHero();
+        monsterFarm = SpawnMonster();
 
-        Transform trans = spawnPoint[(int)SpawnPoint.Monster];
-        int monsterIndex = UnityEngine.Random.Range(0, 100) % 2 == 0 ? 1 : 2;
-        string monsterName = $"Monster_{DataManager.WorldData.currentLevel}_{2}";
-        enemyFarm = this.DequeueCharacter(monsterName);
-
-        hero.SetTargetAttack(enemyFarm).Initial(DataManager.HeroData).Show();
-        enemyFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterName)).ResetTransform().SetPosition(trans.position).SetRotation(trans.rotation).Show();
+        hero.SetTargetAttack(monsterFarm).Initial(DataManager.HeroData).Show();
+        monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type)).ResetTransform()
+            .SetPosition(spawnPoint[(int)SpawnPoint.Monster].position).SetRotation(spawnPoint[(int)SpawnPoint.Monster].rotation).Show();
     }
 
+    private CharacterBrain SpawnHero()
+    {
+        GameObject heroObj = heroAsset.InstantiateAsync(spawnPoint[(int)SpawnPoint.Hero].position, spawnPoint[(int)SpawnPoint.Hero].rotation, null).WaitForCompletion();
+        return heroObj.GetComponent<CharacterBrain>();
+    }
+
+    private CharacterBrain SpawnMonster()
+    {
+        int monsterIndex = UnityEngine.Random.Range(0, 100) % 2 == 0 ? 1 : 2;
+        string monsterName = $"Monster_{DataManager.WorldData.currentLevel}_{2}";
+        return this.DequeueCharacter(monsterName);
+    }
+
+    private void OnCharacterDead(CharacterBrain character)
+    {
+        if (character.CharacterType == CharacterType.Hero)
+        {
+
+        }
+        else
+        {
+            monsterFarm = SpawnMonster();
+            monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type)).ResetTransform()
+            .SetPosition(spawnPoint[(int)SpawnPoint.Monster].position).SetRotation(spawnPoint[(int)SpawnPoint.Monster].rotation).Show();
+            hero.SetTargetAttack(monsterFarm);
+        }
+    }
 }

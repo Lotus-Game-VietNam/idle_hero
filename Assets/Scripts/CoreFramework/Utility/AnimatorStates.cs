@@ -34,9 +34,9 @@ namespace Lotus.CoreFramework
 
 
 
-        public void Initialized(AnimationStates initialState)
+        public void Initialized()
         {
-            
+            transform.localPosition = transform.localEulerAngles = Vector3.zero;
         }
 
 

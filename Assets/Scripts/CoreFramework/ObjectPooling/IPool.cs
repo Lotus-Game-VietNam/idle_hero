@@ -69,6 +69,36 @@ namespace Lotus.CoreFramework
             transform.rotation = rotation;
             return this;
         }
+
+        public IPool<T> SetEvent(ref Action Act, Action Callback)
+        {
+            Act = Callback;
+            return this;
+        }
+
+        public IPool<T> SetEvent<T1>(ref Action<T1> Act, Action<T1> Callback)
+        {
+            Act = Callback;
+            return this;
+        }
+
+        public IPool<T> SetEvent<T1, T2>(ref Action<T1, T2> Act, Action<T1, T2> Callback)
+        {
+            Act = Callback;
+            return this;
+        }
+
+        public IPool<T> SetEvent<T1, T2, T3>(ref Action<T1, T2, T3> Act, Action<T1, T2, T3> Callback)
+        {
+            Act = Callback;
+            return this;
+        }
+
+        public IPool<T> SetEvent<T1, T2, T3, T4>(ref Action<T1, T2, T3, T4> Act, Action<T1, T2, T3, T4> Callback)
+        {
+            Act = Callback;
+            return this;
+        }
     }
 }
 

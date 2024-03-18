@@ -19,6 +19,11 @@ public class CharacterAttack : MonoBehaviour
     public float height => capsuleCollider.height * capsuleCollider.transform.localScale.y;
 
 
+    public void Initialized()
+    {
+        ActiveCollider(true);
+    }
+
 
     public virtual void Shot(AttackType type, ProjectileData projectileData)
     {
@@ -29,4 +34,12 @@ public class CharacterAttack : MonoBehaviour
     private Vector3 GetProjectilePoint(AttackType type) => spawnProjectilePoint[(int)type].position;
 
     public bool OnAttackRange(Vector3 target) => Vector3.Distance(transform.position, target) <= attackRange; 
+
+    public void ActiveCollider(bool value)
+    {
+        if (value)
+            capsuleCollider.enabled = true;
+        else
+            capsuleCollider.enabled = false;
+    }
 }

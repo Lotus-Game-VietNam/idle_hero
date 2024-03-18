@@ -20,6 +20,11 @@ namespace Lotus.CoreFramework
             ObjectPooling.Instance.PushCharacter(character);
         }
 
+        public static void PushCharacter(this CharacterBrain character)
+        {
+            ObjectPooling.Instance.PushCharacter(character);
+        }
+
         public static ProjectileVfx DequeueProjectileVfx(this MonoBehaviour mono, string type, Transform newParent = null)
         {
             return ObjectPooling.Instance.DequeueProjectileVfx(type, newParent);
