@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class CharacterStats : MonoBehaviour
 {
     [Title("Object Reference")]
+    public Canvas canvas = null;
     public Slider HPBar = null;
     public Slider HPBGBar = null;
 
@@ -45,9 +46,6 @@ public class CharacterStats : MonoBehaviour
             return _mainCamera;
         }
     }
-
-    private Canvas _canvas = null;
-    public Canvas canvas => this.TryGetComponentInChildren(ref _canvas);
 
 
 

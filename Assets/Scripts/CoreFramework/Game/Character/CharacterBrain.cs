@@ -1,6 +1,5 @@
 ﻿using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -144,7 +143,11 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected void Update()
     {
-        if (!hasInitialized || !characterStats.Alive) return;
+        if (!hasInitialized || !characterStats.Alive)
+        {
+            animatorState.ChangeState(AnimationStates.Idle);
+            return;
+        } 
 
         OnUpdate();
     }

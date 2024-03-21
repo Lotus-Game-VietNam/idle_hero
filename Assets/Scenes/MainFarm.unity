@@ -125,6 +125,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &3599820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3599821}
+  m_Layer: 0
+  m_Name: SpawnMonster (10)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3599821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599820}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.61125386, z: -0, w: 0.7914347}
+  m_LocalPosition: {x: 0.62, y: -0.6365672, z: 3.37}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 75.36, z: 0}
 --- !u!1001 &22745363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -680,6 +711,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b770c19385e3344fb1dbe89d3504930, type: 3}
+--- !u!1 &47327585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 47327586}
+  m_Layer: 0
+  m_Name: SpawnMonster (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &47327586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47327585}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7443116, z: -0, w: 0.6678326}
+  m_LocalPosition: {x: -4.95, y: -0.6365672, z: 0.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 100, z: 0}
 --- !u!43 &49941029
 Mesh:
   m_ObjectHideFlags: 0
@@ -1316,7 +1378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -23.119995, y: 847}
+  m_AnchoredPosition: {x: -23.120117, y: 847}
   m_SizeDelta: {x: 200, y: 180}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &88407426
@@ -3666,6 +3728,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96a26ea00238f0d48923c7476274fc4f, type: 3}
+--- !u!1 &280305127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 280305128}
+  m_Layer: 0
+  m_Name: SpawnMonster (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &280305128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280305127}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7443116, z: -0, w: 0.6678326}
+  m_LocalPosition: {x: -2.9, y: -0.6365672, z: -3.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 100, z: 0}
 --- !u!43 &308265725
 Mesh:
   m_ObjectHideFlags: 0
@@ -5674,6 +5767,37 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &415060109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 415060110}
+  m_Layer: 0
+  m_Name: SpawnMonster (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &415060110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415060109}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7443116, z: -0, w: 0.6678326}
+  m_LocalPosition: {x: -1.26, y: -0.6365672, z: -5.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 100, z: 0}
 --- !u!1001 &415082052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5813,6 +5937,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 415082052}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &422463540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 422463541}
+  m_Layer: 0
+  m_Name: SpawnMonster (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &422463541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422463540}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7443116, z: -0, w: 0.6678326}
+  m_LocalPosition: {x: -4.32, y: -0.6365672, z: -1.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 100, z: 0}
 --- !u!43 &423372225
 Mesh:
   m_ObjectHideFlags: 0
@@ -6125,6 +6280,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 64225761}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &453122114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 453122115}
+  m_Layer: 0
+  m_Name: SpawnMonster (17)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &453122115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453122114}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.61125386, z: -0, w: 0.7914347}
+  m_LocalPosition: {x: 6.27, y: -0.6365672, z: -5.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 75.36, z: 0}
 --- !u!4 &453147417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3935411750144710324, guid: 1b770c19385e3344fb1dbe89d3504930,
@@ -6143,7 +6329,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnHero
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -6155,8 +6341,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473200208}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7049727, z: -0, w: 0.7092345}
-  m_LocalPosition: {x: 0.010334015, y: -0.6598855, z: 0.77329636}
+  m_LocalRotation: {x: 0.000000020993236, y: -0.99999887, z: -0.0000000018366714,
+    w: -0.001517296}
+  m_LocalPosition: {x: -0.26363754, y: -0.6844545, z: -0.37957}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12154,6 +12341,23 @@ Transform:
   m_Children:
   - {fileID: 473200209}
   - {fileID: 1582534938}
+  - {fileID: 1328680344}
+  - {fileID: 47327586}
+  - {fileID: 2019411934}
+  - {fileID: 422463541}
+  - {fileID: 1585747746}
+  - {fileID: 1801798894}
+  - {fileID: 1687827749}
+  - {fileID: 280305128}
+  - {fileID: 3599821}
+  - {fileID: 1518874102}
+  - {fileID: 2103145625}
+  - {fileID: 415060110}
+  - {fileID: 1039198877}
+  - {fileID: 1400656206}
+  - {fileID: 1344535251}
+  - {fileID: 1773718590}
+  - {fileID: 453122115}
   m_Father: {fileID: 910626768}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &920878216
@@ -12760,6 +12964,23 @@ MonoBehaviour:
   spawnPoint:
   - {fileID: 473200209}
   - {fileID: 1582534938}
+  - {fileID: 1328680344}
+  - {fileID: 47327586}
+  - {fileID: 2019411934}
+  - {fileID: 422463541}
+  - {fileID: 1585747746}
+  - {fileID: 1801798894}
+  - {fileID: 1687827749}
+  - {fileID: 280305128}
+  - {fileID: 3599821}
+  - {fileID: 1518874102}
+  - {fileID: 2103145625}
+  - {fileID: 415060110}
+  - {fileID: 1039198877}
+  - {fileID: 1400656206}
+  - {fileID: 1344535251}
+  - {fileID: 1773718590}
+  - {fileID: 453122115}
   heroAsset:
     m_AssetGUID: f182c2b077cd78d4a9b3aaffc0e93c6e
     m_SubObjectName: 
@@ -14156,6 +14377,37 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1039198876
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1039198877}
+  m_Layer: 0
+  m_Name: SpawnMonster (12)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1039198877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039198876}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.61125386, z: -0, w: 0.7914347}
+  m_LocalPosition: {x: 2.87, y: -0.6365672, z: 2.49}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 75.36, z: 0}
 --- !u!4 &1047969405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1197757653563540517, guid: 96a26ea00238f0d48923c7476274fc4f,
@@ -16925,13 +17177,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184272539}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.1038886, y: 0.8789985, z: 0.22380877, w: 0.40801767}
-  m_LocalPosition: {x: -23.18, y: 0.302, z: 20.449}
-  m_LocalScale: {x: 1.5, y: 0.1, z: 1.125}
+  m_LocalRotation: {x: 0.06695296, y: -0.8955023, z: -0.14423788, w: -0.41567817}
+  m_LocalPosition: {x: -22.880325, y: 0.51418555, z: 20.191366}
+  m_LocalScale: {x: 2.1780014, y: 0.60000014, z: 1.633501}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -28.57, y: 130.2, z: 0}
+  m_LocalEulerAnglesHint: {x: -60.5, y: 0, z: 0}
 --- !u!1001 &1187243877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19316,6 +19568,68 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1328680343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1328680344}
+  m_Layer: 0
+  m_Name: SpawnMonster (13)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1328680344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328680343}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7443116, z: -0, w: 0.6678326}
+  m_LocalPosition: {x: 4.03, y: -0.6365672, z: 1.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 100, z: 0}
+--- !u!1 &1344535250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1344535251}
+  m_Layer: 0
+  m_Name: SpawnMonster (15)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1344535251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344535250}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.61125386, z: -0, w: 0.7914347}
+  m_LocalPosition: {x: 7.42, y: -0.6365672, z: -4.49}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 75.36, z: 0}
 --- !u!1001 &1349090215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19714,6 +20028,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96a26ea00238f0d48923c7476274fc4f, type: 3}
+--- !u!1 &1400656205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400656206}
+  m_Layer: 0
+  m_Name: SpawnMonster (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1400656206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400656205}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.61125386, z: -0, w: 0.7914347}
+  m_LocalPosition: {x: 8.33, y: -0.6365672, z: -3.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 75.36, z: 0}
 --- !u!1001 &1402219642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19896,7 +20241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -23.119995, y: 615.30005}
+  m_AnchoredPosition: {x: -23.120117, y: 615.30005}
   m_SizeDelta: {x: 200, y: 180}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1420124505
@@ -22110,6 +22455,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1517213184}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1518874101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1518874102}
+  m_Layer: 0
+  m_Name: SpawnMonster (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1518874102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518874101}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7443116, z: -0, w: 0.6678326}
+  m_LocalPosition: {x: -2.13, y: -0.6365672, z: -4.21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 100, z: 0}
 --- !u!43 &1519447421
 Mesh:
   m_ObjectHideFlags: 0
@@ -23565,7 +23941,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnMonster
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -23578,12 +23954,43 @@ Transform:
   m_GameObject: {fileID: 1582534937}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7443116, z: -0, w: 0.6678326}
-  m_LocalPosition: {x: -5.13, y: -0.6365672, z: 1.03}
+  m_LocalPosition: {x: -5.68, y: -0.6365672, z: 1.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 919927692}
   m_LocalEulerAnglesHint: {x: 0, y: 100, z: 0}
+--- !u!1 &1585747745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1585747746}
+  m_Layer: 0
+  m_Name: SpawnMonster (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1585747746
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585747745}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.61125386, z: -0, w: 0.7914347}
+  m_LocalPosition: {x: -1.62, y: -0.6365672, z: 4.24}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 75.36, z: 0}
 --- !u!1001 &1589327306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24958,6 +25365,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682378965}
   m_CullTransparentMesh: 1
+--- !u!1 &1687827748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1687827749}
+  m_Layer: 0
+  m_Name: SpawnMonster (9)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1687827749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687827748}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.61125386, z: -0, w: 0.7914347}
+  m_LocalPosition: {x: -0.49, y: -0.6365672, z: 3.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 75.36, z: 0}
 --- !u!1 &1700769367
 GameObject:
   m_ObjectHideFlags: 0
@@ -25742,14 +26180,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748822785}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.056383513, y: -0.9425871, z: 0.20896651, w: 0.25432962}
-  m_LocalPosition: {x: 1.83, y: 2.47, z: 5.64}
+  m_LocalRotation: {x: 0.09378082, y: -0.9007411, z: 0.34756702, w: 0.24303871}
+  m_LocalPosition: {x: 1.83, y: 5.11, z: 5.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1524919526}
   m_Father: {fileID: 1206738325}
-  m_LocalEulerAnglesHint: {x: 25, y: -149.8, z: 0}
+  m_LocalEulerAnglesHint: {x: 42.2, y: -149.8, z: 0}
 --- !u!114 &1748822787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26011,6 +26449,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b770c19385e3344fb1dbe89d3504930, type: 3}
+--- !u!1 &1773718589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1773718590}
+  m_Layer: 0
+  m_Name: SpawnMonster (16)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1773718590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773718589}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.61125386, z: -0, w: 0.7914347}
+  m_LocalPosition: {x: 5.16, y: -0.6365672, z: -7.18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 75.36, z: 0}
 --- !u!1001 &1789235264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26257,6 +26726,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96a26ea00238f0d48923c7476274fc4f, type: 3}
+--- !u!1 &1801798893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1801798894}
+  m_Layer: 0
+  m_Name: SpawnMonster (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1801798894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801798893}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7443116, z: -0, w: 0.6678326}
+  m_LocalPosition: {x: -3.61, y: -0.6365672, z: -2.16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 100, z: 0}
 --- !u!1 &1801953045
 GameObject:
   m_ObjectHideFlags: 0
@@ -28220,6 +28720,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0494cecb4ff2f4e41a3abf31bd20e592, type: 3}
+--- !u!1 &2019411933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2019411934}
+  m_Layer: 0
+  m_Name: SpawnMonster (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2019411934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019411933}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.61125386, z: -0, w: 0.7914347}
+  m_LocalPosition: {x: -2.73, y: -0.6365672, z: 4.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 75.36, z: 0}
 --- !u!1 &2036133740
 GameObject:
   m_ObjectHideFlags: 0
@@ -29054,6 +29585,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088109413}
   m_CullTransparentMesh: 1
+--- !u!1 &2103145624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2103145625}
+  m_Layer: 0
+  m_Name: SpawnMonster (11)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2103145625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103145624}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.61125386, z: -0, w: 0.7914347}
+  m_LocalPosition: {x: 1.71, y: -0.6365672, z: 2.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919927692}
+  m_LocalEulerAnglesHint: {x: 0, y: 75.36, z: 0}
 --- !u!1001 &2108324964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30047,8 +30609,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317679951950935180}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0911288, y: -0.8855436, z: 0.19632027, w: -0.41105545}
-  m_LocalPosition: {x: -6.7477875, y: 1.7131047, z: 5.099964}
+  m_LocalRotation: {x: -0.15157148, y: -0.84623003, z: 0.32653296, w: -0.39280674}
+  m_LocalPosition: {x: -6.7477875, y: 4.353105, z: 5.099964}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

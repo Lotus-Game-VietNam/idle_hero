@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 public class FarmManager : MonoBehaviour
 {
     [Title("Initial Setting")]
-    [SerializeField] private Transform[] spawnPoint = null; public enum SpawnPoint { Hero, Monster };
+    [SerializeField] private Transform[] spawnPoint = null;
 
 
     [Title("Assets Reference")]
@@ -36,20 +36,22 @@ public class FarmManager : MonoBehaviour
         monsterFarm = SpawnMonster();
 
         hero.SetTargetAttack(monsterFarm).Initial(DataManager.HeroData).Show();
+
+        Transform point = spawnPoint[UnityEngine.Random.Range(1, spawnPoint.Length)];
         monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type)).ResetTransform()
-            .SetPosition(spawnPoint[(int)SpawnPoint.Monster].position).SetRotation(spawnPoint[(int)SpawnPoint.Monster].rotation).Show();
+            .SetPosition(point.position).SetRotation(point.rotation).Show();
     }
 
     private CharacterBrain SpawnHero()
     {
-        GameObject heroObj = heroAsset.InstantiateAsync(spawnPoint[(int)SpawnPoint.Hero].position, spawnPoint[(int)SpawnPoint.Hero].rotation, null).WaitForCompletion();
+        GameObject heroObj = heroAsset.InstantiateAsync(spawnPoint[0].position, spawnPoint[0].rotation, null).WaitForCompletion();
         return heroObj.GetComponent<CharacterBrain>();
     }
 
     private CharacterBrain SpawnMonster()
     {
         int monsterIndex = UnityEngine.Random.Range(0, 100) % 2 == 0 ? 1 : 2;
-        string monsterName = $"Monster_{DataManager.WorldData.currentLevel}_{2}";
+        string monsterName = $"Monster_{DataManager.WorldData.currentLevel}_{monsterIndex}";
         return this.DequeueCharacter(monsterName);
     }
 
@@ -62,8 +64,9 @@ public class FarmManager : MonoBehaviour
         else
         {
             monsterFarm = SpawnMonster();
+            Transform point = spawnPoint[UnityEngine.Random.Range(1, spawnPoint.Length)];
             monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type)).ResetTransform()
-            .SetPosition(spawnPoint[(int)SpawnPoint.Monster].position).SetRotation(spawnPoint[(int)SpawnPoint.Monster].rotation).Show();
+                .SetPosition(point.position).SetRotation(point.rotation).Show();
             hero.SetTargetAttack(monsterFarm);
         }
     }
