@@ -127,12 +127,12 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
         animatorState.ChangeState(AnimationStates.Die);
 
-        this.SendMessage(EventName.OnCharacterDead, this);
-
-        this.DelayCall(2, () => 
+        this.DelayCall(1f, () => 
         {
-            this.PushCharacter();
+            characterStats.Dissolve(() => { this.PushCharacter(); });
         });
+
+        this.SendMessage(EventName.OnCharacterDead, this);
     }
 
 

@@ -33,6 +33,7 @@ MonoBehaviour:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
     - Cinemachine
+    - Dissolve.Scripts
     - Doozy.Runtime
     - DOTween.Modules
     - DOTweenPro.EditorScripts

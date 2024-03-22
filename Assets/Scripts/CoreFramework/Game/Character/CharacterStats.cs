@@ -1,3 +1,4 @@
+using AmazingAssets.AdvancedDissolve;
 using DG.Tweening;
 using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
@@ -14,6 +15,12 @@ public class CharacterStats : MonoBehaviour
     public Canvas canvas = null;
     public Slider HPBar = null;
     public Slider HPBGBar = null;
+
+    [Title("Dissolve Setting")]
+    public SkinnedMeshRenderer skinnedMeshRenderer = null;
+    public Material defaultMaterial = null;
+    public Material dissolveMaterial = null;
+    public float timeDissolve = 1f;
 
 
     private Tween hpTween = null;
@@ -47,6 +54,8 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
+    
+
 
 
     private void Awake()
@@ -58,8 +67,13 @@ public class CharacterStats : MonoBehaviour
     {
         this.attributes = attributes;
         ActiveUIStats(true);
+
         currentHP = MaxHP;
         HPBar.value = HPBGBar.value = 1f;
+
+        if (skinnedMeshRenderer != null)
+            skinnedMeshRenderer.material = defaultMaterial;
+
         transform.localPosition = transform.localEulerAngles = Vector3.zero;
     }
 
@@ -81,6 +95,32 @@ public class CharacterStats : MonoBehaviour
             ActiveUIStats(false);
             OnDead?.Invoke();
         }
+    }
+
+    public void Dissolve(Action Callback = null)
+    {
+        if (skinnedMeshRenderer == null) return;
+
+        skinnedMeshRenderer.material = dissolveMaterial;
+
+        AdvancedDissolveKeywords.SetKeyword(dissolveMaterial, AdvancedDissolveKeywords.State.Enabled, true);
+        AdvancedDissolveProperties.Cutout.Standard.UpdateLocalProperty(dissolveMaterial, AdvancedDissolveProperties.Cutout.Standard.Property.Clip, 0);
+
+        StartCoroutine(IEDissolve(Callback));
+    }
+
+    protected IEnumerator IEDissolve(Action Callback = null)
+    {
+        float clipValue = 0;
+
+        while (clipValue < 1)
+        {
+            AdvancedDissolveProperties.Cutout.Standard.UpdateLocalProperty(dissolveMaterial, AdvancedDissolveProperties.Cutout.Standard.Property.Clip, clipValue);
+            clipValue += Time.deltaTime;
+            yield return null;
+        }
+
+        Callback?.Invoke();
     }
 
     public void ActiveUIStats(bool value) => canvas.gameObject.SetActive(value);

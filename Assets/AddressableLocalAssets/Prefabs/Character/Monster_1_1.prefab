@@ -168,6 +168,10 @@ MonoBehaviour:
   canvas: {fileID: 99093961298830486}
   HPBar: {fileID: 613756353630590913}
   HPBGBar: {fileID: 7438519160731335001}
+  skinnedMeshRenderer: {fileID: 9057365170400641772}
+  defaultMaterial: {fileID: 2100000, guid: 758b25eb14cd0834bb1831545e187448, type: 2}
+  dissolveMaterial: {fileID: 2100000, guid: cd21fc603a4b5ed4eb72cf9f50e87939, type: 2}
+  timeDissolve: 1
 --- !u!1 &1241772173398293941
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +526,7 @@ RectTransform:
   m_Father: {fileID: 2822118950465695981}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1414,7 +1418,7 @@ RectTransform:
   m_Father: {fileID: 7600114534622798497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

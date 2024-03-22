@@ -2150,6 +2150,10 @@ MonoBehaviour:
   canvas: {fileID: 2015594411830756920}
   HPBar: {fileID: 3988298480837884322}
   HPBGBar: {fileID: 7504339560571859397}
+  skinnedMeshRenderer: {fileID: 39290670262816739}
+  defaultMaterial: {fileID: 2100000, guid: 2c070d54c866e944e8f1233a1734b0c8, type: 2}
+  dissolveMaterial: {fileID: 2100000, guid: 9fddcdce8261b6e469bd42ee8438e25c, type: 2}
+  timeDissolve: 1
 --- !u!1 &7035867864486735142
 GameObject:
   m_ObjectHideFlags: 0
