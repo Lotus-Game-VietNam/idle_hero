@@ -37,6 +37,26 @@ namespace Lotus.CoreFramework
             ObjectPooling.Instance.PushProjectileVfx(projectile);
         }
 
+        public static void PushProjectileVfx(this ProjectileVfx projectile)
+        {
+            ObjectPooling.Instance.PushProjectileVfx(projectile);
+        }
+
+        public static EffectBase DequeueEffect(this MonoBehaviour mono, string type, Transform newParent = null)
+        {
+            return ObjectPooling.Instance.DequeueEffect(type, newParent);
+        }
+
+        public static void PushEffect(this MonoBehaviour mono, EffectBase effect)
+        {
+            ObjectPooling.Instance.PushEffect(effect);
+        }
+
+        public static void PushEffect(this EffectBase effect)
+        {
+            ObjectPooling.Instance.PushEffect(effect);
+        }
+
         #endregion
 
 

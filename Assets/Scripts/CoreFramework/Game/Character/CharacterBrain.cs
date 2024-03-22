@@ -61,7 +61,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
     protected virtual void InitEvents()
     {
         animatorState.events.OnShotEvent = OnShot;
-        characterStats.OnDead = OnDead;
+        characterStats.OnDead = Dead;
     }
 
     public IPool<CharacterConfig> SetTargetAttack(CharacterBrain target)
@@ -120,19 +120,21 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
         characterMovement.MoveTo(targetAttack.center, characterAttack.attackRange);
     }
 
-    protected virtual void OnDead()
+    private void Dead()
     {
         characterAttack.ActiveCollider(false);
         characterMovement.ActiveAgent(false);
 
         animatorState.ChangeState(AnimationStates.Die);
 
-        this.DelayCall(1f, () => 
-        {
-            characterStats.Dissolve(() => { this.PushCharacter(); });
-        });
-
         this.SendMessage(EventName.OnCharacterDead, this);
+
+        OnDead();
+    }
+
+    protected virtual void OnDead()
+    {
+
     }
 
 

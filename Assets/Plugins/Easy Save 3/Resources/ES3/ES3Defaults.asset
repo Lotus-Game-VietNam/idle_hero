@@ -32,6 +32,8 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
+    - CFXRDemo
+    - CFXRRuntime
     - Cinemachine
     - Dissolve.Scripts
     - Doozy.Runtime
@@ -40,6 +42,7 @@ MonoBehaviour:
     - DOTweenPro.Scripts
     - ES3.Editor
     - ES3.Scripts
+    - KinoBloom.Runtime
     - Lotus.CoreFramework.Editor
     - Lotus.CoreFramwork
     - Sirenix.OdinInspector.Modules.Unity.Addressables

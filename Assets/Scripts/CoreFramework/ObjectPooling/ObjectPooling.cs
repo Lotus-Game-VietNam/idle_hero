@@ -11,14 +11,17 @@ namespace Lotus.CoreFramework
     {
         private readonly string charactersPath = "Assets/AddressableLocalAssets/Prefabs/Character/{0}.prefab";
         private readonly string projectileVfxsPath = "Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/{0}.prefab";
+        private readonly string effectsPath = "Assets/AddressableLocalAssets/Prefabs/Effects/{0}.prefab";
 
 
         private Dictionary<string, List<CharacterBrain>> characters = new Dictionary<string, List<CharacterBrain>>();
         private Dictionary<string, List<ProjectileVfx>> projectileVfxs = new Dictionary<string, List<ProjectileVfx>>();
+        private Dictionary<string, List<EffectBase>> effects = new Dictionary<string, List<EffectBase>>();
 
 
         private Transform  charactersContainer = null;
         private Transform projectileVfxsContainer = null;
+        private Transform effectsContainer = null;
 
 
 
@@ -35,7 +38,14 @@ namespace Lotus.CoreFramework
         {
             this.CreateContainer("Characters", ref charactersContainer);
             this.CreateContainer("ProjectileVfs", ref projectileVfxsContainer);
+            this.CreateContainer("Effects", ref effectsContainer);
         }
+
+
+        public EffectBase DequeueEffect(string effectName, Transform newParent = null) => Dequeue(effectName, effects, string.Format(effectsPath, effectName), newParent);
+
+        public void PushEffect(EffectBase effect) => Push(effect, effects, effectsContainer).Hide();
+
 
 
         public ProjectileVfx DequeueProjectileVfx(string projectileName, Transform newParent = null) => Dequeue(projectileName, projectileVfxs, string.Format(projectileVfxsPath, projectileName), newParent);

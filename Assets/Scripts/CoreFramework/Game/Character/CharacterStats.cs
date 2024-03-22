@@ -116,7 +116,7 @@ public class CharacterStats : MonoBehaviour
         while (clipValue < 1)
         {
             AdvancedDissolveProperties.Cutout.Standard.UpdateLocalProperty(dissolveMaterial, AdvancedDissolveProperties.Cutout.Standard.Property.Clip, clipValue);
-            clipValue += Time.deltaTime;
+            clipValue += Time.deltaTime / 1.5f;
             yield return null;
         }
 

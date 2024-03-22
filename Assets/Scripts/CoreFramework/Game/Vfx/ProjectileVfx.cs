@@ -78,7 +78,7 @@ public class ProjectileVfx : IPool<ProjectileData>
         hideCrt = this.DelayCall(hideAffterTime, () =>
         {
             muzzleFx.transform.SetParent(transform);
-            this.PushProjectileVfx(this);
+            this.PushProjectileVfx();
         });
     }
 
