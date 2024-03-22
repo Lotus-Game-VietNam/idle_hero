@@ -28,7 +28,7 @@ public enum CharacterAttributes
 
 public enum ResourceType
 {
-    Gold
+    Gem
 }
 
 

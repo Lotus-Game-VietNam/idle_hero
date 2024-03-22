@@ -1,3 +1,5 @@
+using DG.Tweening;
+using Doozy.Runtime.Reactor.Animators;
 using TMPro;
 using UnityEngine;
 
@@ -8,7 +10,16 @@ namespace Lotus.CoreFramework
     public class UI_Resource : MonoBehaviour
     {
         public ResourceType type;
-        public TMP_Text valueTxt = null;
+
+        private TMP_Text _valueTxt = null;
+        public TMP_Text valueTxt => this.TryGetComponentInChildren(ref _valueTxt);
+
+        private UIAnimator _ator = null;
+        public UIAnimator ator => this.TryGetComponentInChildren(ref _ator);
+
+
+        private Tween textTween = null;
+
 
 
         private void Awake()
@@ -31,7 +42,12 @@ namespace Lotus.CoreFramework
             if (this.type != type)
                 return;
 
-            valueTxt.text = newValue.ToString();
+            textTween.Stop();
+            ator.Play();
+
+            int.TryParse(valueTxt.text, out int startValue);
+            textTween = DOTween.To(() => startValue, x => valueTxt.text = x.ToString(), (int)newValue, 1f)
+                .SetEase(Ease.OutCirc);
         }
     }
 }

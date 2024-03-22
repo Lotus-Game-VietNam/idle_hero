@@ -55,6 +55,22 @@ public class FarmManager : MonoBehaviour
         return this.DequeueCharacter(monsterName);
     }
 
+    private void ReSpawnMonster()
+    {
+        monsterFarm = SpawnMonster();
+        Transform point = spawnPoint[UnityEngine.Random.Range(1, spawnPoint.Length)];
+        monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type)).ResetTransform()
+            .SetPosition(point.position).SetRotation(point.rotation).Show();
+        hero.SetTargetAttack(monsterFarm);
+    }
+
+    private void ReciveRewards()
+    {
+        float gemToAdd = ConfigManager.GetIncome(DataManager.HeroData.inComeLevel).min;
+        ResourceManager.Gem += gemToAdd;
+        hero.characterStats.OnHealthChanged(10);
+    }
+
     private void OnCharacterDead(CharacterBrain character)
     {
         if (character.CharacterType == CharacterType.Hero)
@@ -63,11 +79,8 @@ public class FarmManager : MonoBehaviour
         }
         else
         {
-            monsterFarm = SpawnMonster();
-            Transform point = spawnPoint[UnityEngine.Random.Range(1, spawnPoint.Length)];
-            monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type)).ResetTransform()
-                .SetPosition(point.position).SetRotation(point.rotation).Show();
-            hero.SetTargetAttack(monsterFarm);
+            ReSpawnMonster();
+            ReciveRewards();
         }
     }
 }

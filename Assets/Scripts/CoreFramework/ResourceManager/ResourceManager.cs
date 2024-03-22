@@ -28,10 +28,10 @@ namespace Lotus.CoreFramework
         }
 
 
-        public static float Gold
+        public static float Gem
         {
-            get => Resources[ResourceType.Gold];
-            set => SetValue(ResourceType.Gold, value);
+            get => Resources[ResourceType.Gem];
+            set => SetValue(ResourceType.Gem, value);
         }
 
 

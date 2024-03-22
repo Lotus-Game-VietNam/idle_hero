@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class HeroData : CharacterConfig
 {
     public Dictionary<ItemType, ItemData> items = null;
-
+    public int inComeLevel;
 
 
     public HeroData() : base()
@@ -14,6 +14,7 @@ public class HeroData : CharacterConfig
         int count = Enum.GetValues(typeof(ItemType)).Length;
         for (int i = 0; i < count; i++)
             items.Add((ItemType)i, ConfigManager.GetItem((ItemType)i, 0));
+        inComeLevel = 1;
     }
 
     public override Dictionary<CharacterAttributes, float> GetAttributes()

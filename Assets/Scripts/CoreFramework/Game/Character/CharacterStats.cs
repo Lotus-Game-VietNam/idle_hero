@@ -68,7 +68,7 @@ public class CharacterStats : MonoBehaviour
         if (!Alive)
             return;
 
-        currentHP += changeValue;
+        currentHP = Mathf.Clamp(currentHP + changeValue, 0, MaxHP);
 
         hpTween.Stop();
         hpBGTween.Stop();
