@@ -12,16 +12,19 @@ namespace Lotus.CoreFramework
         private readonly string charactersPath = "Assets/AddressableLocalAssets/Prefabs/Character/{0}.prefab";
         private readonly string projectileVfxsPath = "Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/{0}.prefab";
         private readonly string effectsPath = "Assets/AddressableLocalAssets/Prefabs/Effects/{0}.prefab";
+        private readonly string iconsPath = "Assets/AddressableLocalAssets/Prefabs/Icons/{0}.prefab";
 
 
         private Dictionary<string, List<CharacterBrain>> characters = new Dictionary<string, List<CharacterBrain>>();
         private Dictionary<string, List<ProjectileVfx>> projectileVfxs = new Dictionary<string, List<ProjectileVfx>>();
         private Dictionary<string, List<EffectBase>> effects = new Dictionary<string, List<EffectBase>>();
+        private Dictionary<string, List<IconSprite>> icons = new Dictionary<string, List<IconSprite>>();
 
 
         private Transform  charactersContainer = null;
         private Transform projectileVfxsContainer = null;
         private Transform effectsContainer = null;
+        private Transform iconsContainer = null;
 
 
 
@@ -39,7 +42,14 @@ namespace Lotus.CoreFramework
             this.CreateContainer("Characters", ref charactersContainer);
             this.CreateContainer("ProjectileVfs", ref projectileVfxsContainer);
             this.CreateContainer("Effects", ref effectsContainer);
+            this.CreateContainer("Icons", ref iconsContainer);
         }
+
+
+        public IconSprite DequeueIcon(string iconName, Transform newParent = null) => Dequeue(iconName, icons, string.Format(iconsPath, iconName), newParent);
+
+        public void PushIcon(IconSprite icon) => Push(icon, icons, iconsContainer).Hide();
+
 
 
         public EffectBase DequeueEffect(string effectName, Transform newParent = null) => Dequeue(effectName, effects, string.Format(effectsPath, effectName), newParent);

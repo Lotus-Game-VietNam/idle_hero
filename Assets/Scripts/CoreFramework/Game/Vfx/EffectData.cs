@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EffectData
 {
-    public Vector3 showPoint;
+    public Vector3 point;
 
 
     public EffectData()
@@ -10,8 +10,8 @@ public class EffectData
         
     }
 
-    public EffectData(Vector3 showPoint)
+    public EffectData(Vector3 point)
     {
-        this.showPoint = showPoint;
+        this.point = point;
     }
 }

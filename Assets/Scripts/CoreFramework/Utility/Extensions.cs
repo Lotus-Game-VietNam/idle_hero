@@ -57,6 +57,21 @@ namespace Lotus.CoreFramework
             ObjectPooling.Instance.PushEffect(effect);
         }
 
+        public static IconSprite DequeueIcon(this MonoBehaviour mono, string type, Transform newParent = null)
+        {
+            return ObjectPooling.Instance.DequeueIcon(type, newParent);
+        }
+
+        public static void PushIcon(this MonoBehaviour mono, IconSprite icon)
+        {
+            ObjectPooling.Instance.PushIcon(icon);
+        }
+
+        public static void PushIcon(this IconSprite icon)
+        {
+            ObjectPooling.Instance.PushIcon(icon);
+        }
+
         #endregion
 
 
@@ -136,7 +151,26 @@ namespace Lotus.CoreFramework
                 vfx.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
 
+        public static Vector2 ConvertToAnchoredPosition(this RectTransform from, RectTransform to)
+        {
+            Vector2 localPoint;
+            Vector2 fromPivotDerivedOffset = new Vector2(from.rect.width * from.pivot.x + from.rect.xMin, from.rect.height * from.pivot.y + from.rect.yMin);
+            Vector2 screenP = RectTransformUtility.WorldToScreenPoint(null, from.position);
+            screenP += fromPivotDerivedOffset;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(to, screenP, null, out localPoint);
+            Vector2 pivotDerivedOffset = new Vector2(to.rect.width * to.pivot.x + to.rect.xMin, to.rect.height * to.pivot.y + to.rect.yMin);
+            return to.anchoredPosition + localPoint - pivotDerivedOffset;
+        }
 
+        public static Vector2 ConvertToRectTransform(this Vector3 position)
+        {
+            RectTransform mainRect = ComponentReference.MainRect.Invoke();
+            Vector2 viewportPosition = Camera.main.WorldToViewportPoint(position);
+            Vector2 screenPoint = new Vector2(
+            ((viewportPosition.x * mainRect.sizeDelta.x) - (mainRect.sizeDelta.x * 0.5f)),
+            ((viewportPosition.y * mainRect.sizeDelta.y) - (mainRect.sizeDelta.y * 0.5f)));
+            return screenPoint;
+        }
         #endregion
     }
 }

@@ -1,3 +1,4 @@
+﻿using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ namespace Lotus.CoreFramework
 
     public abstract class IPool<T> : MonoBehaviour, IStruct where T : class
     {
+        [DetailedInfoBox("Deactive prefab này khi set up...", "Object này đang sử dụng object pooling, khi setup xong prefab này hãy Deactive game object đi để Pooling xử lý đúng logic")]
+
         private string _type = string.Empty;
         public string type
         {
@@ -22,11 +25,28 @@ namespace Lotus.CoreFramework
             }
         }
 
+        private RectTransform _rect = null;
+        public RectTransform rect => this.TryGetComponent(ref _rect);
+
+        public abstract bool autoHide { get; }
+        public virtual float timeToHide { get; }
+        public abstract Action HideAct { get; }
+
+        private Coroutine hideCrt = null;
+
+
+        protected Action ShowFinishEvent = null;
+        protected Action HideFinishEvent = null;
+
+
+        public T data { get; private set; }
+
 
         protected abstract void Initialized(T data);
 
         public virtual IPool<T> Initial(T data)
         {
+            this.data = data;
             Initialized(data);
             return this;
         }
@@ -35,6 +55,8 @@ namespace Lotus.CoreFramework
         public IPool<T> Show()
         {
             gameObject.SetActive(true);
+            if (autoHide) 
+                WaitToHide();
             OnShow();
             return this;
         }
@@ -49,6 +71,13 @@ namespace Lotus.CoreFramework
         }
 
         protected abstract void OnHide();
+
+        private void WaitToHide()
+        {
+            if (hideCrt != null)
+                StopCoroutine(hideCrt);
+            hideCrt = this.DelayCall(timeToHide, () => { HideAct?.Invoke(); });
+        }
 
         public IPool<T> ResetTransform()
         {
@@ -70,33 +99,44 @@ namespace Lotus.CoreFramework
             return this;
         }
 
-        public IPool<T> SetEvent(ref Action Act, Action Callback)
+        public IPool<T> ResetRectTransform()
         {
-            Act = Callback;
+            if (rect == null) throw null;
+            rect.anchoredPosition = Vector3.zero;
+            rect.rotation = Quaternion.identity;
+            rect.localScale = Vector3.one;
             return this;
         }
 
-        public IPool<T> SetEvent<T1>(ref Action<T1> Act, Action<T1> Callback)
+        public IPool<T> SetAnchoredPosition(Vector2 anchoredPosition)
         {
-            Act = Callback;
+            if (rect == null) throw null;
+            rect.anchoredPosition = anchoredPosition;
             return this;
         }
 
-        public IPool<T> SetEvent<T1, T2>(ref Action<T1, T2> Act, Action<T1, T2> Callback)
+        public IPool<T> SetParent(Transform parent)
         {
-            Act = Callback;
+            transform.SetParent(parent);
             return this;
         }
 
-        public IPool<T> SetEvent<T1, T2, T3>(ref Action<T1, T2, T3> Act, Action<T1, T2, T3> Callback)
+        public IPool<T> SetParent(RectTransform parent)
         {
-            Act = Callback;
+            if (rect == null) throw null;
+            rect.SetParent(parent);
             return this;
         }
 
-        public IPool<T> SetEvent<T1, T2, T3, T4>(ref Action<T1, T2, T3, T4> Act, Action<T1, T2, T3, T4> Callback)
+        public IPool<T> SetShowFinishEvent(Action Callback)
         {
-            Act = Callback;
+            ShowFinishEvent = Callback;
+            return this;
+        }
+
+        public IPool<T> SetHideFinishEvent(Action Callback)
+        {
+            HideFinishEvent = Callback;
             return this;
         }
     }

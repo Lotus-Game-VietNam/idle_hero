@@ -24560,7 +24560,7 @@ MonoBehaviour:
   muzzleFx: {fileID: 5669441857269499259}
   hitFx: {fileID: 5906955136988566038}
   hideAffterTime: 4
-  moveSpeed: 300
+  moveSpeed: 500
 --- !u!1 &3623411292866999132
 GameObject:
   m_ObjectHideFlags: 0

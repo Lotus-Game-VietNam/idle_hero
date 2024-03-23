@@ -3,19 +3,21 @@ using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
-public class EffectBase : IPool<EffectData>
+public class IconSprite : IPool<IconData>
 {
     [Title("Configuration")]
-    public float hideAffterTime = 2f;
-
+    public float hideAffterTime = 3f;
 
 
     public override bool autoHide => true;
+
     public override float timeToHide => hideAffterTime;
-    public override Action HideAct => this.PushEffect;
+
+    public override Action HideAct => this.PushIcon;
 
 
-    protected override void Initialized(EffectData data)
+
+    protected override void Initialized(IconData data)
     {
 
     }
@@ -27,6 +29,6 @@ public class EffectBase : IPool<EffectData>
 
     protected override void OnShow()
     {
-
+        
     }
 }

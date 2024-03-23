@@ -14,7 +14,7 @@ public class MonsterBrain : CharacterBrain
     {
         this.DelayCall(1f, () =>
         {
-            characterStats.Dissolve(() => { this.PushCharacter(); });
+            characterStats.Dissolve(() => { HideAct?.Invoke(); });
         });
 
         this.DequeueEffect("MonsterDie").SetPosition(center + (Vector3.up * (characterAttack.height / 2))).Show();

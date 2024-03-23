@@ -42,8 +42,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 491bbdf8dca3baf4da391468a40de138
+  - m_GUID: 2a62b92050fbc2942911428030d9a7b9
     m_Address: Assets/AddressableLocalAssets/Prefabs/Effects/MonsterDie.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0e799346937e7145bbf2095807cf19a
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Icons/GemIcon.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

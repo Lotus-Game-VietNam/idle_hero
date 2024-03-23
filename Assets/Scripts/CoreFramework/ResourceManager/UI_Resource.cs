@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Doozy.Runtime.Reactor.Animators;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Lotus.CoreFramework
 {
     public class UI_Resource : MonoBehaviour
     {
+        [Title("Configuration")]
         public ResourceType type;
 
         private TMP_Text _valueTxt = null;
@@ -46,8 +48,7 @@ namespace Lotus.CoreFramework
             ator.Play();
 
             int.TryParse(valueTxt.text, out int startValue);
-            textTween = DOTween.To(() => startValue, x => valueTxt.text = x.ToString(), (int)newValue, 1f)
-                .SetEase(Ease.OutCirc);
+            textTween = DOTween.To(() => startValue, x => valueTxt.text = x.ToString(), (int)newValue, 0.5f);
         }
     }
 }

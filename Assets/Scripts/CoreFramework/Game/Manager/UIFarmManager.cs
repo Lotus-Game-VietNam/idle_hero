@@ -1,18 +1,16 @@
+using Lotus.CoreFramework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIFarmManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+public class UIFarmManager : MonoUI
+{
+
+
+
+    private void Awake()
     {
-        
+        ComponentReference.MainRect = () => rect;
     }
 }

@@ -1,6 +1,5 @@
 using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
-using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -67,9 +66,11 @@ public class FarmManager : MonoBehaviour
     private void ReciveRewards()
     {
         float gemToAdd = ConfigManager.GetIncome(DataManager.HeroData.inComeLevel).min;
-        ResourceManager.Gem += gemToAdd;
         hero.characterStats.OnHealthChanged(10);
+        CollectionIcons.Instance.Show(5, monsterFarm.center.ConvertToRectTransform());
+        this.DelayCall(1, () => { ResourceManager.Gem += gemToAdd; });
     }
+
 
     private void OnCharacterDead(CharacterBrain character)
     {
@@ -79,8 +80,8 @@ public class FarmManager : MonoBehaviour
         }
         else
         {
-            ReSpawnMonster();
             ReciveRewards();
+            ReSpawnMonster();
         }
     }
 }

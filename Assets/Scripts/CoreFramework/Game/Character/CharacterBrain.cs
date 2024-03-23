@@ -1,13 +1,11 @@
 ﻿using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public abstract class CharacterBrain : IPool<CharacterConfig>
 {
-    [DetailedInfoBox("Deactive prefab này khi set up...", "Object này đang sử dụng object pooling, khi setup xong prefab này hãy Deactive game object đi để Pooling xử lý đúng logic")]
-
-
     #region Component
 
     private CharacterStats _characterStats = null;
@@ -37,6 +35,10 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     #region Constructor
     private bool hasInitialized = false;
+
+    public override bool autoHide => false;
+
+    public override Action HideAct => this.PushCharacter;
 
     protected override void Initialized(CharacterConfig data)
     {

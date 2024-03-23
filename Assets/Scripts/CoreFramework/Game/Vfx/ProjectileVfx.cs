@@ -1,13 +1,12 @@
 ﻿using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 
 
 [RequireComponent(typeof(Rigidbody))]
 public class ProjectileVfx : IPool<ProjectileData>
 {
-    [DetailedInfoBox("Deactive prefab này khi set up...", "Object này đang sử dụng object pooling, khi setup xong prefab này hãy Deactive game object đi để Pooling xử lý đúng logic")]
-
     [Title("Object Reference")]
     public ParticleSystem modelFx = null;
     public ParticleSystem muzzleFx = null;
@@ -18,15 +17,18 @@ public class ProjectileVfx : IPool<ProjectileData>
     public float moveSpeed = 300f;
 
 
+
+    public override bool autoHide => true;
+    public override float timeToHide => hideAffterTime;
+    public override Action HideAct => this.PushProjectileVfx;
+
+
     private Rigidbody _body = null;
     public Rigidbody body => this.TryGetComponent(ref _body);
 
     private SphereCollider _sphereCollider = null;
     public SphereCollider sphereCollider => this.TryGetComponent(ref _sphereCollider);
 
-    public ProjectileData data { get; private set; }
-
-    private Coroutine hideCrt = null;
 
 
     private void Awake()
@@ -36,7 +38,7 @@ public class ProjectileVfx : IPool<ProjectileData>
 
     protected override void Initialized(ProjectileData data)
     {
-        this.data = data;
+
     }
 
     protected override void OnHide()
@@ -53,7 +55,6 @@ public class ProjectileVfx : IPool<ProjectileData>
         modelFx.gameObject.SetActive(true);
         muzzleFx.transform.localPosition = Vector3.zero;
         Firing();
-        WaitToHide();
     }
 
     protected virtual void Firing()
@@ -71,16 +72,6 @@ public class ProjectileVfx : IPool<ProjectileData>
         body.AddForce(transform.forward * moveSpeed);
     }
 
-    private void WaitToHide()
-    {
-        if (hideCrt != null)
-            StopCoroutine(hideCrt);
-        hideCrt = this.DelayCall(hideAffterTime, () =>
-        {
-            muzzleFx.transform.SetParent(transform);
-            this.PushProjectileVfx();
-        });
-    }
 
     private void Explosition()
     {
