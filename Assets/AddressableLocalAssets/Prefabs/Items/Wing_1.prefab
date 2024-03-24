@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7615415928332772990}
+  - component: {fileID: 5885935577549920374}
+  - component: {fileID: -8941494422163838536}
   - component: {fileID: 5734579199312395752}
   m_Layer: 0
   m_Name: Wing_1
@@ -16,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7615415928332772990
 Transform:
   m_ObjectHideFlags: 0
@@ -33,6 +35,45 @@ Transform:
   - {fileID: 164367678073370152}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 71.7, y: 130.2, z: -90}
+--- !u!65 &5885935577549920374
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179164351155747709}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.46, y: 0.09, z: 0.34}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8941494422163838536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179164351155747709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c1eff96915ba74bbfbe9fdcd6c02b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragOnLayer:
+    serializedVersion: 2
+    m_Bits: 576
+  dragOffset: 0.2
+  doubleClickThreshold: 0.25
+  dragLerpRate: 30
 --- !u!114 &5734579199312395752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,7 +114,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: -0.065, z: -0.048}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7615415928332772990}

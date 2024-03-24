@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 1447005350463767017}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: -0, z: -0.157}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -0, y: 0, z: -0.23}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2064153961140057528}
@@ -92,6 +92,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2064153961140057528}
+  - component: {fileID: 7374808362419052824}
+  - component: {fileID: -5321834149826205091}
   - component: {fileID: -4243128804114625882}
   m_Layer: 0
   m_Name: Cloth_1
@@ -116,6 +118,45 @@ Transform:
   - {fileID: 2927356045524923465}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 71.7, y: 130.2, z: -90}
+--- !u!65 &7374808362419052824
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486996081606559221}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.31, y: 0.15, z: 0.38}
+  m_Center: {x: 0, y: 0, z: 0.02}
+--- !u!114 &-5321834149826205091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486996081606559221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c1eff96915ba74bbfbe9fdcd6c02b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragOnLayer:
+    serializedVersion: 2
+    m_Bits: 576
+  dragOffset: 0.2
+  doubleClickThreshold: 0.25
+  dragLerpRate: 30
 --- !u!114 &-4243128804114625882
 MonoBehaviour:
   m_ObjectHideFlags: 0

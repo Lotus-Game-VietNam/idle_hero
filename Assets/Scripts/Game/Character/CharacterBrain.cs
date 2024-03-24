@@ -102,7 +102,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
         if (onFollowTarget || animatorState.currentState == type.Convert() || characterMovement.crtRotating) return;
 
-        characterMovement.RotateToCrt(targetAttack.center, 0.1f, () => 
+        characterMovement.RotateToCrt(targetAttack.center, 0.2f, () => 
         {
             animatorState.ChangeState(type.Convert());
         });

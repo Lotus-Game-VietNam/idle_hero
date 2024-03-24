@@ -166,31 +166,15 @@ namespace Lotus.CoreFramework
                 vfx.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
 
-        //public static Vector2 ConvertToAnchoredPosition(this RectTransform from, RectTransform to)
-        //{
-        //    Vector2 localPoint;
-        //    Vector2 fromPivotDerivedOffset = new Vector2(from.rect.width * from.pivot.x + from.rect.xMin, from.rect.height * from.pivot.y + from.rect.yMin);
-        //    Vector2 screenP = RectTransformUtility.WorldToScreenPoint(null, from.position);
-        //    screenP += fromPivotDerivedOffset;
-        //    RectTransformUtility.ScreenPointToLocalPointInRectangle(to, screenP, null, out localPoint);
-        //    Vector2 pivotDerivedOffset = new Vector2(to.rect.width * to.pivot.x + to.rect.xMin, to.rect.height * to.pivot.y + to.rect.yMin);
-        //    return to.anchoredPosition + localPoint - pivotDerivedOffset;
-        //}
-
-        public static Vector2 ConvertToAnchoredPosition(this RectTransform fromPivotSpace, RectTransform toPivotSpace)
+        public static Vector2 ConvertToAnchoredPosition(this RectTransform from, RectTransform to)
         {
-            Vector2 convertedPos;
-
-            Vector2 fromPivotDerivedOffset = new Vector2(fromPivotSpace.rect.width * fromPivotSpace.pivot.x + fromPivotSpace.rect.xMin, fromPivotSpace.rect.height * fromPivotSpace.pivot.y + fromPivotSpace.rect.yMin);
-
-            Vector3 fromWorldSpace = fromPivotSpace.TransformPoint(fromPivotSpace.anchoredPosition);
-            Vector2 screenP = RectTransformUtility.WorldToScreenPoint(null, fromWorldSpace);
+            Vector2 localPoint;
+            Vector2 fromPivotDerivedOffset = new Vector2(from.rect.width * from.pivot.x + from.rect.xMin, from.rect.height * from.pivot.y + from.rect.yMin);
+            Vector2 screenP = RectTransformUtility.WorldToScreenPoint(null, from.position);
             screenP += fromPivotDerivedOffset;
-
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(toPivotSpace, screenP, null, out convertedPos);
-            Vector2 pivotDerivedOffset = new Vector2(toPivotSpace.rect.width * toPivotSpace.pivot.x + toPivotSpace.rect.xMin, toPivotSpace.rect.height * toPivotSpace.pivot.y + toPivotSpace.rect.yMin);
-
-            return toPivotSpace.anchoredPosition + convertedPos - pivotDerivedOffset;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(to, screenP, null, out localPoint);
+            Vector2 pivotDerivedOffset = new Vector2(to.rect.width * to.pivot.x + to.rect.xMin, to.rect.height * to.pivot.y + to.rect.yMin);
+            return to.anchoredPosition + localPoint - pivotDerivedOffset;
         }
 
         public static Vector2 ConvertToRectTransform(this Vector3 position)
@@ -201,6 +185,18 @@ namespace Lotus.CoreFramework
             ((viewportPosition.x * mainRect.rect.width) - (mainRect.rect.width * 0.5f)),
             ((viewportPosition.y * mainRect.rect.height) - (mainRect.rect.height * 0.5f)));
             return screenPoint;
+        }
+
+        public static Vector3 GetMouseWorldPosition(LayerMask mask)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+                return hit.point;
+
+            LogTool.LogErrorEditorOnly("Not Found Mouse World Point");
+            return Vector3.zero;
         }
         #endregion
     }

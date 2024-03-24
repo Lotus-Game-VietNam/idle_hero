@@ -50,7 +50,7 @@ public class InventoryManager : MonoBehaviour
             {
                 CellData cell = new CellData(pivotLeftBottomGrid + (transform.right * x * cellLenght) + transform.forward * y * cellLenght);
                 cells[x, y] = cell;
-                this.DequeueItem($"{(ItemType)Random.Range(0, 3)}_1", itemsParant).SetPosition(cell.worldPosition + (transform.up * cellOffset * 2)).SetRotation(transform.rotation).Show();
+                this.DequeueItem($"{(ItemType)Random.Range(0, 3)}_1", itemsParant).SetPosition(cell.worldPosition + (Vector3.up * cellOffset * 2)).SetRotation(transform.rotation).Show();
             }
         }
     }
