@@ -13,18 +13,21 @@ namespace Lotus.CoreFramework
         private readonly string projectileVfxsPath = "Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/{0}.prefab";
         private readonly string effectsPath = "Assets/AddressableLocalAssets/Prefabs/Effects/{0}.prefab";
         private readonly string iconsPath = "Assets/AddressableLocalAssets/Prefabs/Icons/{0}.prefab";
+        private readonly string itemsPath = "Assets/AddressableLocalAssets/Prefabs/Items/{0}.prefab";
 
 
         private Dictionary<string, List<CharacterBrain>> characters = new Dictionary<string, List<CharacterBrain>>();
         private Dictionary<string, List<ProjectileVfx>> projectileVfxs = new Dictionary<string, List<ProjectileVfx>>();
         private Dictionary<string, List<EffectBase>> effects = new Dictionary<string, List<EffectBase>>();
         private Dictionary<string, List<IconSprite>> icons = new Dictionary<string, List<IconSprite>>();
+        private Dictionary<string, List<InventoryItem>> items = new Dictionary<string, List<InventoryItem>>();
 
 
         private Transform  charactersContainer = null;
         private Transform projectileVfxsContainer = null;
         private Transform effectsContainer = null;
         private Transform iconsContainer = null;
+        private Transform itemsContainer = null;
 
 
 
@@ -43,7 +46,15 @@ namespace Lotus.CoreFramework
             this.CreateContainer("ProjectileVfs", ref projectileVfxsContainer);
             this.CreateContainer("Effects", ref effectsContainer);
             this.CreateContainer("Icons", ref iconsContainer);
+            this.CreateContainer("Items", ref itemsContainer);
         }
+
+
+
+        public InventoryItem DequeueItem(string itemName, Transform newParent = null) => Dequeue(itemName, items, string.Format(itemsPath, itemName), newParent);
+
+        public void PushItem(InventoryItem item) => Push(item, items, itemsContainer).Hide();
+
 
 
         public IconSprite DequeueIcon(string iconName, Transform newParent = null) => Dequeue(iconName, icons, string.Format(iconsPath, iconName), newParent);

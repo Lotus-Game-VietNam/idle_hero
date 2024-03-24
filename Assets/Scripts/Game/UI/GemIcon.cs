@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Lotus.CoreFramework;
 using UnityEngine;
 
 public class GemIcon : IconSprite
@@ -17,7 +16,7 @@ public class GemIcon : IconSprite
 
         Sequence sequence = DOTween.Sequence();
         sequence.Append(rect.DOJumpAnchorPos(randomPoint, jumpPower, 1, jumpDuration + Random.Range(-jumpDuration / 2, jumpDuration / 2)));
-        sequence.Append(rect.DOMove(data.point, moveDuration).SetEase(Ease.InBack).OnComplete(() => { ShowFinishEvent?.Invoke(); }));
+        sequence.Append(transform.DOMove(data.point, moveDuration).SetEase(Ease.InBack).OnComplete(() => { ShowFinishEvent?.Invoke(); }));
         sequence.Play();
     }
 }

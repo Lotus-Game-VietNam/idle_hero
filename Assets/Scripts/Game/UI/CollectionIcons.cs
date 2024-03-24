@@ -22,7 +22,7 @@ public class CollectionIcons : Singleton<CollectionIcons>
     {
         for (int i = 0; i < numberIcon; i++)
         {
-            this.DequeueIcon(iconName, ComponentReference.MainRect.Invoke()).SetParent(rect).SetAnchoredPosition(center).Initial(new IconData(targetIconToMove.ConvertToAnchoredPosition(ComponentReference.MainRect.Invoke()))).
+            this.DequeueIcon(iconName, ComponentReference.MainRect.Invoke()).SetParent(rect).SetAnchoredPosition(center).SetLocalScale(Vector3.one).Initial(new IconData(targetIconToMove.transform.position)).
             SetShowFinishEvent(() =>
             {
                 scaleTween.Stop();

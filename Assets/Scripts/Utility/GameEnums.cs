@@ -11,7 +11,7 @@ public enum CharacterType
 
 public enum ItemType
 {
-    Armour,
+    Cloth,
     Bow,
     Wing
 }

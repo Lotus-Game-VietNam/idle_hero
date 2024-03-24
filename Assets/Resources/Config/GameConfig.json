@@ -3,79 +3,79 @@
 		"Gem" : 100
 	},
 	"ItemsConfig" : {
-		"Armour" : [
+		"Cloth" : [
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 0,
 				"valueAdded" : 50
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 1,
 				"valueAdded" : 100
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 2,
 				"valueAdded" : 150
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 3,
 				"valueAdded" : 200
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 4,
 				"valueAdded" : 250
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 5,
 				"valueAdded" : 300
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 6,
 				"valueAdded" : 350
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 7,
 				"valueAdded" : 400
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 8,
 				"valueAdded" : 450
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 9,
 				"valueAdded" : 500
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 10,
 				"valueAdded" : 550
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 11,
 				"valueAdded" : 600
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 12,
 				"valueAdded" : 650
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 13,
 				"valueAdded" : 700
 			},
 			{
-				"itemType" : "Armour",
+				"itemType" : "Cloth",
 				"itemLevel" : 14,
 				"valueAdded" : 750
 			}

@@ -99,6 +99,12 @@ namespace Lotus.CoreFramework
             return this;
         }
 
+        public IPool<T> SetLocalScale(Vector3 localScale)
+        {
+            transform.localScale = localScale;
+            return this;
+        }
+
         public IPool<T> ResetRectTransform()
         {
             if (rect == null) throw null;

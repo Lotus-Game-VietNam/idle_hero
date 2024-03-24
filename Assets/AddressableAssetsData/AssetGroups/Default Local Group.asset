@@ -52,6 +52,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48a441837e7dbdf47988b71afd291822
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Bow_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ccf31ef6856238f4bbfac48d484fb9d4
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Cloth_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8233a1b813eaadb42b4b094d09567a96
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Wing_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3ece1e13ae2be25429cf299318a1d498, type: 2}
   m_SchemaSet:
