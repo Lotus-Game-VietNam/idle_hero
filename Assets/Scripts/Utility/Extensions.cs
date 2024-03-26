@@ -198,6 +198,30 @@ namespace Lotus.CoreFramework
             LogTool.LogErrorEditorOnly("Not Found Mouse World Point");
             return Vector3.zero;
         }
+
+        public static RaycastHit GetMouseWorldHit(LayerMask mask)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+                return hit;
+
+            LogTool.LogErrorEditorOnly("Not Found Mouse World Point");
+            return hit;
+        }
+
+        public static RaycastHit GetMouseWorldHit(LayerMask mask, Vector3 worldPos)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(worldPos));
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+                return hit;
+
+            LogTool.LogErrorEditorOnly("Not Found Mouse World Point");
+            return hit;
+        }
         #endregion
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5885935577549920374}
   - component: {fileID: -8941494422163838536}
   - component: {fileID: 5734579199312395752}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wing_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,8 +70,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragOnLayer:
     serializedVersion: 2
-    m_Bits: 576
-  dragOffset: 0.2
+    m_Bits: 64
+  dragOffset: 0.4
   doubleClickThreshold: 0.25
   dragLerpRate: 30
 --- !u!114 &5734579199312395752
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 164367678073370152}
   - component: {fileID: 738289546599583503}
   - component: {fileID: 7752293626339735958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

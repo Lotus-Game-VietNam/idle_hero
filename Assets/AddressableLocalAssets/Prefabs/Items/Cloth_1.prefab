@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2927356045524923465}
   - component: {fileID: 8818584332371707350}
   - component: {fileID: 1200519990291106930}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloth_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7374808362419052824}
   - component: {fileID: -5321834149826205091}
   - component: {fileID: -4243128804114625882}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cloth_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,8 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragOnLayer:
     serializedVersion: 2
-    m_Bits: 576
-  dragOffset: 0.2
+    m_Bits: 64
+  dragOffset: 0.4
   doubleClickThreshold: 0.25
   dragLerpRate: 30
 --- !u!114 &-4243128804114625882

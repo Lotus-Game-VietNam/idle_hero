@@ -31,6 +31,22 @@ public class IDragAndDrop : MonoBehaviour
     public UnityEvent OnDragEvent { get; set; } = new UnityEvent();
 
 
+    private bool autoScale = true;
+    private float initialDistance;
+    private Vector3 initialScale;
+    private Camera mainCamera;
+
+
+    private void Start()
+    {
+        initialScale = transform.localScale;
+        mainCamera = Camera.main;
+        initialDistance = Vector3.Distance(transform.position, mainCamera.transform.position);
+    }
+
+    public void SetAutoScale(bool value) => autoScale = value;
+
+
     private void OnMouseDown()
     {
         OnClickDownEvent?.Invoke();
@@ -47,7 +63,6 @@ public class IDragAndDrop : MonoBehaviour
         currentMousePos = Input.mousePosition;
     }
 
-
     private void OnMouseDrag()
     {
         if (currentMousePos == Input.mousePosition) return;
@@ -56,7 +71,7 @@ public class IDragAndDrop : MonoBehaviour
 
         if (mouseWorldPos == Vector3.zero)
         {
-            transform.DOJump(prevPos, 0.3f, 1, 0.25f);
+            ResetToPrevPos();
             return;
         }
         
@@ -67,6 +82,8 @@ public class IDragAndDrop : MonoBehaviour
         Vector3 newPosition = mouseWorldPos + mouseOffset;
 
         transform.position = Vector3.Lerp(transform.position, newPosition + (Vector3.up * dragOffset), dragLerpRate * Time.deltaTime);
+
+        AutoScale();
     }
 
     private void OnMouseUp()
@@ -75,7 +92,24 @@ public class IDragAndDrop : MonoBehaviour
         {
             OnClickUpEvent?.Invoke();
             isDrag = false;
-            transform.DOJump(prevPos, 0.3f, 1, 0.25f);
+            ResetToPrevPos();
         }
+    }
+
+    public void ResetToPrevPos()
+    {
+        transform.DOJump(prevPos, 0.3f, 1, 0.25f);
+        transform.DOScale(initialScale, 0.25f);
+    }
+
+    private void AutoScale()
+    {
+        if (!autoScale) return;
+
+        float distanceToCamera = Vector3.Distance(transform.position, mainCamera.transform.position);
+
+        float ratio = distanceToCamera / initialDistance;
+
+        transform.localScale = ratio * initialScale;
     }
 }

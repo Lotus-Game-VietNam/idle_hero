@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 251721051770715773}
   - component: {fileID: -2095729033666176040}
   - component: {fileID: -4379816796740449753}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bow_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,8 +70,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragOnLayer:
     serializedVersion: 2
-    m_Bits: 576
-  dragOffset: 0.2
+    m_Bits: 64
+  dragOffset: 0.4
   doubleClickThreshold: 0.25
   dragLerpRate: 30
 --- !u!114 &-4379816796740449753
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7624262102272595756}
   - component: {fileID: 6469878640731970408}
   - component: {fileID: 6298603706273552453}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
