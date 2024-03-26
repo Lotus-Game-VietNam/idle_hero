@@ -37,7 +37,7 @@ public class FarmManager : MonoBehaviour
         hero.SetTargetAttack(monsterFarm).Initial(DataManager.HeroData).Show();
 
         Transform point = spawnPoint[UnityEngine.Random.Range(1, spawnPoint.Length)];
-        monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type)).ResetTransform()
+        monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type))/*.ResetTransform()*/
             .SetPosition(point.position).SetRotation(point.rotation).Show();
     }
 
@@ -58,7 +58,7 @@ public class FarmManager : MonoBehaviour
     {
         monsterFarm = SpawnMonster();
         Transform point = spawnPoint[UnityEngine.Random.Range(1, spawnPoint.Length)];
-        monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type)).ResetTransform()
+        monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type))/*.ResetTransform()*/
             .SetPosition(point.position).SetRotation(point.rotation).Show();
         hero.SetTargetAttack(monsterFarm);
     }

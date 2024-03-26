@@ -6,7 +6,6 @@
     public int currentLevel;
 
 
-
     public WorldData()
     {
         currentLevel = 1;

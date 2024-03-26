@@ -48,5 +48,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadadcc8ec739f146b789cb71a9da3b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconName: 
+  iconName: GemIcon
   targetIconToMove: {fileID: 0}

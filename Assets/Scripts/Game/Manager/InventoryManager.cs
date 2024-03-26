@@ -36,6 +36,8 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
+        InitEvents();
+
         Vector3 pointToRaycast = transform.position + transform.up * 10;
         if (!Physics.Raycast(pointToRaycast, transform.up * -1, out RaycastHit hit, 20, surfaceMask)) return;
         Vector3 centerOnSurface = hit.point;
@@ -50,8 +52,26 @@ public class InventoryManager : MonoBehaviour
             {
                 CellData cell = new CellData(pivotLeftBottomGrid + (transform.right * x * cellLenght) + transform.forward * y * cellLenght);
                 cells[x, y] = cell;
-                this.DequeueItem($"{(ItemType)Random.Range(0, 3)}_1", itemsParant).SetPosition(cell.worldPosition + (Vector3.up * cellOffset * 2)).SetRotation(transform.rotation).Show();
             }
+        }
+    }
+
+    private void InitEvents()
+    {
+        this.AddListener(EventName.BuyItem, BuyItem);
+    }
+
+    private void BuyItem()
+    {
+        foreach (var cell in cells)
+        {
+            if (cell.itemOnCell != null)
+                continue;
+
+            InventoryItem item = this.DequeueItem($"{(ItemType)Random.Range(0, 3)}_1", itemsParant);
+            item.SetPosition(cell.worldPosition + (Vector3.up * cellOffset * 2)).SetRotation(transform.rotation).Show();
+            cell.MatchingItem(item);
+            break;
         }
     }
 

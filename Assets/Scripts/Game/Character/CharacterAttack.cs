@@ -16,7 +16,7 @@ public class CharacterAttack : MonoBehaviour
 
     public CapsuleCollider capsuleCollider => _collider;
 
-    public float height => capsuleCollider.height * capsuleCollider.transform.localScale.y;
+    public float height => capsuleCollider.height * capsuleCollider.transform.localScale.y * transform.parent.localScale.y;
 
 
     public void Initialized()

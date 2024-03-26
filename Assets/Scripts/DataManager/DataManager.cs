@@ -23,6 +23,8 @@ namespace Lotus.CoreFramework
             }
         }
 
+        public static void Save(this HeroData heroData) => ES3.Save(GameConstants.heroDataKey, _heroData);
+
 
 
         private static WorldData _worldData = null;
@@ -42,6 +44,30 @@ namespace Lotus.CoreFramework
                 return _worldData;
             }
         }
+
+        public static void Save(this WorldData worldData) => ES3.Save(GameConstants.worldDataKey, _worldData);
+
+
+
+        private static BuyItemsData _buyItemsData = null;
+        public static BuyItemsData BuyItemsData
+        {
+            get
+            {
+                if (!ES3.KeyExists(GameConstants.BuyItemsDataKey))
+                {
+                    _buyItemsData = new BuyItemsData();
+                    ES3.Save(GameConstants.BuyItemsDataKey, _buyItemsData);
+                }
+
+                if (_buyItemsData == null)
+                    _buyItemsData = ES3.Load<BuyItemsData>(GameConstants.BuyItemsDataKey);
+
+                return _buyItemsData;
+            }
+        }
+
+        public static void Save(this BuyItemsData buyItemsData) => ES3.Save(GameConstants.BuyItemsDataKey, _buyItemsData);
     }
 }
 

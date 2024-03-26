@@ -59,7 +59,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.6427876, z: 0, w: 0.7660445}
   m_LocalPosition: {x: -18.06, y: -0.005, z: 16.74}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.8, y: 2.8, z: 2.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3987946380742886110}
@@ -555,8 +555,8 @@ MonoBehaviour:
   canvas: {fileID: 5651067142227532353}
   HPBar: {fileID: 2444195684417312733}
   HPBGBar: {fileID: 5515753552626084238}
-  enableDissolve: 0
   skinnedMeshRenderer: {fileID: 0}
+  defaultMaterial: {fileID: 0}
   dissolveMaterial: {fileID: 0}
   timeDissolve: 1
 --- !u!1 &2660639770228866113
