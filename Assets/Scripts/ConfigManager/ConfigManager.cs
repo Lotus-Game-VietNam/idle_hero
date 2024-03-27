@@ -29,7 +29,7 @@ namespace Lotus.CoreFramework
 
         public static IncomeConfig GetIncome(int level) => level >= GameConfig.IncomeConfig.Length ? null : GameConfig.IncomeConfig[level];
 
-        public static Ratio[] GetCurrentBuyItemRatio() => GameConfig.BuyItemsRatio[DataManager.BuyItemsData.currentLevelPool];
+        public static Ratio[] GetCurrentBuyItemRatio() => GameConfig.BuyItemsRatio[DataManager.InventoryData.currentLevelPool];
 
     }
 }

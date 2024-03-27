@@ -73,7 +73,7 @@ public class InventoryManager : MonoBehaviour
     {
         items = new List<InventoryItem>();
 
-        foreach (var item in DataManager.BuyItemsData.items) 
+        foreach (var item in DataManager.InventoryData.items) 
             SpawnItem(item.Value, cells[item.Key.posX, item.Key.posY], false);
     }
 
@@ -92,7 +92,7 @@ public class InventoryManager : MonoBehaviour
         items.Add(item);
 
         if (saveData)
-            DataManager.BuyItemsData.SaveItem(cell.cellPosition, itemData, maxItemCount).Save();
+            DataManager.InventoryData.SaveItem(cell.cellPosition, itemData).Save();
     }
 
     private void BuyItem()
@@ -100,13 +100,13 @@ public class InventoryManager : MonoBehaviour
         if (items.Count >= maxItemCount)
             return;
 
-        float costToBuy = DataManager.BuyItemsData.GetCostToBuyItem();
+        float costToBuy = DataManager.InventoryData.GetCostToBuyItem();
 
         if (ResourceManager.Gem < costToBuy)
             return;
 
         ResourceManager.Gem -= costToBuy;
-        DataManager.BuyItemsData.SetBuyItemSuccess().Save();
+        DataManager.InventoryData.SetBuyItemSuccess().Save();
 
         foreach (var cell in cells)
         {

@@ -49,25 +49,25 @@ namespace Lotus.CoreFramework
 
 
 
-        private static BuyItemsData _buyItemsData = null;
-        public static BuyItemsData BuyItemsData
+        private static InventoryData _inventoryData = null;
+        public static InventoryData InventoryData
         {
             get
             {
                 if (!ES3.KeyExists(GameConstants.BuyItemsDataKey))
                 {
-                    _buyItemsData = new BuyItemsData();
-                    ES3.Save(GameConstants.BuyItemsDataKey, _buyItemsData);
+                    _inventoryData = new InventoryData();
+                    ES3.Save(GameConstants.BuyItemsDataKey, _inventoryData);
                 }
 
-                if (_buyItemsData == null)
-                    _buyItemsData = ES3.Load<BuyItemsData>(GameConstants.BuyItemsDataKey);
+                if (_inventoryData == null)
+                    _inventoryData = ES3.Load<InventoryData>(GameConstants.BuyItemsDataKey);
 
-                return _buyItemsData;
+                return _inventoryData;
             }
         }
 
-        public static void Save(this BuyItemsData buyItemsData) => ES3.Save(GameConstants.BuyItemsDataKey, _buyItemsData);
+        public static void Save(this InventoryData buyItemsData) => ES3.Save(GameConstants.BuyItemsDataKey, _inventoryData);
     }
 }
 

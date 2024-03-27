@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuyItemsData
+public class InventoryData
 {
     public readonly int costBuyItemOnTutorial = 50;
     public readonly int costBuyItemFirstTime = 100;
@@ -37,7 +37,7 @@ public class BuyItemsData
 
 
 
-    public BuyItemsData()
+    public InventoryData()
     {
         buyItemsCount = 0;
         buyItemsCountOnPool = 0;
@@ -51,7 +51,7 @@ public class BuyItemsData
         return lastCostBuyItem + (buyItemsCount - 1) + 10;
     }
 
-    public BuyItemsData SetBuyItemSuccess()
+    public InventoryData SetBuyItemSuccess()
     {
         lastCostBuyItem = GetCostToBuyItem();
 
@@ -68,7 +68,7 @@ public class BuyItemsData
         return this;
     }
 
-    public BuyItemsData SaveItem(CellPosition cellPosition, ItemData itemData, int maxItemsCount = 12)
+    public InventoryData SaveItem(CellPosition cellPosition, ItemData itemData)
     {
         if (!items.ContainsKey(cellPosition))
             items.Add(cellPosition, null);

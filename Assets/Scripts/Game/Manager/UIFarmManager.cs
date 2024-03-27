@@ -34,7 +34,7 @@ public class UIFarmManager : MonoUI
     }
 
 
-    private string GetCostBuyItemTextValue() => $"<sprite name=\"gem_blue\">{DataManager.BuyItemsData.GetCostToBuyItem()}";
+    private string GetCostBuyItemTextValue() => $"<sprite name=\"gem_blue\">{DataManager.InventoryData.GetCostToBuyItem()}";
 
     public void OnBuyItemClicked()
     {
