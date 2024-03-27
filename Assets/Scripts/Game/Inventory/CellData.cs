@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class CellData
 {
+    public CellPosition cellPosition;
+
     public Vector3 worldPosition;
 
     public InventoryItem itemOnCell { get; private set; }
 
 
-    public CellData(Vector3 worldPosition)
+    public CellData(CellPosition cellPosition, Vector3 worldPosition)
     {
+        this.cellPosition = cellPosition;
         this.worldPosition = worldPosition;
     }
 

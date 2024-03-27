@@ -1,7 +1,9 @@
 {
     "name": "Lotus.CoreFramework.Editor",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:a8b184d29b55b0445a77821324a48dae"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [
         "Android",

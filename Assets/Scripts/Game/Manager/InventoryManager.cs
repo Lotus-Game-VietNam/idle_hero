@@ -1,5 +1,6 @@
 using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -8,7 +9,6 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private LayerMask surfaceMask;
     [SerializeField] private int gridSizeX = 4;
     [SerializeField] private int gridSizeY = 3;
-
 
 
     private Transform _itemsParent = null;
@@ -22,6 +22,11 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+
+    public int maxItemCount => gridSizeX * gridSizeY;
+
+
+    public List<InventoryItem> items { get; private set; }
 
     public CellData[,] cells { get; private set; }
 
@@ -37,12 +42,20 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         InitEvents();
+        GenerateGrid();
+        GenerateItems();
+    }
 
+    private void GenerateGrid()
+    {
         Vector3 pointToRaycast = transform.position + transform.up * 10;
         if (!Physics.Raycast(pointToRaycast, transform.up * -1, out RaycastHit hit, 20, surfaceMask)) return;
+
         Vector3 centerOnSurface = hit.point;
-        cellOffset = transform.GetChild(0).localScale.x / 30f;
-        cellLenght = transform.GetChild(0).localScale.x / gridSizeX;
+        Transform inventoryMesh = transform.GetChild(0);
+
+        cellOffset = inventoryMesh.localScale.x / 30f;
+        cellLenght = inventoryMesh.localScale.x / gridSizeX;
         pivotLeftBottomGrid = centerOnSurface - (transform.forward * ((gridSizeY / 2f) - 0.5f) * cellLenght) - (transform.right * ((gridSizeX / 2f) - 0.5f) * cellLenght);
 
         cells = new CellData[gridSizeX, gridSizeY];
@@ -50,10 +63,18 @@ public class InventoryManager : MonoBehaviour
         {
             for (int x = 0; x < gridSizeX; x++)
             {
-                CellData cell = new CellData(pivotLeftBottomGrid + (transform.right * x * cellLenght) + transform.forward * y * cellLenght);
+                CellData cell = new CellData(new CellPosition(x, y), pivotLeftBottomGrid + (transform.right * x * cellLenght) + transform.forward * y * cellLenght);
                 cells[x, y] = cell;
             }
         }
+    }
+
+    private void GenerateItems()
+    {
+        items = new List<InventoryItem>();
+
+        foreach (var item in DataManager.BuyItemsData.items) 
+            SpawnItem(item.Value, cells[item.Key.posX, item.Key.posY], false);
     }
 
     private void InitEvents()
@@ -61,19 +82,68 @@ public class InventoryManager : MonoBehaviour
         this.AddListener(EventName.BuyItem, BuyItem);
     }
 
+    private void SpawnItem(ItemData itemData, CellData cell, bool saveData = true)
+    {
+        InventoryItem item = this.DequeueItem($"{itemData.itemType}_1", itemsParant);
+
+        item.SetPosition(cell.worldPosition + (Vector3.up * cellOffset * 2)).SetRotation(transform.rotation).Initial(itemData).Show();
+
+        cell.MatchingItem(item);
+        items.Add(item);
+
+        if (saveData)
+            DataManager.BuyItemsData.SaveItem(cell.cellPosition, itemData, maxItemCount).Save();
+    }
+
     private void BuyItem()
     {
+        if (items.Count >= maxItemCount)
+            return;
+
+        float costToBuy = DataManager.BuyItemsData.GetCostToBuyItem();
+
+        if (ResourceManager.Gem < costToBuy)
+            return;
+
+        ResourceManager.Gem -= costToBuy;
+        DataManager.BuyItemsData.SetBuyItemSuccess().Save();
+
         foreach (var cell in cells)
         {
             if (cell.itemOnCell != null)
                 continue;
 
-            InventoryItem item = this.DequeueItem($"{(ItemType)Random.Range(0, 3)}_1", itemsParant);
-            item.SetPosition(cell.worldPosition + (Vector3.up * cellOffset * 2)).SetRotation(transform.rotation).Show();
-            cell.MatchingItem(item);
+            ItemData itemData = GetRandomItemData();
+            SpawnItem(itemData, cell);
+            //LogTool.LogErrorEditorOnly($"Level Pool: {DataManager.BuyItemsData.currentLevelPool} --- Item Type: {itemData.itemType} --- Item Level: {itemData.itemLevel}");
             break;
         }
+
+        this.SendMessage(EventName.BuyItem, "UIFarmManager");
     }
+
+    private ItemData GetRandomItemData()
+    {
+        ItemType type = GetRandomItemType();
+        int level = GetRandomItemLevel();
+        return ConfigManager.GetItem(type, level);
+    }
+
+    private int GetRandomItemLevel()
+    {
+        int randomValue = Random.Range(0, 100);
+        Ratio[] ratios = ConfigManager.GetCurrentBuyItemRatio();
+
+        for (int i = 0; i < ratios.Length; i++)
+        {
+            if (randomValue >= ratios[i].min && randomValue < ratios[i].max)
+                return i;
+        }
+
+        return 0;
+    }
+
+    private ItemType GetRandomItemType() => (ItemType)Random.Range(0, 3);
 
 
     private void OnDrawGizmos()

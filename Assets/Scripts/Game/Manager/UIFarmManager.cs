@@ -19,7 +19,13 @@ public class UIFarmManager : MonoUI
 
     private void Start()
     {
+        InitEvents();
         InitText();
+    }
+
+    private void InitEvents()
+    {
+        this.AddListener(EventName.BuyItem, BuyItem);
     }
 
     private void InitText()
@@ -32,16 +38,11 @@ public class UIFarmManager : MonoUI
 
     public void OnBuyItemClicked()
     {
-        float costToBuy = DataManager.BuyItemsData.GetCostToBuyItem();
+        this.SendMessage(EventName.BuyItem, "InventoryManager");
+    }
 
-        if (ResourceManager.Gem < costToBuy)
-            return;
-
-        ResourceManager.Gem -= costToBuy;
-        DataManager.BuyItemsData.SetBuyItemSuccess().Save();
-
+    private void BuyItem()
+    {
         costBuyItemText.text = GetCostBuyItemTextValue();
-
-        this.SendMessage(EventName.BuyItem);
     }
 }
