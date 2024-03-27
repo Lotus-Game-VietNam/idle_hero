@@ -288,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragOnLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 512
   dragOffset: 0.4
   doubleClickThreshold: 0.25
   dragLerpRate: 30
