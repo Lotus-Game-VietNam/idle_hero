@@ -48,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7834822554779342565
 Transform:
   m_ObjectHideFlags: 0
@@ -308,7 +308,7 @@ RectTransform:
   m_Father: {fileID: 8775698797864038689}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -552,7 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfac9ef100d89384b80c93b6ef4020bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 5651067142227532353}
+  uiCanvas: {fileID: 7587387048378006787}
   HPBar: {fileID: 2444195684417312733}
   HPBGBar: {fileID: 5515753552626084238}
   skinnedMeshRenderer: {fileID: 0}
@@ -917,6 +917,7 @@ GameObject:
   - component: {fileID: 5651067142227532353}
   - component: {fileID: 4708991420187264862}
   - component: {fileID: 8693287800834279157}
+  - component: {fileID: 7587387048378006787}
   m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
@@ -1007,6 +1008,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 511
+--- !u!114 &7587387048378006787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4106729882151606982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65f8faa639b40e45b20cc5b1b3ef18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useMainCamera: 1
+  worldCamera: {fileID: 0}
 --- !u!1 &4378799530336533011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,7 +1522,7 @@ RectTransform:
   m_Father: {fileID: 8525096695322617980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

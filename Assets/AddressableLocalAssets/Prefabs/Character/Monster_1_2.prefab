@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 2015594411830756920}
   - component: {fileID: 4839519380327392110}
   - component: {fileID: 1265060470774738756}
+  - component: {fileID: 6778753917801285711}
   m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
@@ -407,6 +408,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 511
+--- !u!114 &6778753917801285711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913774090886778218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65f8faa639b40e45b20cc5b1b3ef18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useMainCamera: 1
+  worldCamera: {fileID: 0}
 --- !u!1 &2111257866153981870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,7 +2162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfac9ef100d89384b80c93b6ef4020bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 2015594411830756920}
+  uiCanvas: {fileID: 6778753917801285711}
   HPBar: {fileID: 3988298480837884322}
   HPBGBar: {fileID: 7504339560571859397}
   skinnedMeshRenderer: {fileID: 39290670262816739}

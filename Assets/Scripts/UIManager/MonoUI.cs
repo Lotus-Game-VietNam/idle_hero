@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Lotus.CoreFramework
@@ -10,6 +8,10 @@ namespace Lotus.CoreFramework
 
         private RectTransform _rect = null;
         public RectTransform rect => this.TryGetComponent(ref _rect);
+
+
+        private Canvas _canvas = null;
+        public Canvas canvas => this.TryGetComponent(ref _canvas);
     }
 }
 

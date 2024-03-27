@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfac9ef100d89384b80c93b6ef4020bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 99093961298830486}
+  uiCanvas: {fileID: 3735755185416857312}
   HPBar: {fileID: 613756353630590913}
   HPBGBar: {fileID: 7438519160731335001}
   skinnedMeshRenderer: {fileID: 9057365170400641772}
@@ -705,6 +705,7 @@ GameObject:
   - component: {fileID: 99093961298830486}
   - component: {fileID: 6405239463335170157}
   - component: {fileID: 63725853976370189}
+  - component: {fileID: 3735755185416857312}
   m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
@@ -795,6 +796,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 511
+--- !u!114 &3735755185416857312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176064880673892380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65f8faa639b40e45b20cc5b1b3ef18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useMainCamera: 1
+  worldCamera: {fileID: 0}
 --- !u!1 &5272392175274918378
 GameObject:
   m_ObjectHideFlags: 0

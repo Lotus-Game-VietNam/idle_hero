@@ -6,13 +6,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class CharacterStats : MonoBehaviour
+public class CharacterStats : MonoUI
 {
     [Title("Object Reference")]
-    public Canvas canvas = null;
+    public WorldSpaceCanvas uiCanvas = null;
     public Slider HPBar = null;
     public Slider HPBGBar = null;
 
@@ -43,25 +42,7 @@ public class CharacterStats : MonoBehaviour
     public Action OnDead = null;
 
 
-    private Transform _mainCamera = null;
-    public Transform mainCamera 
-    {
-        get
-        {
-            if (_mainCamera == null)
-                _mainCamera = Camera.main.transform;
-            return _mainCamera;
-        }
-    }
 
-    
-
-
-
-    private void Awake()
-    {
-        canvas.worldCamera = Camera.main;
-    }
 
     public void Initialized(Dictionary<CharacterAttributes, float> attributes)
     {
@@ -123,10 +104,5 @@ public class CharacterStats : MonoBehaviour
         Callback?.Invoke();
     }
 
-    public void ActiveUIStats(bool value) => canvas.gameObject.SetActive(value);
-
-    private void Update()
-    {
-        canvas.transform.forward = -mainCamera.forward;
-    }
+    public void ActiveUIStats(bool value) => uiCanvas.gameObject.SetActive(value);
 }
