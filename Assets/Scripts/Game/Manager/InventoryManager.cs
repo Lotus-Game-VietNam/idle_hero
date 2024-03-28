@@ -46,6 +46,9 @@ public class InventoryManager : MonoBehaviour
         GenerateItems();
     }
 
+
+    #region Constructor
+
     private void GenerateGrid()
     {
         Vector3 pointToRaycast = transform.position + transform.up * 10;
@@ -73,8 +76,11 @@ public class InventoryManager : MonoBehaviour
     {
         items = new List<InventoryItem>();
 
-        foreach (var item in DataManager.InventoryData.items) 
+        foreach (var item in DataManager.InventoryData.items)
+        {
+            if (item.Value == null) continue;
             SpawnItem(item.Value, cells[item.Key.posX, item.Key.posY], false);
+        }
     }
 
     private void InitEvents()
@@ -82,14 +88,26 @@ public class InventoryManager : MonoBehaviour
         this.AddListener(EventName.BuyItem, BuyItem);
     }
 
+    #endregion
+
+
+
+    #region Buy Items
+
     private void SpawnItem(ItemData itemData, CellData cell, bool saveData = true)
     {
-        InventoryItem item = this.DequeueItem($"{itemData.itemType}_1", itemsParant);
+        InventoryItem item = this.DequeueItem($"{itemData.itemType}_{itemData.itemLevel}", itemsParant);
 
         item.SetPosition(cell.worldPosition + (Vector3.up * cellOffset * 2)).SetRotation(transform.rotation).Initial(itemData).Show();
+        item.SetCellPosition(cell.cellPosition);
 
         cell.MatchingItem(item);
         items.Add(item);
+
+        item.dragAndDrop.OnTouchEvent = OnTouchItem;
+        item.dragAndDrop.OnDoubleTouchEvent = OnDoubleTouchItem;
+        item.dragAndDrop.OnDragEvent = OnItemDrag;
+        item.dragAndDrop.OnDropEvent = OnItemDrop;
 
         if (saveData)
             DataManager.InventoryData.SaveItem(cell.cellPosition, itemData).Save();
@@ -144,6 +162,75 @@ public class InventoryManager : MonoBehaviour
     }
 
     private ItemType GetRandomItemType() => (ItemType)Random.Range(0, 3);
+
+    #endregion
+
+
+
+    #region Drag And Merge Items
+
+    private CellData GetCell(int posX, int posY) => posX >= gridSizeX || posY >= gridSizeY ? null : cells[posX, posY];
+
+    private CellData GetCell(Vector3 worldPosition)
+    {
+        int x = Mathf.RoundToInt(Vector3.Project(worldPosition - pivotLeftBottomGrid, transform.right).magnitude / cellLenght);
+        int y = Mathf.RoundToInt(Vector3.Project(worldPosition - pivotLeftBottomGrid, transform.forward).magnitude / cellLenght);
+
+        if (x < 0 || y < 0)
+            return null;
+
+        return cells[x, y];
+    }
+
+    private void OnMergeItems(InventoryItem selectedItem, InventoryItem dropedItem, CellData dropedCell)
+    {
+        selectedItem.HideAct.Invoke();
+        dropedItem.HideAct.Invoke();
+        DataManager.InventoryData.SaveItem(selectedItem.cellPosition, null).Save();
+        SpawnItem(ConfigManager.GetItem(selectedItem.data.ItemType, selectedItem.data.itemLevel + 1), dropedCell);
+    }
+
+    private void ChangedItemPosition(InventoryItem selectedItem, CellData dropedCell)
+    {
+        selectedItem.dragAndDrop.MoveToPos(dropedCell.worldPosition + (Vector3.up * cellOffset * 2));
+        DataManager.InventoryData.SaveItem(selectedItem.cellPosition, null).SaveItem(dropedCell.cellPosition, selectedItem.data).Save();
+        selectedItem.SetCellPosition(dropedCell.cellPosition);
+    }
+
+    private void OnItemDrop(IDragAndDrop<InventoryItem> item)
+    {
+        CellData dropedCell = GetCell(item.worldPosition);
+
+        InventoryItem selectedItem = item.data;
+        InventoryItem dropedItem = dropedCell.itemOnCell;
+
+        if (dropedItem == null)
+            ChangedItemPosition(selectedItem, dropedCell);
+        else if (selectedItem.data.itemType.Equals(dropedItem.data.itemType) && selectedItem.data.itemLevel == dropedItem.data.itemLevel)
+            OnMergeItems(selectedItem, dropedItem, dropedCell);
+        else
+            item.RevertToPrevPos();
+
+    }
+
+    private void OnItemDrag(IDragAndDrop<InventoryItem> item)
+    {
+        //CellData cell = GetCell(item.worldPosition);
+        //if (cell == null) return;
+        //LogTool.LogErrorEditorOnly($"PosX: {cell.cellPosition.posX} --- PosY: {cell.cellPosition.posY}");
+    }
+
+    private void OnTouchItem(IDragAndDrop<InventoryItem> item)
+    {
+
+    }
+
+    private void OnDoubleTouchItem(IDragAndDrop<InventoryItem> item)
+    {
+
+    }
+
+    #endregion
 
 
     private void OnDrawGizmos()

@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5613045600115614355}
   - component: {fileID: 251721051770715773}
-  - component: {fileID: 1991572343442546399}
-  - component: {fileID: -4379816796740449753}
+  - component: {fileID: 2152552531925769648}
+  - component: {fileID: 1338604781770366568}
   m_Layer: 10
-  m_Name: Bow_1
+  m_Name: Bow_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.56, y: 0.33, z: 1.35}
   m_Center: {x: 0.04, y: 0, z: -0.06}
---- !u!114 &1991572343442546399
+--- !u!114 &2152552531925769648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
   dragOffset: 0.4
   doubleClickThreshold: 0.25
   dragLerpRate: 30
---- !u!114 &-4379816796740449753
+--- !u!114 &1338604781770366568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

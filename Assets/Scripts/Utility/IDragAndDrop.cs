@@ -1,18 +1,28 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
-using UnityEngine.Events;
+
+
+/// <summary>
+/// Đây là plugin để thao tác kéo thả vật thể 3D, không sửa code trong script này, cần thêm logic gì thì sửa ở class kế thừa nó
+/// </summary>
+/// <typeparam name="T"></typeparam>
 
 
 [RequireComponent(typeof(Collider))]
-public class IDragAndDrop : MonoBehaviour
+public abstract class IDragAndDrop<T> : MonoBehaviour where T : Component
 {
     [Title("Configuration")]
     public LayerMask dragOnLayer;
-    public float dragOffset = 0.2f;
+    public float dragOffset = 0.4f;
     public float doubleClickThreshold = 0.25f;
     public float dragLerpRate = 30f;
+
+
+    public T data { get; private set; }
+    public Vector3 worldPosition => transform.position;
 
 
     private Vector3 currentMousePos;
@@ -25,16 +35,24 @@ public class IDragAndDrop : MonoBehaviour
     private bool isDrag = false;
 
 
-    public UnityEvent OnDoubleClickEvent { get; set; } = new UnityEvent();
-    public UnityEvent OnClickDownEvent { get; set; } = new UnityEvent();
-    public UnityEvent OnClickUpEvent { get; set; } = new UnityEvent();
-    public UnityEvent OnDragEvent { get; set; } = new UnityEvent();
+    public Action<IDragAndDrop<T>> OnDoubleTouchEvent = null;
+    public Action<IDragAndDrop<T>> OnTouchEvent = null;
+    public Action<IDragAndDrop<T>> OnDropEvent = null;
+    public Action<IDragAndDrop<T>> OnDragEvent = null;
 
 
-    private bool autoScale = true;
+    protected abstract bool autoScale { get; }
+
     private float initialDistance;
     private Vector3 initialScale;
     private Camera mainCamera;
+
+
+
+    public virtual void Initialized(T data)
+    {
+        this.data = data;
+    }
 
 
     private void Start()
@@ -44,12 +62,10 @@ public class IDragAndDrop : MonoBehaviour
         initialDistance = Vector3.Distance(transform.position, mainCamera.transform.position);
     }
 
-    public void SetAutoScale(bool value) => autoScale = value;
 
-
-    private void OnMouseDown()
+    protected virtual void OnMouseDown()
     {
-        OnClickDownEvent?.Invoke();
+        OnTouchEvent?.Invoke(this);
 
         prevPos = transform.position;
 
@@ -57,13 +73,13 @@ public class IDragAndDrop : MonoBehaviour
         mouseOffset = transform.position - mouseWorldPos;
 
         if (Time.time - lastClickTime < doubleClickThreshold)
-            OnDoubleClickEvent.Invoke();
+            OnDoubleTouchEvent.Invoke(this);
 
         lastClickTime = Time.time;
         currentMousePos = Input.mousePosition;
     }
 
-    private void OnMouseDrag()
+    protected virtual void OnMouseDrag()
     {
         if (currentMousePos == Input.mousePosition) return;
 
@@ -71,11 +87,11 @@ public class IDragAndDrop : MonoBehaviour
 
         if (mouseWorldPos == Vector3.zero)
         {
-            ResetToPrevPos();
+            RevertToPrevPos();
             return;
         }
         
-        OnDragEvent?.Invoke();
+        OnDragEvent?.Invoke(this);
 
         isDrag = true;
 
@@ -86,19 +102,20 @@ public class IDragAndDrop : MonoBehaviour
         AutoScale();
     }
 
-    private void OnMouseUp()
+    protected virtual void OnMouseUp()
     {
         if (isDrag)
         {
-            OnClickUpEvent?.Invoke();
+            OnDropEvent?.Invoke(this);
             isDrag = false;
-            ResetToPrevPos();
         }
     }
 
-    public void ResetToPrevPos()
+    public void RevertToPrevPos() => MoveToPos(prevPos);
+
+    public void MoveToPos(Vector3 pos)
     {
-        transform.DOJump(prevPos, 0.3f, 1, 0.25f);
+        transform.DOJump(pos, 0.3f, 1, 0.25f);
         transform.DOScale(initialScale, 0.25f);
     }
 

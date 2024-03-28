@@ -144,7 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7615415928332772990}
   - component: {fileID: 5885935577549920374}
-  - component: {fileID: -8941494422163838536}
+  - component: {fileID: 8036433547440832399}
   - component: {fileID: 5734579199312395752}
   m_Layer: 10
   m_Name: Wing_1
@@ -191,7 +191,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.83, y: 0.45, z: 0.87}
   m_Center: {x: 0, y: 0, z: -0.06}
---- !u!114 &-8941494422163838536
+--- !u!114 &8036433547440832399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2179164351155747709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3c1eff96915ba74bbfbe9fdcd6c02b6, type: 3}
+  m_Script: {fileID: 11500000, guid: f2c6c5d9b0ea0a3439e5c7e6970c5eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dragOnLayer:
