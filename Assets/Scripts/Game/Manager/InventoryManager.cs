@@ -99,7 +99,6 @@ public class InventoryManager : MonoBehaviour
         InventoryItem item = this.DequeueItem($"{itemData.itemType}_{itemData.itemLevel}", itemsParant);
 
         item.SetPosition(cell.worldPosition + (Vector3.up * cellOffset * 2)).SetRotation(transform.rotation).Initial(itemData).Show();
-        item.SetCellPosition(cell.cellPosition);
 
         cell.MatchingItem(item);
         items.Add(item);
@@ -133,7 +132,6 @@ public class InventoryManager : MonoBehaviour
 
             ItemData itemData = GetRandomItemData();
             SpawnItem(itemData, cell);
-            //LogTool.LogErrorEditorOnly($"Level Pool: {DataManager.BuyItemsData.currentLevelPool} --- Item Type: {itemData.itemType} --- Item Level: {itemData.itemLevel}");
             break;
         }
 
@@ -169,6 +167,9 @@ public class InventoryManager : MonoBehaviour
 
     #region Drag And Merge Items
 
+    public CellData selectedCell { get; private set; }
+
+
     private CellData GetCell(int posX, int posY) => posX >= gridSizeX || posY >= gridSizeY ? null : cells[posX, posY];
 
     private CellData GetCell(Vector3 worldPosition)
@@ -176,7 +177,7 @@ public class InventoryManager : MonoBehaviour
         int x = Mathf.RoundToInt(Vector3.Project(worldPosition - pivotLeftBottomGrid, transform.right).magnitude / cellLenght);
         int y = Mathf.RoundToInt(Vector3.Project(worldPosition - pivotLeftBottomGrid, transform.forward).magnitude / cellLenght);
 
-        if (x < 0 || y < 0)
+        if (x < 0 || y < 0 || x >= gridSizeX || y >= gridSizeY)
             return null;
 
         return cells[x, y];
@@ -184,17 +185,40 @@ public class InventoryManager : MonoBehaviour
 
     private void OnMergeItems(InventoryItem selectedItem, InventoryItem dropedItem, CellData dropedCell)
     {
+        if (selectedItem.data.itemLevel >= ConfigManager.GameConfig.ItemsConfig[selectedItem.data.ItemType].Length ||
+            dropedItem.data.itemLevel >= ConfigManager.GameConfig.ItemsConfig[dropedItem.data.ItemType].Length)
+        {
+            selectedItem.dragAndDrop.RevertToPrevPos();
+            return;
+        }
+
         selectedItem.HideAct.Invoke();
         dropedItem.HideAct.Invoke();
-        DataManager.InventoryData.SaveItem(selectedItem.cellPosition, null).Save();
+
+        selectedCell.MatchingItem(null);
+        DataManager.InventoryData.SaveItem(selectedCell.cellPosition, null).Save();
         SpawnItem(ConfigManager.GetItem(selectedItem.data.ItemType, selectedItem.data.itemLevel + 1), dropedCell);
     }
 
-    private void ChangedItemPosition(InventoryItem selectedItem, CellData dropedCell)
+    private void ChangeItemPosition(InventoryItem selectedItem, CellData dropedCell)
     {
         selectedItem.dragAndDrop.MoveToPos(dropedCell.worldPosition + (Vector3.up * cellOffset * 2));
-        DataManager.InventoryData.SaveItem(selectedItem.cellPosition, null).SaveItem(dropedCell.cellPosition, selectedItem.data).Save();
-        selectedItem.SetCellPosition(dropedCell.cellPosition);
+
+        dropedCell.MatchingItem(selectedItem);
+        selectedCell.MatchingItem(null);
+
+        DataManager.InventoryData.SaveItem(selectedCell.cellPosition, null).SaveItem(dropedCell.cellPosition, selectedItem.data).Save();
+    }
+
+    private void ExchangeItemsPosition(InventoryItem selectedItem, InventoryItem dropedItem, CellData dropedCell)
+    {
+        selectedItem.dragAndDrop.MoveToPos(dropedCell.worldPosition + (Vector3.up * cellOffset * 2));
+        dropedItem.dragAndDrop.MoveToPos(selectedCell.worldPosition + (Vector3.up * cellOffset * 2));
+
+        dropedCell.MatchingItem(selectedItem);
+        selectedCell.MatchingItem(dropedItem);
+
+        DataManager.InventoryData.SaveItem(selectedCell.cellPosition, dropedItem.data).SaveItem(dropedCell.cellPosition, selectedItem.data).Save();
     }
 
     private void OnItemDrop(IDragAndDrop<InventoryItem> item)
@@ -202,15 +226,18 @@ public class InventoryManager : MonoBehaviour
         CellData dropedCell = GetCell(item.worldPosition);
 
         InventoryItem selectedItem = item.data;
-        InventoryItem dropedItem = dropedCell.itemOnCell;
+        InventoryItem dropedItem = dropedCell?.itemOnCell;
 
-        if (dropedItem == null)
-            ChangedItemPosition(selectedItem, dropedCell);
+        if (dropedCell == null || selectedCell == dropedCell)
+            item.RevertToPrevPos();
+        else if (dropedItem == null)
+            ChangeItemPosition(selectedItem, dropedCell);
         else if (selectedItem.data.itemType.Equals(dropedItem.data.itemType) && selectedItem.data.itemLevel == dropedItem.data.itemLevel)
             OnMergeItems(selectedItem, dropedItem, dropedCell);
         else
-            item.RevertToPrevPos();
+            ExchangeItemsPosition(selectedItem, dropedItem, dropedCell);
 
+        selectedCell = null;
     }
 
     private void OnItemDrag(IDragAndDrop<InventoryItem> item)
@@ -222,7 +249,7 @@ public class InventoryManager : MonoBehaviour
 
     private void OnTouchItem(IDragAndDrop<InventoryItem> item)
     {
-
+        selectedCell = GetCell(item.worldPosition);
     }
 
     private void OnDoubleTouchItem(IDragAndDrop<InventoryItem> item)

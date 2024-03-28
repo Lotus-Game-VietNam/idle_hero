@@ -90,7 +90,7 @@ public abstract class IDragAndDrop<T> : MonoBehaviour where T : Component
             RevertToPrevPos();
             return;
         }
-        
+
         OnDragEvent?.Invoke(this);
 
         isDrag = true;
@@ -106,10 +106,17 @@ public abstract class IDragAndDrop<T> : MonoBehaviour where T : Component
     {
         if (isDrag)
         {
-            OnDropEvent?.Invoke(this);
+            if (!OnBeyondScreen())
+                OnDropEvent?.Invoke(this);
+            else
+                RevertToPrevPos();
+
             isDrag = false;
         }
     }
+
+    private bool OnBeyondScreen() => Input.mousePosition.x <= 0 || Input.mousePosition.x >= Screen.width ||
+        Input.mousePosition.y <= 0 || Input.mousePosition.y >= Screen.height;
 
     public void RevertToPrevPos() => MoveToPos(prevPos);
 

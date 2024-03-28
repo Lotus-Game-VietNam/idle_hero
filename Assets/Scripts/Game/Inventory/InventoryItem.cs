@@ -9,9 +9,6 @@ public class InventoryItem : IPool<ItemData>
     public override Action HideAct => this.PushItem;
 
 
-    public CellPosition cellPosition { get; private set; }
-
-
     private TMP_Text _levelText = null;
     public TMP_Text levelText => this.TryGetComponentInChildren(ref _levelText);
 
@@ -40,6 +37,4 @@ public class InventoryItem : IPool<ItemData>
     {
         
     }
-
-    public void SetCellPosition(CellPosition cellPosition) => this.cellPosition = cellPosition;
 }
