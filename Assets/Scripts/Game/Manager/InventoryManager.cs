@@ -1,5 +1,7 @@
+using DG.Tweening;
 using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +21,17 @@ public class InventoryManager : MonoBehaviour
             if (_itemsParent == null)
                 _itemsParent = transform.Find("Items");
             return _itemsParent;
+        }
+    }
+
+    private Transform _mainCamera = null;
+    public Transform mainCamera 
+    {
+        get
+        {
+            if (_mainCamera == null)
+                _mainCamera = Camera.main.transform;
+            return _mainCamera;
         }
     }
 
@@ -94,11 +107,12 @@ public class InventoryManager : MonoBehaviour
 
     #region Buy Items
 
-    private void SpawnItem(ItemData itemData, CellData cell, bool saveData = true)
+    private void SpawnItem(ItemData itemData, CellData cell, bool saveData = true, Action<InventoryItem> OnShowComplete = null)
     {
         InventoryItem item = this.DequeueItem($"{itemData.itemType}_{itemData.itemLevel}", itemsParant);
 
         item.SetPosition(cell.worldPosition + (Vector3.up * cellOffset * 2)).SetRotation(transform.rotation).Initial(itemData).Show();
+        OnShowComplete?.Invoke(item);
 
         cell.MatchingItem(item);
         items.Add(item);
@@ -110,6 +124,11 @@ public class InventoryManager : MonoBehaviour
 
         if (saveData)
             DataManager.InventoryData.SaveItem(cell.cellPosition, itemData).Save();
+    }
+
+    private void DoPunchScaleItem(InventoryItem item, float punchValue = 0.2f, float punchDuration = 0.5f)
+    {
+        item.transform.DOPunchScale(Vector3.one * punchValue, punchDuration).SetEase(Ease.InOutElastic);
     }
 
     private void BuyItem()
@@ -131,7 +150,7 @@ public class InventoryManager : MonoBehaviour
                 continue;
 
             ItemData itemData = GetRandomItemData();
-            SpawnItem(itemData, cell);
+            SpawnItem(itemData, cell, true, (_item) => { DoPunchScaleItem(_item, 0.2f, 0.25f); });
             break;
         }
 
@@ -147,7 +166,7 @@ public class InventoryManager : MonoBehaviour
 
     private int GetRandomItemLevel()
     {
-        int randomValue = Random.Range(0, 100);
+        int randomValue = UnityEngine.Random.Range(0, 100);
         Ratio[] ratios = ConfigManager.GetCurrentBuyItemRatio();
 
         for (int i = 0; i < ratios.Length; i++)
@@ -159,7 +178,7 @@ public class InventoryManager : MonoBehaviour
         return 0;
     }
 
-    private ItemType GetRandomItemType() => (ItemType)Random.Range(0, 3);
+    private ItemType GetRandomItemType() => (ItemType)UnityEngine.Random.Range(0, 3);
 
     #endregion
 
@@ -192,12 +211,17 @@ public class InventoryManager : MonoBehaviour
             return;
         }
 
+        this.DequeueEffect("MergeSuccess", transform).SetPosition(dropedCell.worldPosition + ((mainCamera.position - dropedCell.worldPosition).normalized * 1.5f)).SetRotation(transform.rotation).Show();
+
         selectedItem.HideAct.Invoke();
         dropedItem.HideAct.Invoke();
 
+        items.Remove(selectedItem);
+        items.Remove(dropedItem);
+
         selectedCell.MatchingItem(null);
         DataManager.InventoryData.SaveItem(selectedCell.cellPosition, null).Save();
-        SpawnItem(ConfigManager.GetItem(selectedItem.data.ItemType, selectedItem.data.itemLevel + 1), dropedCell);
+        SpawnItem(ConfigManager.GetItem(selectedItem.data.ItemType, selectedItem.data.itemLevel + 1), dropedCell, true, (_item) => { DoPunchScaleItem(_item, 0.5f); });
     }
 
     private void ChangeItemPosition(InventoryItem selectedItem, CellData dropedCell)

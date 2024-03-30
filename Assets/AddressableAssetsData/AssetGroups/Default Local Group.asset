@@ -17,7 +17,7 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 4769610922bb87d4d991da432004575b
   m_SerializeEntries:
-  - m_GUID: f182c2b077cd78d4a9b3aaffc0e93c6e
+  - m_GUID: bdcf01421dd51e742b1e5f8f2e145158
     m_Address: Assets/AddressableLocalAssets/Prefabs/Character/MainHero.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
@@ -79,6 +79,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3221e0293fd2e454896841c07dbca818
     m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Wing_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db0349fa551cdf1488477e0437bb523b
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Effects/MergeSuccess.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

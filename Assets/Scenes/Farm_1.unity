@@ -4448,7 +4448,7 @@ MonoBehaviour:
   - {fileID: 415060110}
   - {fileID: 1039198877}
   heroAsset:
-    m_AssetGUID: f182c2b077cd78d4a9b3aaffc0e93c6e
+    m_AssetGUID: bdcf01421dd51e742b1e5f8f2e145158
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
