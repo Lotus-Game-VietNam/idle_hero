@@ -47,8 +47,21 @@ namespace Lotus.CoreFramework
             textTween.Stop();
             ator.Play();
 
-            int.TryParse(valueTxt.text, out int startValue);
-            textTween = DOTween.To(() => startValue, x => valueTxt.text = x.ToString(), (int)newValue, 0.5f);
+            try
+            {
+                float startValue = valueTxt.text.Convert();
+                textTween = DOTween.To(() => startValue, x => 
+                { 
+                    if (x < 1000)
+                        valueTxt.text = ((int)x).Convert();
+                    else
+                        valueTxt.text = x.Convert(); 
+                }, newValue, 0.5f);
+            }
+            catch
+            {
+                valueTxt.text = newValue.Convert();
+            }
         }
     }
 }

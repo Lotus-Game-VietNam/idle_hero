@@ -56,8 +56,7 @@ namespace Lotus.CoreFramework
             this.data = data;
         }
 
-
-        private void Start()
+        private void Awake()
         {
             initialScale = transform.localScale;
             mainCamera = Camera.main;

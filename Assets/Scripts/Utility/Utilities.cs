@@ -1,12 +1,57 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Lotus.CoreFramework
 {
     public static class Utilities
     {
+        public static List<string> units = new List<string> { "K", "M", "B", "T", "P", "E", "Z" };
+
+
+        public static float Convert(this string value)
+        {
+            if (Char.IsDigit(value.Last()))
+                return float.Parse(value);
+
+            int unitIndex = units.IndexOf(value.Last().ToString());
+
+            value = value.Remove(value.Length - 1);
+
+            float number = float.Parse(value);
+
+            if (unitIndex >= 0)
+                number *= (float)Math.Pow(10, (unitIndex + 1) * 3);
+
+            return number;
+        }
+
+        public static string Convert(this float value)
+        {
+            int exp = (int)Math.Floor(Math.Log10(value) / 3);
+            float scaledValue = value / (float)Math.Pow(10, exp * 3);
+
+            if (exp > 0)
+                return scaledValue.ToString("F2") + units[exp - 1];
+            else
+                return value.ToString();
+        }
+
+        public static string Convert(this int value)
+        {
+            int exp = (int)Math.Floor(Math.Log10(value) / 3);
+            int scaledValue = Mathf.RoundToInt(value / (float)Math.Pow(10, exp * 3));
+
+            if (exp > 0)
+                return scaledValue.ToString("F2") + units[exp - 1];
+            else
+                return value.ToString();
+        }
+
+
         public static AnimationStates Convert(this AttackType type) => (AnimationStates)((int)AnimationStates.NormalAttack + (int)type);
 
         public static bool IsMovement(AnimationStates state)

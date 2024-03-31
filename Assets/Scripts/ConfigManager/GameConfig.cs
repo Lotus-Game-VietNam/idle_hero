@@ -9,7 +9,6 @@ namespace Lotus.CoreFramework
         public Dictionary<ItemType, ItemData[]> ItemsConfig = null;
         public Dictionary<int, Ratio[]> BuyItemsRatio = null;
         public Dictionary<string, CharacterConfig> MonstersConfig = null;
-        public IncomeConfig[] IncomeConfig = null;
 
 
         public GameConfig()

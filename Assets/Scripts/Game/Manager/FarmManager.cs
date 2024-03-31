@@ -16,6 +16,11 @@ public class FarmManager : MonoBehaviour
     public CharacterBrain hero { get; private set; }
 
     public CharacterBrain monsterFarm { get; private set; }
+
+
+
+    public bool onX2Income { get; private set; }
+
     
 
     private void Awake()
@@ -27,6 +32,7 @@ public class FarmManager : MonoBehaviour
     private void InitEvents()
     {
         this.AddListener<CharacterBrain>(EventName.OnCharacterDead, OnCharacterDead);
+        this.AddListener<bool>(EventName.X2Income, X2Income);
     }
 
     private void InitializedCharacter()
@@ -65,10 +71,15 @@ public class FarmManager : MonoBehaviour
 
     private void ReciveRewards()
     {
-        float gemToAdd = ConfigManager.GetIncome(DataManager.HeroData.inComeLevel).min;
+        float gemToAdd = onX2Income ? DataManager.HeroData.GetMaxIncome() : DataManager.HeroData.GetMinIncome();
         hero.characterStats.OnHealthChanged(10);
         CollectionIcons.Instance.Show(5, monsterFarm.center.ConvertToRectTransform());
         this.DelayCall(1, () => { ResourceManager.Gem += gemToAdd; });
+    }
+
+    private void X2Income(bool value)
+    {
+        onX2Income = value;
     }
 
 

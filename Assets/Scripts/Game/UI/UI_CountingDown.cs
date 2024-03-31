@@ -1,6 +1,7 @@
 using DG.Tweening;
 using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,9 @@ public class UI_CountingDown : MonoUI
     public Image dimed => this.TryGetComponent(ref _dimed);
 
 
+    public Action OnCountingDownCussess = null;
+
+
 
     public void CountingDown()
     {
@@ -29,6 +33,7 @@ public class UI_CountingDown : MonoUI
         {
             dimed.enabled = false;
             currentState = State.None;
+            OnCountingDownCussess?.Invoke();
         });
     }
 }

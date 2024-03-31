@@ -1669,7 +1669,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 11.314087, y: 13.503174, z: 10.212158, w: 0}
+  m_margin: {x: 7.793152, y: 13.503174, z: 10.212158, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2253,8 +2253,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 42.5, y: 4.3}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 39.3, y: 4.3}
+  m_SizeDelta: {x: 95, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &371189349
 MonoBehaviour:
@@ -6492,6 +6492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costBuyItemText: {fileID: 363143989}
   autoTapCountingDown: {fileID: 2075882939}
+  x2IncomeCountingDown: {fileID: 1468007949}
 --- !u!4 &1305911785 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5326273804191621573, guid: 0494cecb4ff2f4e41a3abf31bd20e592,
@@ -6856,6 +6857,7 @@ RectTransform:
   m_Children:
   - {fileID: 1801953046}
   - {fileID: 208752266}
+  - {fileID: 1468007948}
   m_Father: {fileID: 1260701866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
@@ -6921,7 +6923,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1420124507}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1260701867}
+        m_TargetAssemblyTypeName: UIFarmManager, Lotus.CoreFramwork
+        m_MethodName: OnX2IncomeClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1420124507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7118,6 +7132,96 @@ Transform:
   - {fileID: 1305911785}
   m_Father: {fileID: 482832790}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1468007947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1468007948}
+  - component: {fileID: 1468007951}
+  - component: {fileID: 1468007950}
+  - component: {fileID: 1468007949}
+  m_Layer: 5
+  m_Name: CountingDown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1468007948
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468007947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1420124504}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &1468007949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468007947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f72349f09e740428f8574e0bec2e15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  duration: 30
+--- !u!114 &1468007950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468007947}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.7249701, b: 0, a: 0.46666667}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 17dd43c12b6cc4353bb763f34385c75a, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1468007951
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468007947}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1477296200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8781,7 +8885,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1719911210}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1260701867}
+        m_TargetAssemblyTypeName: UIFarmManager, Lotus.CoreFramwork
+        m_MethodName: UpgradeIncomeClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1719911210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9483,7 +9599,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -22.699951, y: -143}
-  m_SizeDelta: {x: 374.9145, y: 160.2}
+  m_SizeDelta: {x: 425.3373, y: 160.2}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1889816207
 MonoBehaviour:
@@ -10169,7 +10285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f72349f09e740428f8574e0bec2e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 60
+  currentState: 0
+  duration: 30
 --- !u!114 &2075882940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10183,7 +10300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 0.69411767}
+  m_Color: {r: 1, g: 0.7254902, b: 0, a: 0.46666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

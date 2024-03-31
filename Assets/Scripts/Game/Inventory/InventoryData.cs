@@ -7,7 +7,7 @@ public class InventoryData
     public readonly int costBuyItemOnTutorial = 50;
     public readonly int costBuyItemFirstTime = 100;
 
-    public int lastCostBuyItem;
+    public float lastCostBuyItem;
 
 
     /// <summary>
@@ -44,7 +44,7 @@ public class InventoryData
         currentLevelPool = 1;
     }
 
-    public int GetCostToBuyItem()
+    public float GetCostToBuyItem()
     {
         if (buyItemsCount <= 1)
             return buyItemsCount == 0 ? costBuyItemOnTutorial : costBuyItemFirstTime;

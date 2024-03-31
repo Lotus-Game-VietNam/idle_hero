@@ -13,6 +13,7 @@ public class UIFarmManager : MonoUI
 
     [Title("Component")]
     [SerializeField] private UI_CountingDown autoTapCountingDown = null;
+    [SerializeField] private UI_CountingDown x2IncomeCountingDown = null;
 
 
     private void Awake()
@@ -37,7 +38,7 @@ public class UIFarmManager : MonoUI
     }
 
 
-    private string GetCostBuyItemTextValue() => $"<sprite name=\"gem_blue\">{DataManager.InventoryData.GetCostToBuyItem()}";
+    private string GetCostBuyItemTextValue() => $"<sprite name=\"gem_blue\">{DataManager.InventoryData.GetCostToBuyItem().Convert()}";
 
     public void OnBuyItemClicked()
     {
@@ -53,5 +54,21 @@ public class UIFarmManager : MonoUI
     public void OnAutoTapClicked()
     {
         autoTapCountingDown.CountingDown();
+    }
+
+    public void OnX2IncomeClicked()
+    {
+        this.SendMessage(EventName.X2Income, "FarmManager", true);
+        x2IncomeCountingDown.CountingDown();
+        x2IncomeCountingDown.OnCountingDownCussess = () => 
+        {
+            this.SendMessage(EventName.X2Income, "FarmManager", false);
+        };
+    }
+
+    public void UpgradeIncomeClicked()
+    {
+        DataManager.HeroData.SetUpgradeIncomeSuccess().Save();
+        LogTool.LogEditorOnly($"Level: {DataManager.HeroData.inComeLevel} --- {DataManager.HeroData.GetMinIncome().Convert()}");
     }
 }
