@@ -335,7 +335,7 @@ public class InventoryManager : MonoBehaviour
         if (selectedItem.data.itemLevel != DataManager.HeroData.items[selectedItem.data.ItemType].itemLevel)
             SpawnItem(DataManager.HeroData.items[selectedItem.data.ItemType], selectedCell, true, true, (_item) => { DoPunchScaleItem(_item, 0.2f, 0.25f); });
 
-        this.SendMessage(EventName.ChangeCostume, "HeroCostumes", selectedItem.data.ItemType, selectedItem.data.itemLevel);
+        this.SendMessage(EventName.ChangeCostume, selectedItem.data.ItemType, selectedItem.data.itemLevel);
     }
 
     private void RevertToPrevPos(IDragAndDrop<InventoryItem> item)

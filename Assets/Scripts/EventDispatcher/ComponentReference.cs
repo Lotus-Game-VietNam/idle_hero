@@ -7,8 +7,6 @@ namespace Lotus.CoreFramework
     public static class ComponentReference
     {
         public static Func<RectTransform> MainRect = null;
-
-        public static Func<Transform> HeroTrans = null;
     }
 }
 

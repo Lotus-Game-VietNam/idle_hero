@@ -14,14 +14,10 @@ public class HeroCostumes : MonoBehaviour
     public Dictionary<ItemType, GameObject> currentCostumes { get; private set; }
 
 
-    public Transform hero { get; private set; }
-
 
     private void Awake()
     {
         this.AddListener<ItemType, int>(EventName.ChangeCostume, ChangeCostume);
-
-        hero = ComponentReference.HeroTrans.Invoke();
     }
 
 
@@ -48,7 +44,6 @@ public class HeroCostumes : MonoBehaviour
         lastCostume.SetActive(false);
 
         this.DequeueEffect("EquipCostume").SetPosition(transform.position + transform.up * 4f).SetRotation(transform.rotation).Show();
-        hero.DOPunchScale(Vector3.one * 0.1f, 0.5f).SetEase(Ease.InOutElastic);
 
         DataManager.HeroData.items[itemType] = ConfigManager.GetItem(itemType, itemLevel);
         DataManager.HeroData.Save();
