@@ -7,13 +7,22 @@ public class InventoryData
     public readonly int costBuyItemOnTutorial = 50;
     public readonly int costBuyItemFirstTime = 100;
 
+    public readonly int sellItemValueOnTutorial = 50;
+    public readonly int sellItemValueFirstTime = 100;
+
     public float lastCostBuyItem;
+    public float lastValueSellItem;
 
 
     /// <summary>
     /// User đã mua vật phẩm lần thứ bao nhiêu
     /// </summary>
     public int buyItemsCount;
+
+    /// <summary>
+    /// User đã bán vật phẩm lần thứ bao nhiêu
+    /// </summary>
+    public int sellItemsCount;
 
 
     /// <summary>
@@ -40,6 +49,7 @@ public class InventoryData
     public InventoryData()
     {
         buyItemsCount = 0;
+        sellItemsCount = 0;
         buyItemsCountOnPool = 0;
         currentLevelPool = 1;
     }
@@ -49,6 +59,13 @@ public class InventoryData
         if (buyItemsCount <= 1)
             return buyItemsCount == 0 ? costBuyItemOnTutorial : costBuyItemFirstTime;
         return lastCostBuyItem + (buyItemsCount - 1) + 10;
+    }
+
+    public float GetValueToSellItem()
+    {
+        if (sellItemsCount <= 1)
+            return sellItemsCount == 0 ? sellItemValueOnTutorial : sellItemValueFirstTime;
+        return lastValueSellItem + (sellItemsCount - 1) + 5;
     }
 
     public InventoryData SetBuyItemSuccess()
@@ -64,6 +81,15 @@ public class InventoryData
             buyItemsCountOnPool = 0;
             currentLevelPool = Mathf.Clamp(currentLevelPool + 1, 1, ConfigManager.GameConfig.BuyItemsRatio.Count);
         }
+
+        return this;
+    }
+
+    public InventoryData SetSellItemSuccess()
+    {
+        lastValueSellItem = GetValueToSellItem();
+
+        sellItemsCount++;
 
         return this;
     }

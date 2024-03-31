@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -282,6 +283,44 @@ public class InventoryManager : MonoBehaviour
         DataManager.InventoryData.SaveItem(selectedCell.cellPosition, dropedItem.data).SaveItem(dropedCell.cellPosition, selectedItem.data).Save();
     }
 
+    private void SellItem(InventoryItem selectedItem, RectTransform sellButton)
+    {
+        selectedItem.HideAct.Invoke();
+
+        ItemType itemType = selectedItem.data.ItemType;
+        items[itemType][selectedItem.data.itemLevel].Remove(selectedItem);
+
+        selectedCell.MatchingItem(null);
+        DataManager.InventoryData.SaveItem(selectedCell.cellPosition, null).Save();
+
+        UpdateCanMergeVfxsOnSellItem(selectedItem);
+
+        CollectionIcons.Instance.Show(5, sellButton.transform.position);
+        float gemsToAdd = DataManager.InventoryData.GetValueToSellItem();
+
+        this.DelayCall(1, () => { ResourceManager.Gem += gemsToAdd; });
+
+        DataManager.InventoryData.SetSellItemSuccess().Save();
+    }
+
+    private RectTransform GetSellButton()
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+        pointerEventData.position = Input.mousePosition;
+
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, results);
+
+        foreach (var result in results)
+        {
+            GameObject hitObject = result.gameObject;
+            if (!hitObject.CompareTag("SellButton")) continue;
+            return hitObject.GetComponent<RectTransform>();
+        }
+
+        return null;
+    }
+
     private void RevertToPrevPos(IDragAndDrop<InventoryItem> item)
     {
         item.RevertToPrevPos();
@@ -296,8 +335,11 @@ public class InventoryManager : MonoBehaviour
 
         InventoryItem selectedItem = item.data;
         InventoryItem dropedItem = dropedCell?.itemOnCell;
+        RectTransform sellButton = GetSellButton();
 
-        if (dropedCell == null || selectedCell == dropedCell)
+        if (sellButton != null)
+            SellItem(selectedItem, sellButton);
+        else if (dropedCell == null || selectedCell == dropedCell)
             RevertToPrevPos(item);
         else if (dropedItem == null)
             ChangeItemPosition(selectedItem, dropedCell);
@@ -311,9 +353,7 @@ public class InventoryManager : MonoBehaviour
 
     private void OnItemDrag(IDragAndDrop<InventoryItem> item)
     {
-        //CellData cell = GetCell(item.worldPosition);
-        //if (cell == null) return;
-        //LogTool.LogErrorEditorOnly($"PosX: {cell.cellPosition.posX} --- PosY: {cell.cellPosition.posY}");
+
     }
 
     private void OnTouchItem(IDragAndDrop<InventoryItem> item)
@@ -383,12 +423,29 @@ public class InventoryManager : MonoBehaviour
         {
             this.PushEffect(canMergeVfxs[selectedCell.cellPosition]);
             canMergeVfxs.Remove(selectedCell.cellPosition);
-        }    
+        }
 
         if (canMergeVfxs.ContainsKey(dropedCell.cellPosition))
         {
             this.PushEffect(canMergeVfxs[dropedCell.cellPosition]);
             canMergeVfxs.Remove(dropedCell.cellPosition);
+        }
+
+        if (items[selectedItem.data.ItemType][selectedItem.data.itemLevel].Count == 1)
+        {
+            CellData cellData = GetCell(items[selectedItem.data.ItemType][selectedItem.data.itemLevel][0].transform.position);
+            EffectBase vfx = canMergeVfxs[cellData.cellPosition];
+            canMergeVfxs.Remove(cellData.cellPosition);
+            this.PushEffect(vfx);
+        }
+    }
+
+    private void UpdateCanMergeVfxsOnSellItem(InventoryItem selectedItem)
+    {
+        if (canMergeVfxs.ContainsKey(selectedCell.cellPosition))
+        {
+            this.PushEffect(canMergeVfxs[selectedCell.cellPosition]);
+            canMergeVfxs.Remove(selectedCell.cellPosition);
         }
 
         if (items[selectedItem.data.ItemType][selectedItem.data.itemLevel].Count == 1)
@@ -420,8 +477,15 @@ public class InventoryManager : MonoBehaviour
     private void SpawnCanMergeVfx(InventoryItem item, CellData cellData)
     {
         EffectBase vfx = this.DequeueEffect("CanMerge", transform);
-        vfx.SetPosition(item.transform.position).SetRotation(transform.rotation).Show();
-        canMergeVfxs.Add(cellData.cellPosition, vfx);
+        try
+        {
+            vfx.SetPosition(item.transform.position).SetRotation(transform.rotation).Show();
+            canMergeVfxs.Add(cellData.cellPosition, vfx);
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
 
     #endregion

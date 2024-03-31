@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Ground
   - Inventory
+  - SellButton
   layers:
   - Default
   - TransparentFX

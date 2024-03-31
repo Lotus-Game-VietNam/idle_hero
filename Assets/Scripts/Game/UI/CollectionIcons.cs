@@ -31,4 +31,18 @@ public class CollectionIcons : Singleton<CollectionIcons>
             }).Show();
         }
     }
+
+    public void Show(int numberIcon, Vector3 center)
+    {
+        for (int i = 0; i < numberIcon; i++)
+        {
+            this.DequeueIcon(iconName, ComponentReference.MainRect.Invoke()).SetParent(rect).SetPosition(center).SetLocalScale(Vector3.one).Initial(new IconData(targetIconToMove.transform.position)).
+            SetShowFinishEvent(() =>
+            {
+                scaleTween.Stop();
+                targetIconToMove.localScale = Vector3.one;
+                scaleTween = targetIconToMove.DOPunchScale(Vector3.one * 0.2f, 0.5f).SetEase(Ease.InOutElastic);
+            }).Show();
+        }
+    }
 }

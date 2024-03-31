@@ -7436,7 +7436,7 @@ GameObject:
   - component: {fileID: 1495838833}
   m_Layer: 5
   m_Name: Button_SellI
-  m_TagString: Untagged
+  m_TagString: SellButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7534,7 +7534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9648,6 +9648,9 @@ MonoBehaviour:
     m_Bits: 512
   gridSizeX: 4
   gridSizeY: 3
+  sellButtonMask:
+    serializedVersion: 2
+    m_Bits: 32
 --- !u!4 &1931759941
 Transform:
   m_ObjectHideFlags: 0
@@ -10338,7 +10341,7 @@ GameObject:
   - component: {fileID: 2088109415}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: SellButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
