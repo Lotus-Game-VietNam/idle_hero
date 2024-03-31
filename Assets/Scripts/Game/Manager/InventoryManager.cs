@@ -8,8 +8,9 @@ using UnityEngine.EventSystems;
 
 public class InventoryManager : MonoBehaviour
 {
-    [Title("Grid Setting")]
+    [Title("Configuration")]
     [SerializeField] private LayerMask surfaceMask;
+    [SerializeField] private LayerMask heroMask;
     [SerializeField] private int gridSizeX = 4;
     [SerializeField] private int gridSizeY = 3;
 
@@ -286,15 +287,7 @@ public class InventoryManager : MonoBehaviour
 
     private void SellItem(InventoryItem selectedItem, RectTransform sellButton)
     {
-        selectedItem.HideAct.Invoke();
-
-        ItemType itemType = selectedItem.data.ItemType;
-        items[itemType][selectedItem.data.itemLevel].Remove(selectedItem);
-
-        selectedCell.MatchingItem(null);
-        DataManager.InventoryData.SaveItem(selectedCell.cellPosition, null).Save();
-
-        UpdateCanMergeVfxsOnSellItem(selectedItem);
+        PushItem(selectedItem);
 
         CollectionIcons.Instance.Show(10, sellButton.transform.position);
         float gemsToAdd = DataManager.InventoryData.GetValueToSellItem();
@@ -322,6 +315,29 @@ public class InventoryManager : MonoBehaviour
         return null;
     }
 
+    private void PushItem(InventoryItem selectedItem)
+    {
+        selectedItem.HideAct.Invoke();
+
+        ItemType itemType = selectedItem.data.ItemType;
+        items[itemType][selectedItem.data.itemLevel].Remove(selectedItem);
+
+        selectedCell.MatchingItem(null);
+        DataManager.InventoryData.SaveItem(selectedCell.cellPosition, null).Save();
+
+        UpdateCanMergeVfxsOnSellItem(selectedItem);
+    }
+
+    private void ChangeCostume(InventoryItem selectedItem)
+    {
+        PushItem(selectedItem);
+
+        if (selectedItem.data.itemLevel != DataManager.HeroData.items[selectedItem.data.ItemType].itemLevel)
+            SpawnItem(DataManager.HeroData.items[selectedItem.data.ItemType], selectedCell, true, true, (_item) => { DoPunchScaleItem(_item, 0.2f, 0.25f); });
+
+        this.SendMessage(EventName.ChangeCostume, "HeroCostumes", selectedItem.data.ItemType, selectedItem.data.itemLevel);
+    }
+
     private void RevertToPrevPos(IDragAndDrop<InventoryItem> item)
     {
         item.RevertToPrevPos();
@@ -336,9 +352,13 @@ public class InventoryManager : MonoBehaviour
 
         InventoryItem selectedItem = item.data;
         InventoryItem dropedItem = dropedCell?.itemOnCell;
-        RectTransform sellButton = GetSellButton();
 
-        if (sellButton != null)
+        RectTransform sellButton = GetSellButton();
+        bool isTriggerHero = Extensions.IsMouseWorldPositionTriggerLayer(heroMask);
+
+        if (isTriggerHero)
+            ChangeCostume(selectedItem);
+        else if (sellButton != null)
             SellItem(selectedItem, sellButton);
         else if (dropedCell == null || selectedCell == dropedCell)
             RevertToPrevPos(item);

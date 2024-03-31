@@ -457,7 +457,9 @@ GameObject:
   - component: {fileID: 88407429}
   - component: {fileID: 88407428}
   - component: {fileID: 88407427}
+  - component: {fileID: 88407430}
   - component: {fileID: 88407426}
+  - component: {fileID: 88407431}
   m_Layer: 5
   m_Name: Button_AutoTap
   m_TagString: Untagged
@@ -481,12 +483,12 @@ RectTransform:
   - {fileID: 1998444785}
   - {fileID: 2075882938}
   m_Father: {fileID: 1260701866}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -4.6150513}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -23.120117, y: 847}
+  m_AnchoredPosition: {x: -123.120224, y: 847}
   m_SizeDelta: {x: 200, y: 180}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &88407426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,7 +523,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -537,10 +539,10 @@ MonoBehaviour:
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
+    m_HighlightedTrigger: Normal
     m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
+    m_SelectedTrigger: Normal
+    m_DisabledTrigger: Normal
   m_Interactable: 1
   m_TargetGraphic: {fileID: 88407428}
   m_OnClick:
@@ -596,6 +598,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88407424}
   m_CullTransparentMesh: 1
+--- !u!95 &88407430
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88407424}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28e358eaf74c17f458b9d72d0e39095b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &88407431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88407424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f72349f09e740428f8574e0bec2e15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  duration: 30
+  dimed: {fileID: 2075882940}
 --- !u!1 &103650514
 GameObject:
   m_ObjectHideFlags: 0
@@ -3356,6 +3394,7 @@ GameObject:
   - component: {fileID: 656980290}
   - component: {fileID: 656980289}
   - component: {fileID: 656980288}
+  - component: {fileID: 656980292}
   m_Layer: 5
   m_Name: Button_Buy
   m_TagString: Untagged
@@ -3418,7 +3457,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3434,10 +3473,10 @@ MonoBehaviour:
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
+    m_HighlightedTrigger: Normal
     m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
+    m_SelectedTrigger: Normal
+    m_DisabledTrigger: Normal
   m_Interactable: 1
   m_TargetGraphic: {fileID: 656980290}
   m_OnClick:
@@ -3493,6 +3532,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656980286}
   m_CullTransparentMesh: 1
+--- !u!95 &656980292
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656980286}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28e358eaf74c17f458b9d72d0e39095b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &663130580
 GameObject:
   m_ObjectHideFlags: 0
@@ -6668,8 +6728,8 @@ MonoBehaviour:
   sellValueText: {fileID: 2083778481}
   sellTextObj: {fileID: 2088109413}
   sellValueObj: {fileID: 673576941}
-  autoTapCountingDown: {fileID: 2075882939}
-  x2IncomeCountingDown: {fileID: 1468007949}
+  autoTapCountingDown: {fileID: 88407431}
+  x2IncomeCountingDown: {fileID: 1420124510}
 --- !u!4 &1305911785 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5326273804191621573, guid: 0494cecb4ff2f4e41a3abf31bd20e592,
@@ -7013,6 +7073,8 @@ GameObject:
   - component: {fileID: 1420124507}
   - component: {fileID: 1420124506}
   - component: {fileID: 1420124505}
+  - component: {fileID: 1420124509}
+  - component: {fileID: 1420124510}
   m_Layer: 5
   m_Name: Button_IncomeX2
   m_TagString: Untagged
@@ -7039,9 +7101,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -23.120117, y: 615.30005}
+  m_AnchoredPosition: {x: -123.120224, y: 615.30005}
   m_SizeDelta: {x: 200, y: 180}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1420124505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7076,7 +7138,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -7092,10 +7154,10 @@ MonoBehaviour:
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
+    m_HighlightedTrigger: Normal
     m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
+    m_SelectedTrigger: Normal
+    m_DisabledTrigger: Normal
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1420124507}
   m_OnClick:
@@ -7151,6 +7213,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420124503}
   m_CullTransparentMesh: 1
+--- !u!95 &1420124509
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420124503}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28e358eaf74c17f458b9d72d0e39095b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1420124510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420124503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f72349f09e740428f8574e0bec2e15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  duration: 30
+  dimed: {fileID: 1468007950}
 --- !u!1001 &1437210716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7320,7 +7418,6 @@ GameObject:
   - component: {fileID: 1468007948}
   - component: {fileID: 1468007951}
   - component: {fileID: 1468007950}
-  - component: {fileID: 1468007949}
   m_Layer: 5
   m_Name: CountingDown
   m_TagString: Untagged
@@ -7347,20 +7444,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &1468007949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1468007947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63f72349f09e740428f8574e0bec2e15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  duration: 30
 --- !u!114 &1468007950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8189,6 +8272,7 @@ GameObject:
   - component: {fileID: 1581229497}
   - component: {fileID: 1581229496}
   - component: {fileID: 1581229495}
+  - component: {fileID: 1581229499}
   m_Layer: 5
   m_Name: Button_FightBoss
   m_TagString: Untagged
@@ -8251,7 +8335,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -8267,10 +8351,10 @@ MonoBehaviour:
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
+    m_HighlightedTrigger: Normal
     m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
+    m_SelectedTrigger: Normal
+    m_DisabledTrigger: Normal
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1581229497}
   m_OnClick:
@@ -8314,6 +8398,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581229493}
   m_CullTransparentMesh: 1
+--- !u!95 &1581229499
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581229493}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28e358eaf74c17f458b9d72d0e39095b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1582534937
 GameObject:
   m_ObjectHideFlags: 0
@@ -8976,6 +9081,7 @@ GameObject:
   - component: {fileID: 1719911210}
   - component: {fileID: 1719911209}
   - component: {fileID: 1719911208}
+  - component: {fileID: 1719911212}
   m_Layer: 5
   m_Name: Button_Income
   m_TagString: Untagged
@@ -9039,7 +9145,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -9055,10 +9161,10 @@ MonoBehaviour:
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
+    m_HighlightedTrigger: Normal
     m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
+    m_SelectedTrigger: Normal
+    m_DisabledTrigger: Normal
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1719911210}
   m_OnClick:
@@ -9114,6 +9220,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719911206}
   m_CullTransparentMesh: 1
+--- !u!95 &1719911212
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719911206}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28e358eaf74c17f458b9d72d0e39095b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1748822785
 GameObject:
   m_ObjectHideFlags: 0
@@ -9824,6 +9951,9 @@ MonoBehaviour:
   surfaceMask:
     serializedVersion: 2
     m_Bits: 512
+  heroMask:
+    serializedVersion: 2
+    m_Bits: 128
   gridSizeX: 4
   gridSizeY: 3
 --- !u!4 &1931759941
@@ -10424,7 +10554,6 @@ GameObject:
   - component: {fileID: 2075882938}
   - component: {fileID: 2075882941}
   - component: {fileID: 2075882940}
-  - component: {fileID: 2075882939}
   m_Layer: 5
   m_Name: CountingDown
   m_TagString: Untagged
@@ -10451,20 +10580,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &2075882939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2075882937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63f72349f09e740428f8574e0bec2e15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  duration: 30
 --- !u!114 &2075882940
 MonoBehaviour:
   m_ObjectHideFlags: 0

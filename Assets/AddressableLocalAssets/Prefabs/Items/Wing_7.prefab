@@ -208,7 +208,7 @@ MonoBehaviour:
     m_Bits: 512
   dragOffset: 0.4
   doubleClickThreshold: 0.25
-  dragLerpRate: 30
+  dragLerpRate: 60
 --- !u!114 &5734579199312395752
 MonoBehaviour:
   m_ObjectHideFlags: 0

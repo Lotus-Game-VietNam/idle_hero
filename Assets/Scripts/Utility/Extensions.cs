@@ -199,6 +199,17 @@ namespace Lotus.CoreFramework
             return Vector3.zero;
         }
 
+        public static bool IsMouseWorldPositionTriggerLayer(LayerMask mask)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+                return true;
+
+            return false;
+        }
+
         public static RaycastHit GetMouseWorldHit(LayerMask mask)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

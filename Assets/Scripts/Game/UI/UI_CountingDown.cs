@@ -13,9 +13,12 @@ public class UI_CountingDown : MonoUI
     public State currentState = State.None;
     public float duration = 60f;
 
+    [Title("Object Reference")]
+    public Image dimed = null;
 
-    private Image _dimed = null;
-    public Image dimed => this.TryGetComponent(ref _dimed);
+
+    private Button _button = null;
+    public Button button => this.TryGetComponent(ref _button);
 
 
     public Action OnCountingDownCussess = null;
@@ -24,14 +27,20 @@ public class UI_CountingDown : MonoUI
 
     public void CountingDown()
     {
-        rect.localScale = Vector3.one;
+        if (currentState == State.CountingDown)
+            return;
+
+        dimed.rectTransform.localScale = Vector3.one;
         dimed.enabled = true;
+
+        button.interactable = false;
 
         currentState = State.CountingDown;
 
-        rect.DOScaleY(0.1f, duration).OnComplete(() =>
+        dimed.rectTransform.DOScaleY(0.1f, duration).OnComplete(() =>
         {
             dimed.enabled = false;
+            button.interactable = true;
             currentState = State.None;
             OnCountingDownCussess?.Invoke();
         });
