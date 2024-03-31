@@ -134,6 +134,7 @@ public class InventoryManager : MonoBehaviour
 
         item.dragAndDrop.OnTouchEvent = OnTouchItem;
         item.dragAndDrop.OnDoubleTouchEvent = OnDoubleTouchItem;
+        item.dragAndDrop.OnFirstDragEvent = OnFirstDragItem;
         item.dragAndDrop.OnDragEvent = OnItemDrag;
         item.dragAndDrop.OnDropEvent = OnItemDrop;
 
@@ -348,6 +349,7 @@ public class InventoryManager : MonoBehaviour
         else
             ExchangeItemsPosition(selectedItem, dropedItem, dropedCell);
 
+        UpdateCanMergeVfsOnDropItem();
         this.SendMessage(EventName.ShowShellValue, false);
 
         selectedCell = null;
@@ -358,14 +360,16 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    private void OnTouchItem(IDragAndDrop<InventoryItem> item)
+    private void OnFirstDragItem(IDragAndDrop<InventoryItem> item)
     {
         selectedCell = GetCell(item.worldPosition);
-
-        if (canMergeVfxs.ContainsKey(selectedCell.cellPosition))
-            canMergeVfxs[selectedCell.cellPosition].gameObject.SetActive(false);
-
+        UpdateCanMergeVfxsOnDragItem(item.data);
         this.SendMessage(EventName.ShowShellValue, true);
+    }
+
+    private void OnTouchItem(IDragAndDrop<InventoryItem> item)
+    {
+
     }
 
     private void OnDoubleTouchItem(IDragAndDrop<InventoryItem> item)
@@ -390,6 +394,28 @@ public class InventoryManager : MonoBehaviour
             SpawnCanMergeVfx(items[itemType][item.data.itemLevel][0], GetCell(items[itemType][item.data.itemLevel][0].transform.position));
 
         SpawnCanMergeVfx(item, cell);
+    }
+
+    private void UpdateCanMergeVfxsOnDragItem(InventoryItem selectedItem)
+    {
+        if (canMergeVfxs.ContainsKey(selectedCell.cellPosition))
+            canMergeVfxs[selectedCell.cellPosition].gameObject.SetActive(false);
+
+        foreach (var vfx in canMergeVfxs)
+        {
+            if (vfx.Key.posX == selectedCell.cellPosition.posX && vfx.Key.posY == selectedCell.cellPosition.posY)
+                continue;
+
+            ItemData itemData = DataManager.InventoryData.items[vfx.Key];
+            if (!itemData.itemType.Equals(selectedItem.data.itemType) || itemData.itemLevel != selectedItem.data.itemLevel)
+                canMergeVfxs[vfx.Key].gameObject.SetActive(false);
+        }
+    }
+
+    private void UpdateCanMergeVfsOnDropItem()
+    {
+        foreach(var vfx in canMergeVfxs)
+            vfx.Value.gameObject.SetActive(true);
     }
 
     private void UpdateCanMergeVfxOnChangeItemPosition(CellData selectedCell, CellData dropedCell)
@@ -468,7 +494,7 @@ public class InventoryManager : MonoBehaviour
             foreach (var itemByLevel in itemByType.Value)
             {
                 if (itemByLevel.Value.Count < 2)
-                    break;
+                    continue;
                 foreach (var item in itemByLevel.Value)
                 {
                     CellData cellData = GetCell(item.transform.position);
@@ -481,15 +507,8 @@ public class InventoryManager : MonoBehaviour
     private void SpawnCanMergeVfx(InventoryItem item, CellData cellData)
     {
         EffectBase vfx = this.DequeueEffect("CanMerge", transform);
-        try
-        {
-            vfx.SetPosition(item.transform.position).SetRotation(transform.rotation).Show();
-            canMergeVfxs.Add(cellData.cellPosition, vfx);
-        }
-        catch (Exception ex)
-        {
-
-        }
+        vfx.SetPosition(item.transform.position).SetRotation(transform.rotation).Show();
+        canMergeVfxs.Add(cellData.cellPosition, vfx);
     }
 
     #endregion

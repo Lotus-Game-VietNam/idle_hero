@@ -40,6 +40,7 @@ namespace Lotus.CoreFramework
         public Action<IDragAndDrop<T>> OnDoubleTouchEvent = null;
         public Action<IDragAndDrop<T>> OnTouchEvent = null;
         public Action<IDragAndDrop<T>> OnDropEvent = null;
+        public Action<IDragAndDrop<T>> OnFirstDragEvent = null;
         public Action<IDragAndDrop<T>> OnDragEvent = null;
 
 
@@ -91,6 +92,9 @@ namespace Lotus.CoreFramework
                 RevertToPrevPos();
                 return;
             }
+
+            if (!isDrag)
+                OnFirstDragEvent?.Invoke(this);
 
             OnDragEvent?.Invoke(this);
 
