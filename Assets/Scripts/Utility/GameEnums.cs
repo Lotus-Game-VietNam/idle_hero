@@ -60,4 +60,5 @@ public enum EventName
     OnCharacterDead,
     BuyItem,
     X2Income,
+    ShowShellValue
 }

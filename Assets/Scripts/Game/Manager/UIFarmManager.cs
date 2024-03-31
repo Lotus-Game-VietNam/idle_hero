@@ -1,7 +1,5 @@
 using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -10,6 +8,11 @@ public class UIFarmManager : MonoUI
 {
     [Title("Text Mesh Pro")]
     [SerializeField] private TMP_Text costBuyItemText = null;
+    [SerializeField] private TMP_Text sellValueText = null;
+
+    [Title("Game Object")]
+    [SerializeField] private GameObject sellTextObj = null;
+    [SerializeField] private GameObject sellValueObj = null;
 
     [Title("Component")]
     [SerializeField] private UI_CountingDown autoTapCountingDown = null;
@@ -30,6 +33,7 @@ public class UIFarmManager : MonoUI
     private void InitEvents()
     {
         this.AddListener(EventName.BuyItem, BuyItem);
+        this.AddListener<bool>(EventName.ShowShellValue, ShowSellValue);
     }
 
     private void InitText()
@@ -39,6 +43,8 @@ public class UIFarmManager : MonoUI
 
 
     private string GetCostBuyItemTextValue() => $"<sprite name=\"gem_blue\">{DataManager.InventoryData.GetCostToBuyItem().Convert()}";
+
+    private string GetSellItemTextValue() => $"<sprite name=\"gem_blue\">{DataManager.InventoryData.GetValueToSellItem().Convert()}";
 
     public void OnBuyItemClicked()
     {
@@ -70,5 +76,12 @@ public class UIFarmManager : MonoUI
     {
         DataManager.HeroData.SetUpgradeIncomeSuccess().Save();
         LogTool.LogEditorOnly($"Level: {DataManager.HeroData.inComeLevel} --- {DataManager.HeroData.GetMinIncome().Convert()}");
+    }
+
+    private void ShowSellValue(bool show)
+    {
+        sellValueObj.SetActive(show);
+        sellTextObj.SetActive(!show);
+        sellValueText.text = GetSellItemTextValue();
     }
 }

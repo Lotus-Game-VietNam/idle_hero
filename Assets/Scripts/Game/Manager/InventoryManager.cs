@@ -295,7 +295,7 @@ public class InventoryManager : MonoBehaviour
 
         UpdateCanMergeVfxsOnSellItem(selectedItem);
 
-        CollectionIcons.Instance.Show(5, sellButton.transform.position);
+        CollectionIcons.Instance.Show(10, sellButton.transform.position);
         float gemsToAdd = DataManager.InventoryData.GetValueToSellItem();
 
         this.DelayCall(1, () => { ResourceManager.Gem += gemsToAdd; });
@@ -348,6 +348,8 @@ public class InventoryManager : MonoBehaviour
         else
             ExchangeItemsPosition(selectedItem, dropedItem, dropedCell);
 
+        this.SendMessage(EventName.ShowShellValue, false);
+
         selectedCell = null;
     }
 
@@ -362,6 +364,8 @@ public class InventoryManager : MonoBehaviour
 
         if (canMergeVfxs.ContainsKey(selectedCell.cellPosition))
             canMergeVfxs[selectedCell.cellPosition].gameObject.SetActive(false);
+
+        this.SendMessage(EventName.ShowShellValue, true);
     }
 
     private void OnDoubleTouchItem(IDragAndDrop<InventoryItem> item)

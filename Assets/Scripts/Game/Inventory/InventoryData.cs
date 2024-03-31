@@ -7,8 +7,8 @@ public class InventoryData
     public readonly int costBuyItemOnTutorial = 50;
     public readonly int costBuyItemFirstTime = 100;
 
-    public readonly int sellItemValueOnTutorial = 50;
-    public readonly int sellItemValueFirstTime = 100;
+    public readonly int sellItemValueOnTutorial = 40;
+    public readonly int sellItemValueFirstTime = 80;
 
     public float lastCostBuyItem;
     public float lastValueSellItem;
