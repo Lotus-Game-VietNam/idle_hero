@@ -11,6 +11,9 @@ public class UIFarmManager : MonoUI
     [Title("Text Mesh Pro")]
     [SerializeField] private TMP_Text costBuyItemText = null;
 
+    [Title("Component")]
+    [SerializeField] private UI_CountingDown autoTapCountingDown = null;
+
 
     private void Awake()
     {
@@ -44,5 +47,11 @@ public class UIFarmManager : MonoUI
     private void BuyItem()
     {
         costBuyItemText.text = GetCostBuyItemTextValue();
+    }
+
+
+    public void OnAutoTapClicked()
+    {
+        autoTapCountingDown.CountingDown();
     }
 }

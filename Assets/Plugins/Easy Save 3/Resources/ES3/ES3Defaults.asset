@@ -38,7 +38,6 @@ MonoBehaviour:
     - Dissolve.Scripts
     - Doozy.Runtime
     - DOTween.Modules
-    - DOTweenPro.EditorScripts
     - DOTweenPro.Scripts
     - ES3.Editor
     - ES3.Scripts
