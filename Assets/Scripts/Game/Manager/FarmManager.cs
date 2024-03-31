@@ -33,6 +33,8 @@ public class FarmManager : MonoBehaviour
     {
         this.AddListener<CharacterBrain>(EventName.OnCharacterDead, OnCharacterDead);
         this.AddListener<bool>(EventName.X2Income, X2Income);
+
+        ComponentReference.HeroTrans = () => hero.transform;
     }
 
     private void InitializedCharacter()
