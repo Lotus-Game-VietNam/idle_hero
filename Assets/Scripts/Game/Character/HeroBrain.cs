@@ -14,7 +14,6 @@ public class HeroBrain : CharacterBrain
 
 
 
-
     protected override void Initialized(CharacterConfig data)
     {
         base.Initialized(data);
@@ -37,7 +36,6 @@ public class HeroBrain : CharacterBrain
     {
         transform.DOPunchScale(Vector3.one * 0.1f, 0.5f).SetEase(Ease.InOutElastic);
     }
-
 
     protected override void OnUpdate()
     {

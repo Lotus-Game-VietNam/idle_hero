@@ -22,7 +22,7 @@ public class EffectBase : IPool<EffectData>
 
     protected override void OnHide()
     {
-        
+        StopAllCoroutines();
     }
 
     protected override void OnShow()

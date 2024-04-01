@@ -1,5 +1,7 @@
 using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
+using System.Collections;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -22,7 +24,9 @@ public class FarmManager : MonoBehaviour
 
     public bool onX2Income { get; private set; }
 
-    
+    private EffectBase fireAuraVfx = null;
+
+
 
     private void Awake()
     {
@@ -85,6 +89,26 @@ public class FarmManager : MonoBehaviour
     {
         onAutoTap = value;
         hero.animatorState.Ator.speed = value ? 1.5f : 1f;
+        StartCoroutine(IEAuraFollowHero());
+    }
+
+    private IEnumerator IEAuraFollowHero()
+    {
+        if (!onAutoTap)
+            yield break;
+
+        fireAuraVfx = this.DequeueEffect("FireAura");
+        fireAuraVfx.transform.position = hero.center + (transform.up * (hero.characterAttack.height / 2));
+        fireAuraVfx.transform.rotation = Quaternion.identity;
+        fireAuraVfx.Show();
+
+        while (onAutoTap)
+        {
+            fireAuraVfx.transform.position = hero.center + (transform.up * (hero.characterAttack.height / 2));
+            yield return null;
+        }
+
+        this.PushEffect(fireAuraVfx);
     }
 
     private float GetGemsReward() => onAutoTap ? DataManager.HeroData.GetMaxIncome() : DataManager.HeroData.GetMinIncome();
