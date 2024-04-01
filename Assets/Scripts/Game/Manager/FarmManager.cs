@@ -11,13 +11,14 @@ public class FarmManager : MonoBehaviour
 
     [Title("Assets Reference")]
     [SerializeField] private AssetReference heroAsset = null;
-    
+
 
     public CharacterBrain hero { get; private set; }
 
     public CharacterBrain monsterFarm { get; private set; }
 
 
+    public bool onAutoTap { get; private set; }
 
     public bool onX2Income { get; private set; }
 
@@ -33,6 +34,7 @@ public class FarmManager : MonoBehaviour
     {
         this.AddListener<CharacterBrain>(EventName.OnCharacterDead, OnCharacterDead);
         this.AddListener<bool>(EventName.X2Income, X2Income);
+        this.AddListener<bool>(EventName.AutoTap, AutoTap);
     }
 
     private void InitializedCharacter()
@@ -71,16 +73,21 @@ public class FarmManager : MonoBehaviour
 
     private void ReciveRewards()
     {
-        float gemToAdd = onX2Income ? DataManager.HeroData.GetMaxIncome() : DataManager.HeroData.GetMinIncome();
+        float gemToAdd = onX2Income ? GetGemsReward() * 2 : GetGemsReward();
         hero.characterStats.OnHealthChanged(10);
-        CollectionIcons.Instance.Show(5, monsterFarm.center.ConvertToRectTransform());
+        CollectionIcons.Instance.Show(onAutoTap ? 10 : 5, monsterFarm.center.ConvertToRectTransform());
         this.DelayCall(1, () => { ResourceManager.Gem += gemToAdd; });
     }
 
-    private void X2Income(bool value)
+    private void X2Income(bool value) => onX2Income = value;
+
+    private void AutoTap(bool value)
     {
-        onX2Income = value;
+        onAutoTap = value;
+        hero.animatorState.Ator.speed = value ? 1.5f : 1f;
     }
+
+    private float GetGemsReward() => onAutoTap ? DataManager.HeroData.GetMaxIncome() : DataManager.HeroData.GetMinIncome();
 
 
     private void OnCharacterDead(CharacterBrain character)

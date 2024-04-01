@@ -486,7 +486,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -4.6150513}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -123.120224, y: 847}
+  m_AnchoredPosition: {x: -123.12012, y: 847}
   m_SizeDelta: {x: 200, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &88407426
@@ -2728,7 +2728,7 @@ GameObject:
   - component: {fileID: 434313265}
   - component: {fileID: 434313264}
   m_Layer: 5
-  m_Name: Value
+  m_Name: CostUpgradeIncome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6725,6 +6725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   costBuyItemText: {fileID: 363143989}
+  costUpgradeIncomeText: {fileID: 434313264}
   sellValueText: {fileID: 2083778481}
   sellTextObj: {fileID: 2088109413}
   sellValueObj: {fileID: 673576941}
@@ -7101,7 +7102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -123.120224, y: 615.30005}
+  m_AnchoredPosition: {x: -123.12012, y: 615.30005}
   m_SizeDelta: {x: 200, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1420124505

@@ -8,6 +8,7 @@ public class UIFarmManager : MonoUI
 {
     [Title("Text Mesh Pro")]
     [SerializeField] private TMP_Text costBuyItemText = null;
+    [SerializeField] private TMP_Text costUpgradeIncomeText = null;
     [SerializeField] private TMP_Text sellValueText = null;
 
     [Title("Game Object")]
@@ -39,10 +40,13 @@ public class UIFarmManager : MonoUI
     private void InitText()
     {
         costBuyItemText.text = GetCostBuyItemTextValue();
+        costUpgradeIncomeText.text = GetCostUpgradeIncomeTextValue();
     }
 
 
     private string GetCostBuyItemTextValue() => $"<sprite name=\"gem_blue\">{DataManager.InventoryData.GetCostToBuyItem().Convert()}";
+
+    private string GetCostUpgradeIncomeTextValue() => $"<sprite name=\"gem_blue\">{DataManager.HeroData.GetCostUpgradeIncome().Convert()}";
 
     private string GetSellItemTextValue() => $"<sprite name=\"gem_blue\">{DataManager.InventoryData.GetValueToSellItem().Convert()}";
 
@@ -59,7 +63,12 @@ public class UIFarmManager : MonoUI
 
     public void OnAutoTapClicked()
     {
+        this.SendMessage(EventName.AutoTap, "FarmManager", true);
         autoTapCountingDown.CountingDown();
+        autoTapCountingDown.OnCountingDownCussess = () =>
+        {
+            this.SendMessage(EventName.AutoTap, "FarmManager", false);
+        };
     }
 
     public void OnX2IncomeClicked()
@@ -74,7 +83,13 @@ public class UIFarmManager : MonoUI
 
     public void UpgradeIncomeClicked()
     {
+        if (ResourceManager.Gem < DataManager.HeroData.GetCostUpgradeIncome())
+            return;
+
+        ResourceManager.Gem -= DataManager.HeroData.GetCostUpgradeIncome();
         DataManager.HeroData.SetUpgradeIncomeSuccess().Save();
+        costUpgradeIncomeText.text = GetCostUpgradeIncomeTextValue();
+
         LogTool.LogEditorOnly($"Level: {DataManager.HeroData.inComeLevel} --- {DataManager.HeroData.GetMinIncome().Convert()}");
     }
 

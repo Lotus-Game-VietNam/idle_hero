@@ -12,7 +12,11 @@ public class HeroData : CharacterConfig
     public readonly int minIncomeOnTutorial = 5;
     public readonly int minIncomeFirstLevel = 10;
 
+    public readonly int costUpgradeIncomeOnTutorial = 200;
+
+
     public float lastMinIncome;
+    public float lastCostUpgradeIncome;
 
 
     public HeroData() : base()
@@ -44,9 +48,12 @@ public class HeroData : CharacterConfig
 
     public float GetMaxIncome() => GetMinIncome() * 2;
 
+    public float GetCostUpgradeIncome() => inComeLevel == 0 ? costUpgradeIncomeOnTutorial : (inComeLevel * 100) + lastCostUpgradeIncome + 200;
+
     public HeroData SetUpgradeIncomeSuccess()
     {
         lastMinIncome = GetMinIncome();
+        lastCostUpgradeIncome = GetCostUpgradeIncome();
         inComeLevel++;
         return this;
     }
