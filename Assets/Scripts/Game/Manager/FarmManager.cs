@@ -35,6 +35,7 @@ public class FarmManager : MonoBehaviour
 
     private void InitEvents()
     {
+        this.AddListener(EventName.RefreshMonsterTarget, RefreshMonsterTarget);
         this.AddListener<CharacterBrain>(EventName.OnCharacterDead, OnCharacterDead);
         this.AddListener<bool>(EventName.X2Income, X2Income);
         this.AddListener<bool>(EventName.AutoTap, AutoTap);
@@ -48,7 +49,7 @@ public class FarmManager : MonoBehaviour
         hero.SetTargetAttack(monsterFarm).Initial(DataManager.HeroData).Show();
 
         Transform point = spawnPoint[UnityEngine.Random.Range(1, spawnPoint.Length)];
-        monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type))/*.ResetTransform()*/
+        monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type))
             .SetPosition(point.position).SetRotation(point.rotation).Show();
     }
 
@@ -69,8 +70,12 @@ public class FarmManager : MonoBehaviour
     {
         monsterFarm = SpawnMonster();
         Transform point = spawnPoint[UnityEngine.Random.Range(1, spawnPoint.Length)];
-        monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type))/*.ResetTransform()*/
+        monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type))
             .SetPosition(point.position).SetRotation(point.rotation).Show();
+    }
+
+    private void RefreshMonsterTarget()
+    {
         hero.SetTargetAttack(monsterFarm);
     }
 

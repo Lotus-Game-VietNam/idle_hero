@@ -42,7 +42,6 @@ public class ProjectileVfx : IPool<ProjectileData>
     protected override void Initialized(ProjectileData data)
     {
         targetAttack = data.target.center + (Vector3.up * (data.target.characterAttack.height / 2));
-        LogTool.LogEditorOnly("AAAAAAAAAAAAAAA");
     }
 
     protected override void OnHide()
@@ -96,6 +95,9 @@ public class ProjectileVfx : IPool<ProjectileData>
 
     protected virtual void OnTriggerEnter(Collider other)
     {
+        if (other == data.sender.characterAttack.capsuleCollider)
+            return;
+
         Explosition();
 
         if (data == null)

@@ -1,7 +1,5 @@
 using DG.Tweening;
 using Lotus.CoreFramework;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HeroBrain : CharacterBrain
@@ -33,6 +31,14 @@ public class HeroBrain : CharacterBrain
     {
         transform.DOPunchScale(Vector3.one * 0.1f, 0.5f).SetEase(Ease.InOutElastic);
     }
+
+    protected override void OnShotFinish()
+    {
+        base.OnShotFinish();
+        if (targetAttack == null || !targetAttack.characterStats.Alive)
+            this.SendMessage(EventName.RefreshMonsterTarget, "FarmManager");
+    }
+
 
     protected override void OnUpdate()
     {

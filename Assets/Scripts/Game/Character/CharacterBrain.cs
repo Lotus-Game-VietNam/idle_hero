@@ -1,5 +1,4 @@
 ﻿using Lotus.CoreFramework;
-using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
@@ -40,6 +39,15 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     public override Action HideAct => this.PushCharacter;
 
+
+    protected virtual void Awake()
+    {
+        animatorState.events.OnShotFinishEvent = OnShotFinish;
+        animatorState.events.OnShotEvent = OnShot;
+        characterStats.OnDead = Dead;
+    }
+
+
     protected override void Initialized(CharacterConfig data)
     {
         InitEvents();
@@ -62,8 +70,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected virtual void InitEvents()
     {
-        animatorState.events.OnShotEvent = OnShot;
-        characterStats.OnDead = Dead;
+        
     }
 
     public IPool<CharacterConfig> SetTargetAttack(CharacterBrain target)
@@ -94,6 +101,11 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
         characterAttack.Shot((AttackType)type, new ProjectileData(GetProjectileName((AttackType)type), characterStats.ATK, this, targetAttack));
     }
 
+    protected virtual void OnShotFinish()
+    {
+        
+    }
+
     protected virtual void Shot(AttackType type)
     {
         if (TargetIsNull()) return;
@@ -102,7 +114,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
         if (onFollowTarget || animatorState.currentState == type.Convert() || characterMovement.crtRotating) return;
 
-        characterMovement.RotateToCrt(targetAttack.center, 0.25f, null, () => 
+        characterMovement.RotateToCrt(targetAttack.center, 0.2f, null, () => 
         {
             animatorState.ChangeState(type.Convert());
         });

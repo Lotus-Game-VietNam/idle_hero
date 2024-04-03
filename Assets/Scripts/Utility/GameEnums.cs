@@ -62,5 +62,6 @@ public enum EventName
     X2Income,
     AutoTap,
     ShowShellValue,
-    ChangeCostume
+    ChangeCostume,
+    RefreshMonsterTarget
 }
