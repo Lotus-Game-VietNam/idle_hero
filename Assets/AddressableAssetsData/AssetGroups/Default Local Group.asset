@@ -33,7 +33,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 76c261865f96078458f192fd6dcfaabb
-    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_1_1.prefab
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -294,6 +294,26 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 79beebec91959e743b945a80635b18df
     m_Address: Assets/AddressableLocalAssets/Prefabs/Effects/FireAura.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e9f3dcbc57d9134ab8f680c9641c263
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4294ec80db997c14597b2ef6c32e9db0
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d412fe610d934a4aa84683c24834cc7
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a0d8891f33bbb384e93e7462817bba6d
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

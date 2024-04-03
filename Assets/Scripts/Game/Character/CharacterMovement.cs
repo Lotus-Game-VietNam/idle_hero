@@ -86,14 +86,14 @@ public class CharacterMovement : MonoBehaviour
     /// <param name="target"></param>
     /// <param name="rotateSpeed"></param>
     /// <param name="Callback"></param>
-    public void RotateToCrt(Vector3 target, float rotateSpeed, Action Callback = null)
+    public void RotateToCrt(Vector3 target, float rotateSpeed, Action OnRotate = null, Action Callback = null)
     {
         if (rotateCrt != null)
             StopCoroutine(rotateCrt);
-        rotateCrt = StartCoroutine(IERotateTo(target, rotateSpeed, Callback));
+        rotateCrt = StartCoroutine(IERotateTo(target, rotateSpeed, OnRotate, Callback));
     }
 
-    protected IEnumerator IERotateTo(Vector3 target, float duration, Action Callback)
+    protected IEnumerator IERotateTo(Vector3 target, float duration, Action OnRotate, Action Callback)
     {
         crtRotating = true;
         direction = target - body.position;
@@ -107,6 +107,7 @@ public class CharacterMovement : MonoBehaviour
             count += Time.deltaTime;
             lerpValue = count / duration;
             body.rotation = Quaternion.Slerp(startQuaternion, targetQuaternion, lerpValue);
+            OnRotate?.Invoke();
             yield return null;
         }
 

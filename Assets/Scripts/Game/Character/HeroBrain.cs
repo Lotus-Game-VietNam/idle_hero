@@ -27,10 +27,7 @@ public class HeroBrain : CharacterBrain
     }
 
 
-    protected override string GetProjectileName(AttackType type)
-    {
-        return "Hero_Projectile_1_1";
-    }
+    protected override string GetProjectileName(AttackType type) => $"Hero_Projectile_{DataManager.HeroData.items[ItemType.Bow].itemLevel}";
 
     private void ChangeCostume(ItemType itemType, int itemLevel)
     {

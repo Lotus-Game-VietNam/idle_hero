@@ -30,6 +30,9 @@ public class ProjectileVfx : IPool<ProjectileData>
     public SphereCollider sphereCollider => this.TryGetComponent(ref _sphereCollider);
 
 
+    public Vector3 targetAttack { get; private set; }
+
+
 
     private void Awake()
     {
@@ -38,7 +41,8 @@ public class ProjectileVfx : IPool<ProjectileData>
 
     protected override void Initialized(ProjectileData data)
     {
-
+        targetAttack = data.target.center + (Vector3.up * (data.target.characterAttack.height / 2));
+        LogTool.LogEditorOnly("AAAAAAAAAAAAAAA");
     }
 
     protected override void OnHide()
@@ -49,11 +53,16 @@ public class ProjectileVfx : IPool<ProjectileData>
     protected override void OnShow()
     {
         body.velocity = Vector3.zero;
+
         modelFx.StopVfx();
         muzzleFx.StopVfx();
         hitFx.StopVfx();
+
         modelFx.gameObject.SetActive(true);
-        muzzleFx.transform.localPosition = Vector3.zero;
+
+        if (muzzleFx != null)
+            muzzleFx.transform.localPosition = Vector3.zero;
+
         Firing();
     }
 
@@ -65,9 +74,14 @@ public class ProjectileVfx : IPool<ProjectileData>
             return;
         }
 
-        transform.LookAt(data.target.center + (Vector3.up * (data.target.characterAttack.height / 2)));
-        muzzleFx.transform.SetParent(null);
-        muzzleFx.PlayVfx();
+        transform.LookAt(targetAttack);
+
+        if (muzzleFx != null)
+        {
+            muzzleFx.transform.SetParent(null);
+            muzzleFx.PlayVfx();
+        }
+        
         modelFx.PlayVfx();
         body.AddForce(transform.forward * moveSpeed);
     }
