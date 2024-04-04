@@ -40,21 +40,6 @@ namespace Lotus.CoreFramework
         }
 
 
-
-        public void OnStateEnter(AnimationEvent state)
-        {
-            if (currentState == (AnimationStates)state.intParameter)
-                return;
-
-            if (!string.IsNullOrEmpty(currentTrigger) && !currentTrigger.Equals(state.stringParameter))
-                Ator.ResetTrigger(currentTrigger);
-
-            currentTrigger = state.stringParameter;
-            currentState = (AnimationStates)state.intParameter;
-        }
-
-
-
         public void ChangeState(AnimationStates state)
         {
             if (currentState == state)
@@ -68,7 +53,15 @@ namespace Lotus.CoreFramework
             if (Utilities.IsAttack(state))
                 SetBlend(state, AnimationStates.NormalAttack, "AttackType");
 
-            Ator.SetTrigger(GetParam(state));
+            string param = GetParam(state);
+
+            if (!string.IsNullOrEmpty(currentTrigger))
+                Ator.ResetTrigger(currentTrigger);
+
+            currentTrigger = param;
+            currentState = state;
+
+            Ator.SetTrigger(param);
         }
 
 

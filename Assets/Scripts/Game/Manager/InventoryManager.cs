@@ -177,6 +177,21 @@ public class InventoryManager : MonoBehaviour
         this.SendMessage(EventName.BuyItem, "UIFarmManager");
     }
 
+#if UNITY_EDITOR
+    public void SpawnItemEditor(ItemData itemData)
+    {
+        foreach (var cell in cells)
+        {
+            if (cell.itemOnCell != null)
+                continue;
+
+            SpawnItem(itemData, cell, true, true, (_item) => { DoPunchScaleItem(_item, 0.2f, 0.25f); });
+            break;
+        }
+    }
+
+#endif
+
     private ItemData GetRandomItemData()
     {
         ItemType type = GetRandomItemType();

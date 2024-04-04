@@ -46,7 +46,8 @@ public class ProjectileVfx : IPool<ProjectileData>
 
     protected override void OnHide()
     {
-        
+        if (muzzleFx != null)
+            muzzleFx.transform.SetParent(transform);
     }
 
     protected override void OnShow()

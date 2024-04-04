@@ -602,13 +602,13 @@
 	"MonstersConfig" : {
 		"Monster_1_1" : {
 			"attributes" : {
-				"HP" : 15,
+				"HP" : 10,
 				"ATK" : 2
 			}
 		},
 		"Monster_1_2" : {
 			"attributes" : {
-				"HP" : 15,
+				"HP" : 10,
 				"ATK" : 2
 			}
 		}

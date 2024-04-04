@@ -317,6 +317,56 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cbca40966337c2146b9a3f9a0f2b8269
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_5.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fb8c45099444804ea2d6fd7202161c5
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_6.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a00b8bf947eadb4397b8aad8ee45396
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_7.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8fc2f1dd0b117ea4987dedf1ace8c594
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_8.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14270059802e7714f82f9f9dce539b33
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_9.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c30dcf56aa357494a832195557a015e8
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_10.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 008b024425d37d84a8ba25066e9e47cd
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_11.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef5d0b1d18b62f6419888351c20a3bd5
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_12.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e918f064574110f43866f359e02ff994
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_13.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60e948e358e9b8c4e940277eb8c89ff0
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_14.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3ece1e13ae2be25429cf299318a1d498, type: 2}
   m_SchemaSet:

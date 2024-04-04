@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8231896150374879515}
   - component: {fileID: 7297758358646808795}
   - component: {fileID: 4750066314617088458}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HitFx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4913,7 +4913,7 @@ GameObject:
   - component: {fileID: 2094175309291280000}
   - component: {fileID: 916714148425859285}
   - component: {fileID: 2627943199259885875}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9768,7 +9768,7 @@ GameObject:
   - component: {fileID: 4704644670444134972}
   - component: {fileID: 1963272286588720509}
   - component: {fileID: 3796360236688221486}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EndSTrails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14669,7 +14669,7 @@ GameObject:
   - component: {fileID: 482274810469306874}
   - component: {fileID: 6418386669203815811}
   - component: {fileID: 7300652260056499805}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ModelFx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19590,7 +19590,7 @@ GameObject:
   - component: {fileID: 4344137545547196012}
   - component: {fileID: 4853279357848737918}
   - component: {fileID: 5737881389755639655}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Projectile_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

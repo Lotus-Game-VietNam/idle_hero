@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1230456171893713178}
   - component: {fileID: 6792771134419964190}
   - component: {fileID: 7030717916475925536}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4912,7 +4912,7 @@ GameObject:
   - component: {fileID: 8890723778692395659}
   - component: {fileID: 9040262146094218085}
   - component: {fileID: 3189299433843086726}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ModelFx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9834,7 +9834,7 @@ GameObject:
   - component: {fileID: 5313508374917475107}
   - component: {fileID: 3669070640617876926}
   - component: {fileID: 9130020601211185243}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14734,7 +14734,7 @@ GameObject:
   - component: {fileID: 7868998719296416133}
   - component: {fileID: 4016940747622347684}
   - component: {fileID: 489862488146714763}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19634,7 +19634,7 @@ GameObject:
   - component: {fileID: 1973654253762932105}
   - component: {fileID: 5118854752077052524}
   - component: {fileID: 4006456910069657098}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hit 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24548,7 +24548,7 @@ GameObject:
   - component: {fileID: 880043044028993561}
   - component: {fileID: 7388536633364830212}
   - component: {fileID: 4140733473906507272}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MuzzleFx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29459,7 +29459,7 @@ GameObject:
   - component: {fileID: 2159798471812637903}
   - component: {fileID: 5122917501447741187}
   - component: {fileID: 7776395697910328193}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShockWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34359,7 +34359,7 @@ GameObject:
   - component: {fileID: 4340966573014524186}
   - component: {fileID: 8624018616888012955}
   - component: {fileID: 4482293301669253167}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39259,7 +39259,7 @@ GameObject:
   - component: {fileID: 1243837597239388138}
   - component: {fileID: 3333884511366355076}
   - component: {fileID: 2311169776503724725}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44159,7 +44159,7 @@ GameObject:
   - component: {fileID: 8252980179783787909}
   - component: {fileID: 1052141509879845350}
   - component: {fileID: 4908936112721197166}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49068,7 +49068,7 @@ GameObject:
   - component: {fileID: 640932262551935017}
   - component: {fileID: 2274909793466201474}
   - component: {fileID: 6321446365524753588}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Projectile_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

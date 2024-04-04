@@ -17,7 +17,7 @@ public class MonsterBrain : CharacterBrain
             characterStats.Dissolve(() => { HideAct?.Invoke(); });
         });
 
-        this.DequeueEffect("MonsterDie").SetPosition(center + (Vector3.up * (characterAttack.height / 2))).Show();
+        //this.DequeueEffect("MonsterDie").SetPosition(center + (Vector3.up * (characterAttack.height / 2))).Show();
     }
 
     protected override void OnUpdate()

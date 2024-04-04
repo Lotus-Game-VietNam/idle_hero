@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8392473766181770987}
   - component: {fileID: 6355305270355527529}
   - component: {fileID: 147199033415401945}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BigSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4866,7 +4866,7 @@ GameObject:
   - component: {fileID: 5621811178456088858}
   - component: {fileID: 3286439698934452268}
   - component: {fileID: 409499876111040137}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HitFx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4882,7 +4882,7 @@ Transform:
   m_GameObject: {fileID: 2460146046356355217}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9770,7 +9770,7 @@ GameObject:
   - component: {fileID: 2027539641339533495}
   - component: {fileID: 4809398269934936726}
   - component: {fileID: 4636598746391591970}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BigRombsExp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14625,7 +14625,7 @@ GameObject:
   - component: {fileID: 7963665311333080543}
   - component: {fileID: 4343717677912587089}
   - component: {fileID: 442973944258368074}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MuzzleFx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19483,7 +19483,7 @@ GameObject:
   - component: {fileID: 8797683209506129378}
   - component: {fileID: 5499937348584566273}
   - component: {fileID: 7276872621966474354}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ModelFx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24405,7 +24405,7 @@ GameObject:
   - component: {fileID: 7009255411009092639}
   - component: {fileID: 6786644015477823844}
   - component: {fileID: 1232001258559416870}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SmallRombsExp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29251,7 +29251,7 @@ GameObject:
   - component: {fileID: 8734101641334139745}
   - component: {fileID: 6890915231962109480}
   - component: {fileID: 366396703840451516}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Projectile_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29331,7 +29331,7 @@ GameObject:
   - component: {fileID: 254539911426537021}
   - component: {fileID: 7833414765258959637}
   - component: {fileID: 915173836934105972}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShockWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34177,7 +34177,7 @@ GameObject:
   - component: {fileID: 3581104836432884550}
   - component: {fileID: 1393373606785589511}
   - component: {fileID: 1393083154454835536}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}

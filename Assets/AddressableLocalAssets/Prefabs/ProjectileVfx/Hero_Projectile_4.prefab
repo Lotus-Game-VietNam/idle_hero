@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1835624339829226118}
   - component: {fileID: 9144608842313431287}
   - component: {fileID: 7332864074564769778}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4921,7 +4921,7 @@ GameObject:
   - component: {fileID: 7430869998728345650}
   - component: {fileID: 1640177575449284825}
   - component: {fileID: 15406336753126695}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ModelFx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9845,7 +9845,7 @@ GameObject:
   - component: {fileID: 2594319010002135224}
   - component: {fileID: 4568948211923209384}
   - component: {fileID: 2490429199806892392}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HitFx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14766,9 +14766,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4874448845813416208}
   - component: {fileID: 1409692301542719529}
-  - component: {fileID: 247599552108177927}
   - component: {fileID: 552595060525166931}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19525,18 +19524,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &247599552108177927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3653371390480136382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199e3c49ebcb3fe46997b10cf6a8eb52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!199 &552595060525166931
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -19622,7 +19609,7 @@ GameObject:
   - component: {fileID: 3949423352886441636}
   - component: {fileID: 4265410591202405539}
   - component: {fileID: 3067708104838212388}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SparksExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24521,9 +24508,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6183603256073085198}
   - component: {fileID: 300908138285424093}
-  - component: {fileID: 6166602759265976356}
   - component: {fileID: 8425600150771596743}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SubSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29280,18 +29266,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &6166602759265976356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4872391005204907263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199e3c49ebcb3fe46997b10cf6a8eb52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!199 &8425600150771596743
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -29377,7 +29351,7 @@ GameObject:
   - component: {fileID: 4100899127024700836}
   - component: {fileID: 9099596628389469695}
   - component: {fileID: 645160289199789066}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34277,7 +34251,7 @@ GameObject:
   - component: {fileID: 8237834726223622157}
   - component: {fileID: 6078786098985498093}
   - component: {fileID: 7525829386323212079}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SubGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39128,7 +39102,7 @@ GameObject:
   - component: {fileID: 813312528280430908}
   - component: {fileID: 7245153484905378033}
   - component: {fileID: 163543349373272818}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Waves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44028,7 +44002,7 @@ GameObject:
   - component: {fileID: 6060502987551650835}
   - component: {fileID: 3971852284960543063}
   - component: {fileID: 876429254016113529}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Projectile_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44108,7 +44082,7 @@ GameObject:
   - component: {fileID: 329017507653039389}
   - component: {fileID: 5105164392837070625}
   - component: {fileID: 623911794825919405}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49008,7 +48982,7 @@ GameObject:
   - component: {fileID: 6362594571269300593}
   - component: {fileID: 618848894219575521}
   - component: {fileID: 7367437424489225874}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53908,7 +53882,7 @@ GameObject:
   - component: {fileID: 2313997029332626666}
   - component: {fileID: 3477563539865276954}
   - component: {fileID: 1305608569678644166}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MuzzleFx
   m_TagString: Untagged
   m_Icon: {fileID: 0}

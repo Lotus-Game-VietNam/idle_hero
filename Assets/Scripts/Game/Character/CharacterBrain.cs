@@ -103,14 +103,14 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected virtual void OnShotFinish()
     {
-        
+        animatorState.ChangeState(AnimationStates.Idle);
     }
 
     protected virtual void Shot(AttackType type)
     {
         if (TargetIsNull()) return;
 
-         if (!targetAttack.characterStats.Alive || !characterStats.Alive) return;
+        if (!characterStats.Alive) return;
 
         if (onFollowTarget || animatorState.currentState == type.Convert() || characterMovement.crtRotating) return;
 
@@ -159,7 +159,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected void Update()
     {
-        if (!hasInitialized || !characterStats.Alive)
+        if (!hasInitialized)
         {
             animatorState.ChangeState(AnimationStates.Idle);
             return;

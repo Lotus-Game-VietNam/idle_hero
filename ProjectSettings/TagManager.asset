@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Inventory
   - SellButton
+  - InventoryManager
   layers:
   - Default
   - TransparentFX
