@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public abstract class CharacterBrain : IPool<CharacterConfig>
 {
@@ -28,6 +29,8 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     public abstract CharacterType CharacterType { get; }
 
+    public SceneName currentScene { get; private set; }
+
     #endregion
 
 
@@ -45,6 +48,8 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
         animatorState.events.OnShotFinishEvent = OnShotFinish;
         animatorState.events.OnShotEvent = OnShot;
         characterStats.OnDead = Dead;
+
+        currentScene = (SceneName)SceneManager.GetActiveScene().buildIndex;
     }
 
 
@@ -78,6 +83,8 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
         this.targetAttack = target;
         return this;
     }
+
+    public virtual void SetJoystick(Joystick joystick) { }
     #endregion
 
 
@@ -131,7 +138,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
         if (!onFollowTarget) return;
 
         animatorState.ChangeState(AnimationStates.Run);
-        characterMovement.MoveTo(targetAttack.center, characterAttack.attackRange);
+        characterMovement.MoveToTarget(targetAttack.center, characterAttack.attackRange);
     }
 
     private void Dead()
@@ -146,15 +153,24 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
         OnDead();
     }
 
+    protected abstract void OnFarm();
+
+    private void Farm()
+    {
+        if (currentScene != SceneName.Farm)
+            return;
+
+        OnFarm();
+    }
+
     protected virtual void OnDead()
     {
 
     }
 
-
     protected virtual void OnUpdate()
     {
-
+        Farm();
     }
 
     protected void Update()
@@ -163,7 +179,10 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
         {
             animatorState.ChangeState(AnimationStates.Idle);
             return;
-        } 
+        }
+
+        if (!characterStats.Alive)
+            return;
 
         OnUpdate();
     }

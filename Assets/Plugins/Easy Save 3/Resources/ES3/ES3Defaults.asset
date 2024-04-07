@@ -30,7 +30,6 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
-    - AllIn1SpriteShaderAssembly
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
     - CFXRDemo
@@ -42,6 +41,8 @@ MonoBehaviour:
     - DOTweenPro.Scripts
     - ES3.Editor
     - ES3.Scripts
+    - Joystick.Editor
+    - Joystick.Scripts
     - KinoBloom.Runtime
     - Lotus.CoreFramework.Editor
     - Lotus.CoreFramwork

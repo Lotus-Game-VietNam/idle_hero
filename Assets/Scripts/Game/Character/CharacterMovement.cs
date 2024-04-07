@@ -18,6 +18,8 @@ public class CharacterMovement : MonoBehaviour
 
     public bool crtRotating { get; private set; }
 
+    private float finalMoveSpeed = 0f;
+
     public Action Arrived = null;
 
     private Coroutine rotateCrt = null;
@@ -28,22 +30,30 @@ public class CharacterMovement : MonoBehaviour
     private NavMeshPath navmeshPath = null;
     private NavMeshHit hit;
     private int walkableArea;
-    
 
 
     public void Initialized(NavMeshAgent agent)
     {
         this.agent = agent;
         ActiveAgent(true);
+        finalMoveSpeed = moveSpeed;
         hit = new NavMeshHit();
         navmeshPath = new NavMeshPath();
         walkableArea = NavMesh.GetAreaFromName("Walkable");
         transform.localPosition = transform.localEulerAngles = Vector3.zero;
     }
 
-    public void MoveTo(Vector3 target) => MoveTo(target, agent.radius * 2);
+    public void SetMoveSpeed(float speed) => finalMoveSpeed = speed * moveSpeed;
 
-    public void MoveTo(Vector3 target, float stoppingDistance)
+    public void MoveToDirection(Vector3 direction)
+    {
+        RotateToDirection(direction);
+        agent.Move(direction.normalized * finalMoveSpeed * Time.deltaTime);
+    }
+
+    public void MoveToTarget(Vector3 target) => MoveToTarget(target, agent.radius * 2);
+
+    public void MoveToTarget(Vector3 target, float stoppingDistance)
     {
         if (!agent.CalculatePath(target, navmeshPath))
         {
@@ -59,11 +69,17 @@ public class CharacterMovement : MonoBehaviour
             return;
         }
 
-        RotateTo(navmeshPathPostion);
-        agent.Move(transform.forward * moveSpeed * Time.deltaTime);
+        RotateToTarget(navmeshPathPostion);
+        agent.Move(transform.forward * finalMoveSpeed * Time.deltaTime);
 
         if (DistanceToTarget(target) <= stoppingDistance)
             Arrived?.Invoke();
+    }
+
+    public void RotateToDirection(Vector3 direction)
+    {
+        targetQuaternion = Quaternion.LookRotation(direction);
+        body.rotation = Quaternion.Slerp(body.rotation, targetQuaternion, angularSpeed * Time.deltaTime);
     }
 
     /// <summary>
@@ -72,7 +88,7 @@ public class CharacterMovement : MonoBehaviour
     /// <param name="target"></param>
     /// <param name="rotateSpeed"></param>
     /// <param name="Callback"></param>
-    public void RotateTo(Vector3 target)
+    public void RotateToTarget(Vector3 target)
     {
         direction = target - body.position;
         direction.y = body.forward.y;

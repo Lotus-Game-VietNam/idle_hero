@@ -1,5 +1,12 @@
 
 
+public enum SceneName
+{
+    Farm,
+    Boss
+}
+
+
 public enum CharacterType
 {
     Hero,

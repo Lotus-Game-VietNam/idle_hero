@@ -45,9 +45,12 @@ namespace Lotus.CoreFramework
             if (currentState == state)
                 return;
 
-            if (Utilities.IsMovement(state))
-                SetBlend(state, AnimationStates.Idle, "Speed");
-            else
+            //if (Utilities.IsMovement(state))
+            //    SetBlend(state, AnimationStates.Idle, "Speed");
+            //else
+            //    Ator.SetFloat("Speed", 0);
+
+            if (!Utilities.IsMovement(state))
                 Ator.SetFloat("Speed", 0);
 
             if (Utilities.IsAttack(state))

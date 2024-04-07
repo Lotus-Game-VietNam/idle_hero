@@ -27,14 +27,18 @@ public class UIFarmManager : MonoUI
 
     private void Start()
     {
-        InitEvents();
         InitText();
     }
 
-    private void InitEvents()
+    private void OnEnable()
     {
         this.AddListener(EventName.BuyItem, BuyItem);
         this.AddListener<bool>(EventName.ShowShellValue, ShowSellValue);
+    }
+
+    private void OnDisable()
+    {
+        this.RemoveSubscribers();
     }
 
     private void InitText()

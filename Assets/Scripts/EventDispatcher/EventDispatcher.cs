@@ -238,6 +238,18 @@ namespace Lotus.CoreFramework
             if (m_Events.ContainsKey(eventName))
                 m_Events.Remove(eventName);
         }
+
+        public static void RemoveSubscribers(string subscribers)
+        {
+            foreach (var eventName in m_Events)
+            {
+                foreach (var subs in eventName.Value)
+                {
+                    if (subs.Equals(subscribers))
+                        m_Events[eventName.Key].Remove(subs.Key);
+                }
+            }
+        }
         #endregion
     }
 }

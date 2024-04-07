@@ -20,9 +20,8 @@ public class MonsterBrain : CharacterBrain
         //this.DequeueEffect("MonsterDie").SetPosition(center + (Vector3.up * (characterAttack.height / 2))).Show();
     }
 
-    protected override void OnUpdate()
+    protected override void OnFarm()
     {
-        base.OnUpdate();
         FollowTarget();
         Shot(AttackType.NormalAttack);
     }

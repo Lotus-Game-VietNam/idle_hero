@@ -29,20 +29,6 @@ public class FarmManager : MonoBehaviour
 
     private void Awake()
     {
-        InitEvents();
-        InitializedCharacter();
-    }
-
-    private void InitEvents()
-    {
-        this.AddListener(EventName.RefreshMonsterTarget, RefreshMonsterTarget);
-        this.AddListener<CharacterBrain>(EventName.OnCharacterDead, OnCharacterDead);
-        this.AddListener<bool>(EventName.X2Income, X2Income);
-        this.AddListener<bool>(EventName.AutoTap, AutoTap);
-    }
-
-    private void InitializedCharacter()
-    {
         hero = SpawnHero();
         monsterFarm = SpawnMonster();
 
@@ -51,6 +37,19 @@ public class FarmManager : MonoBehaviour
         Transform point = spawnPoint[UnityEngine.Random.Range(1, spawnPoint.Length)];
         monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type))
             .SetPosition(point.position).SetRotation(point.rotation).Show();
+    }
+
+    private void OnEnable()
+    {
+        this.AddListener(EventName.RefreshMonsterTarget, RefreshMonsterTarget);
+        this.AddListener<CharacterBrain>(EventName.OnCharacterDead, OnCharacterDead);
+        this.AddListener<bool>(EventName.X2Income, X2Income);
+        this.AddListener<bool>(EventName.AutoTap, AutoTap);
+    }
+
+    private void OnDisable()
+    {
+        this.RemoveSubscribers();
     }
 
     private CharacterBrain SpawnHero()

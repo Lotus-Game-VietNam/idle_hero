@@ -56,16 +56,25 @@ public class InventoryManager : MonoBehaviour
 
 
 
+    #region Constructor
+
     private void Awake()
     {
-        InitEvents();
         GenerateGrid();
         GenerateItems();
         GenerateCanMergeVfs();
     }
 
+    private void OnEnable()
+    {
+        this.AddListener(EventName.BuyItem, BuyItem);
+    }
 
-    #region Constructor
+    private void OnDisable()
+    {
+        this.RemoveSubscribers();
+    }
+
 
     private void GenerateGrid()
     {
@@ -102,10 +111,6 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void InitEvents()
-    {
-        this.AddListener(EventName.BuyItem, BuyItem);
-    }
 
     #endregion
 

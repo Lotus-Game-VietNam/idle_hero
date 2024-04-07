@@ -148,6 +148,8 @@ namespace Lotus.CoreFramework
 
         public static void RemoveAllListener(this MonoBehaviour mono, EventName eventName) => EventDispatcher.RemoveAllListener(eventName.ToString());
 
+        public static void RemoveSubscribers(this MonoBehaviour mono) => EventDispatcher.RemoveSubscribers(mono.GetType().Name);
+
         #endregion
 
 
