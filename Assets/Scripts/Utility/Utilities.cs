@@ -54,12 +54,12 @@ namespace Lotus.CoreFramework
 
         public static AnimationStates Convert(this AttackType type) => (AnimationStates)((int)AnimationStates.NormalAttack + (int)type);
 
-        public static bool IsMovement(AnimationStates state)
+        public static bool IsMovement(this AnimationStates state)
         {
             return (int)state >= (int)AnimationStates.Idle && (int)state <= (int)AnimationStates.Run;
         }
 
-        public static bool IsAttack(AnimationStates state)
+        public static bool IsAttack(this AnimationStates state)
         {
             return (int)state >= (int)AnimationStates.NormalAttack && (int)state <= (int)AnimationStates.SkillThird;
         }

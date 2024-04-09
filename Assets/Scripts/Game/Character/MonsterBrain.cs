@@ -20,6 +20,17 @@ public class MonsterBrain : CharacterBrain
         //this.DequeueEffect("MonsterDie").SetPosition(center + (Vector3.up * (characterAttack.height / 2))).Show();
     }
 
+    protected override void Shot(AttackType type)
+    {
+        if (targetAttack != null && !targetAttack.characterStats.Alive)
+        {
+            animatorState.ChangeState(AnimationStates.Idle);
+            return;
+        }
+
+        base.Shot(type);
+    }
+
     protected override void OnFarm()
     {
         FollowTarget();

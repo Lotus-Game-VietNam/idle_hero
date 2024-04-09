@@ -32,13 +32,13 @@ public class BattleManager : MonoBehaviour
     private void Awake()
     {
         hero = SpawnHero();
-        //boss = SpawnMonster();
+        boss = SpawnMonster();
 
         hero.SetJoystick(joystick);
         hero.SetTargetAttack(boss).Initial(DataManager.HeroData).Show();
-        
-        //boss.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(boss.type))
-        //    .SetPosition(spawnPoint[0].position).SetRotation(spawnPoint[0].rotation).Show();
+
+        boss.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(boss.type))
+            .SetPosition(spawnPoint[1].position).SetRotation(spawnPoint[1].rotation).Show();
 
         topdownCamera.Follow = hero.animatorState.transform;
     }
@@ -61,8 +61,7 @@ public class BattleManager : MonoBehaviour
 
     private CharacterBrain SpawnMonster()
     {
-        int monsterIndex = UnityEngine.Random.Range(0, 100) % 2 == 0 ? 1 : 2;
-        string monsterName = $"Monster_{DataManager.WorldData.currentLevel}_{monsterIndex}";
+        string monsterName = $"Boss_{DataManager.WorldData.currentLevel}";
         return this.DequeueCharacter(monsterName);
     }
 

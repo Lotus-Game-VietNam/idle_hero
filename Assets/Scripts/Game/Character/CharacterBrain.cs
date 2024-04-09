@@ -60,6 +60,12 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
         characterStats.Initialized(data.GetAttributes());
         animatorState.Initialized();
         characterAttack.Initialized();
+        SetStarterValues();
+        
+    }
+
+    protected virtual void SetStarterValues()
+    {
         hasInitialized = true;
     }
 
@@ -94,6 +100,8 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     public bool onFollowTarget { get; private set; }
 
+    public virtual float finalDamage => characterStats.ATK;
+
     public virtual CharacterBrain targetAttack { get; private set; }
 
 
@@ -105,7 +113,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected virtual void OnShot(int type)
     {
-        characterAttack.Shot((AttackType)type, new ProjectileData(GetProjectileName((AttackType)type), characterStats.ATK, this, targetAttack));
+        characterAttack.Shot((AttackType)type, new ProjectileData(GetProjectileName((AttackType)type), finalDamage, this, targetAttack));
     }
 
     protected virtual void OnShotFinish()
@@ -135,7 +143,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
         onFollowTarget = !characterAttack.OnAttackRange(targetAttack.center);
 
-        if (!onFollowTarget) return;
+        if (!onFollowTarget || animatorState.currentState.IsAttack()) return;
 
         animatorState.ChangeState(AnimationStates.Run);
         characterMovement.MoveToTarget(targetAttack.center, characterAttack.attackRange);
@@ -163,10 +171,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
         OnFarm();
     }
 
-    protected virtual void OnDead()
-    {
-
-    }
+    protected abstract void OnDead();
 
     protected virtual void OnUpdate()
     {
@@ -183,6 +188,12 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
         if (!characterStats.Alive)
             return;
+
+        if (animatorState.currentState == AnimationStates.TakeDamage)
+            return;
+
+        if (animatorState.currentState.IsAttack() && !characterMovement.crtRotating)
+            characterMovement.RotateToTarget(targetAttack.center);
 
         OnUpdate();
     }

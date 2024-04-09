@@ -40,20 +40,33 @@ namespace Lotus.CoreFramework
         }
 
 
+        public void OnStateEnter(AnimationEvent state)
+        {
+            if (currentState == (AnimationStates)state.intParameter)
+                return;
+
+            if (!string.IsNullOrEmpty(currentTrigger))
+                Ator.ResetTrigger(currentTrigger);
+
+            currentTrigger = state.stringParameter;
+            currentState = (AnimationStates)state.intParameter;
+        }
+
+
         public void ChangeState(AnimationStates state)
         {
             if (currentState == state)
                 return;
 
-            //if (Utilities.IsMovement(state))
-            //    SetBlend(state, AnimationStates.Idle, "Speed");
-            //else
-            //    Ator.SetFloat("Speed", 0);
-
-            if (!Utilities.IsMovement(state))
+            if (Utilities.IsMovement(state))
+                SetBlend(state, AnimationStates.Idle, "Speed");
+            else
                 Ator.SetFloat("Speed", 0);
 
-            if (Utilities.IsAttack(state))
+            if (!state.IsMovement())
+                Ator.SetFloat("Speed", 0);
+
+            if (state.IsAttack())
                 SetBlend(state, AnimationStates.NormalAttack, "AttackType");
 
             string param = GetParam(state);

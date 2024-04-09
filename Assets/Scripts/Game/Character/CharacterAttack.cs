@@ -28,7 +28,6 @@ public class CharacterAttack : MonoBehaviour
     public virtual void Shot(AttackType type, ProjectileData projectileData)
     {
         this.DequeueProjectileVfx(projectileData.projectileName).Initial(projectileData).SetPosition(GetProjectilePoint(type)).Show();
-
     }
 
     private Vector3 GetProjectilePoint(AttackType type) => spawnProjectilePoint[(int)type].position;

@@ -78,14 +78,27 @@ public class HeroBrain : CharacterBrain
         if (joyStick.Direction != Vector2.zero)
             characterMovement.MoveToDirection(GetWorldSpaceDirection(joyStick.Direction));
 
-        blendSpeed = Mathf.Lerp(blendSpeed, joyStick.Direction.magnitude, 5f * Time.deltaTime);
+        blendSpeed = Mathf.Lerp(blendSpeed, joyStick.Direction == Vector2.zero ? 0 : 1, 5f * Time.deltaTime);
         animatorState.Ator.SetFloat("Speed", blendSpeed);
         characterMovement.SetMoveSpeed(blendSpeed);
+    }
+
+    public override void TakedDamage(float damage, CharacterBrain sender)
+    {
+        base.TakedDamage(damage, sender);
+
+        if (characterStats.Alive)
+            animatorState.ChangeState(AnimationStates.TakeDamage);
     }
 
     protected override void OnUpdate()
     {
         base.OnUpdate();
         Movement();
+    }
+
+    protected override void OnDead()
+    {
+        
     }
 }
