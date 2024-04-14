@@ -7,7 +7,7 @@ public class Boss1Brain : MonsterBrain
     private readonly float timesCD = 10f;
     private readonly int totalCountProjectileOnSkill = 3;
     private readonly float skillFireRate = 0.15f;
-    private readonly float normalAttackDelay = 0.5f;
+    private readonly float normalAttackDelay = 3f;
 
     private float skillDamage => characterStats.ATK * 2;
 
@@ -15,11 +15,7 @@ public class Boss1Brain : MonsterBrain
 
     private float countNormalAttack = 0f;
     private float countTimeSkill = 0f;
-
-
-
-
-    public override float finalDamage => animatorState.currentState == AnimationStates.NormalAttack ? base.finalDamage : skillDamage;
+    
 
 
     protected override void SetStarterValues()
@@ -33,6 +29,10 @@ public class Boss1Brain : MonsterBrain
         return "Boss_1_Projectile_1";
     }
 
+    protected override float GetFinalDamage(int attackType)
+    {
+        return attackType == 0 ? base.GetFinalDamage(attackType) : skillDamage;
+    }
 
     protected override void OnShot(int type)
     {
@@ -48,6 +48,7 @@ public class Boss1Brain : MonsterBrain
     {
         if (type == AttackType.NormalAttack && !NormalAttack())
             return;
+
         base.Shot(type);
     }
 

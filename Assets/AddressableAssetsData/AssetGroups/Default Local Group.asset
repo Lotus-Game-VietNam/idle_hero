@@ -367,13 +367,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 561370e5beaee3a4384606f3b01622c1
+  - m_GUID: 88a7663b33ad9b441abd02820bd61d2e
     m_Address: Assets/AddressableLocalAssets/Prefabs/Character/Boss_1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 239eb11f08e9d8b458eed9ef26d0699d
     m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Boss_1_Projectile_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97dbda4f26f0eae49ad0f524ce55e185
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Hero_Projectile_Skill_1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

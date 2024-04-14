@@ -20,6 +20,7 @@ public class BattleManager : MonoBehaviour
 
     [Title("Game UI")]
     [SerializeField] private Joystick joystick = null;
+    [SerializeField] private UI_SkillButton[] skillButtons = null;
 
 
 
@@ -35,6 +36,7 @@ public class BattleManager : MonoBehaviour
         boss = SpawnMonster();
 
         hero.SetJoystick(joystick);
+        hero.SetSkillButtons(skillButtons);
         hero.SetTargetAttack(boss).Initial(DataManager.HeroData).Show();
 
         boss.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(boss.type))

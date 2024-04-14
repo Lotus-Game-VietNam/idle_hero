@@ -66,6 +66,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected virtual void SetStarterValues()
     {
+        blendSpeed = 0f;
         hasInitialized = true;
     }
 
@@ -91,6 +92,8 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
     }
 
     public virtual void SetJoystick(Joystick joystick) { }
+
+    public virtual void SetSkillButtons(UI_SkillButton[] skillButtons) { }
     #endregion
 
 
@@ -98,11 +101,14 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
     #region Attack
     public Vector3 center => transform.position;
 
-    public bool onFollowTarget { get; private set; }
-
-    public virtual float finalDamage => characterStats.ATK;
+    public bool onFollowTarget { get; protected set; }
 
     public virtual CharacterBrain targetAttack { get; private set; }
+
+    protected float blendSpeed = 0f;
+
+
+    protected virtual float GetFinalDamage(int attackType) => characterStats.ATK;
 
 
     public virtual void TakedDamage(float damage, CharacterBrain sender)
@@ -113,7 +119,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected virtual void OnShot(int type)
     {
-        characterAttack.Shot((AttackType)type, new ProjectileData(GetProjectileName((AttackType)type), finalDamage, this, targetAttack));
+        characterAttack.Shot((AttackType)type, new ProjectileData(GetProjectileName((AttackType)type), GetFinalDamage(type), this, targetAttack));
     }
 
     protected virtual void OnShotFinish()
@@ -210,6 +216,13 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
             return true;
         }
         return false;
+    }
+
+    protected virtual void SetBlendSpeed(float speed)
+    {
+        blendSpeed = Mathf.Lerp(blendSpeed, speed, 5f * Time.deltaTime);
+        animatorState.Ator.SetFloat("Speed", blendSpeed);
+        characterMovement.SetMoveSpeed(blendSpeed);
     }
 
     protected abstract string GetProjectileName(AttackType type);

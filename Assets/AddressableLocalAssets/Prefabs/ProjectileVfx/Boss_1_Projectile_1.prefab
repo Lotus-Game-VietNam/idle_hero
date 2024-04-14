@@ -49136,4 +49136,4 @@ MonoBehaviour:
   muzzleFx: {fileID: 4851727369856047292}
   hitFx: {fileID: 7252346485022396960}
   hideAffterTime: 4
-  moveSpeed: 1200
+  moveSpeed: 600

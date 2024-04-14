@@ -2,6 +2,7 @@
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 [RequireComponent(typeof(Rigidbody))]
@@ -37,6 +38,7 @@ public class ProjectileVfx : IPool<ProjectileData>
     private void Awake()
     {
         body.useGravity = false;
+        moveSpeed *= (SceneName)SceneManager.GetActiveScene().buildIndex == SceneName.Farm ? 1 : 2;
     }
 
     protected override void Initialized(ProjectileData data)

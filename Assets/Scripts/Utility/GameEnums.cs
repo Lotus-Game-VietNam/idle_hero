@@ -70,5 +70,6 @@ public enum EventName
     AutoTap,
     ShowShellValue,
     ChangeCostume,
-    RefreshMonsterTarget
+    RefreshMonsterTarget,
+    OnTriggerSkill
 }

@@ -31,9 +31,36 @@ public class MonsterBrain : CharacterBrain
         base.Shot(type);
     }
 
+    protected override void FollowTarget()
+    {
+        if (TargetIsNull()) return;
+
+        if (!targetAttack.characterStats.Alive || !characterStats.Alive) return;
+
+        onFollowTarget = !characterAttack.OnAttackRange(targetAttack.center);
+
+        if (!onFollowTarget || animatorState.currentState.IsAttack())
+        {
+            SetBlendSpeed(0);
+            return;
+        } 
+
+        //animatorState.ChangeState(AnimationStates.Run);
+        characterMovement.MoveToTarget(targetAttack.center, characterAttack.attackRange);
+
+        SetBlendSpeed(1);
+    }
+
     protected override void OnFarm()
     {
         FollowTarget();
         Shot(AttackType.NormalAttack);
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+        if (animatorState.currentState != AnimationStates.Run)
+            blendSpeed = 0f;
     }
 }

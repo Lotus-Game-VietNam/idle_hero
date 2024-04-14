@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Lotus.CoreFramework;
+using System.Linq;
 using UnityEngine;
 
 public class HeroBrain : CharacterBrain
@@ -22,9 +23,18 @@ public class HeroBrain : CharacterBrain
     }
 
 
-    private float blendSpeed = 0f;
+    
 
     public Joystick joyStick { get; private set; }
+
+    public UI_SkillButton[] skillButtons { get; private set; }
+
+
+    private readonly float timeDelayNormalAttackToSkill = 10f;
+
+    private readonly float[] skillsDamage = new float[3] { 2.5f, 1, 2f };
+
+    private float countTimeDelayNormalAttack = 0f;
 
 
 
@@ -34,16 +44,27 @@ public class HeroBrain : CharacterBrain
         heroCostumes.Initialized();
     }
 
+    protected override void SetStarterValues()
+    {
+        base.SetStarterValues();
+        countTimeDelayNormalAttack = 0f;
+    }
+
     protected override void InitEvents()
     {
         base.InitEvents();
         this.AddListener<ItemType, int>(EventName.ChangeCostume, ChangeCostume);
+        this.AddListener<int>(EventName.OnTriggerSkill, OnTriggerSkill);
     }
 
     public override void SetJoystick(Joystick joystick) => this.joyStick = joystick;
 
+    public override void SetSkillButtons(UI_SkillButton[] skillButtons) => this.skillButtons = skillButtons;
 
-    protected override string GetProjectileName(AttackType type) => $"Hero_Projectile_{DataManager.HeroData.items[ItemType.Bow].itemLevel}";
+
+    protected override string GetProjectileName(AttackType type) => type == AttackType.NormalAttack ? $"Hero_Projectile_{DataManager.HeroData.items[ItemType.Bow].itemLevel}" : $"Hero_Projectile_Skill_{(int)type}";
+
+    protected override float GetFinalDamage(int attackType) => attackType == 0 ? base.GetFinalDamage(attackType) : characterStats.ATK * skillsDamage[attackType - 1];
 
     private void ChangeCostume(ItemType itemType, int itemLevel)
     {
@@ -72,15 +93,32 @@ public class HeroBrain : CharacterBrain
 
     private void Movement()
     {
-        if (currentScene != SceneName.Boss)
+        if (currentScene != SceneName.Boss || animatorState.currentState.IsAttack())
             return;
 
         if (joyStick.Direction != Vector2.zero)
             characterMovement.MoveToDirection(GetWorldSpaceDirection(joyStick.Direction));
 
-        blendSpeed = Mathf.Lerp(blendSpeed, joyStick.Direction == Vector2.zero ? 0 : 1, 5f * Time.deltaTime);
-        animatorState.Ator.SetFloat("Speed", blendSpeed);
-        characterMovement.SetMoveSpeed(blendSpeed);
+        SetBlendSpeed(joyStick.Direction == Vector2.zero ? 0 : 1);
+    }
+
+    private void NormalAttack()
+    {
+        if (joyStick.Direction != Vector2.zero || animatorState.currentState.IsAttack())
+        {
+            countTimeDelayNormalAttack = 0f;
+            return;
+        }
+
+        if (skillButtons.Any(b => !b.isCountingDown))
+        {
+            countTimeDelayNormalAttack += Time.deltaTime;
+            if (countTimeDelayNormalAttack >= timeDelayNormalAttackToSkill)
+                countTimeDelayNormalAttack = 0f;
+        }
+
+        if (countTimeDelayNormalAttack == 0)
+            Shot(AttackType.NormalAttack);
     }
 
     public override void TakedDamage(float damage, CharacterBrain sender)
@@ -91,10 +129,21 @@ public class HeroBrain : CharacterBrain
             animatorState.ChangeState(AnimationStates.TakeDamage);
     }
 
+    private void OnTriggerSkill(int skillIndex)
+    {
+        Shot((AttackType)skillIndex);
+    }
+
+    protected override void OnShot(int type)
+    {
+        base.OnShot(type);
+    }
+
     protected override void OnUpdate()
     {
         base.OnUpdate();
         Movement();
+        NormalAttack();
     }
 
     protected override void OnDead()
