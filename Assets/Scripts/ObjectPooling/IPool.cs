@@ -105,6 +105,18 @@ namespace Lotus.CoreFramework
             return this;
         }
 
+        public IPool<T> SetLocalPosition(Vector3 position)
+        {
+            transform.localPosition = position;
+            return this;
+        }
+
+        public IPool<T> SetLocalEulerAngle(Vector3 eulerAngle)
+        {
+            transform.localEulerAngles = eulerAngle;
+            return this;
+        }
+
         public IPool<T> ResetRectTransform()
         {
             if (rect == null) throw null;

@@ -113,6 +113,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     public virtual void TakedDamage(float damage, CharacterBrain sender)
     {
+        LogTool.LogEditorOnly($"Taked {damage} damage");
         characterStats.OnHealthChanged(-damage);
 
     }

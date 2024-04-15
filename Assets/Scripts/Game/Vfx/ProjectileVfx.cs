@@ -35,7 +35,7 @@ public class ProjectileVfx : IPool<ProjectileData>
 
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         body.useGravity = false;
         moveSpeed *= (SceneName)SceneManager.GetActiveScene().buildIndex == SceneName.Farm ? 1 : 2;
@@ -44,6 +44,12 @@ public class ProjectileVfx : IPool<ProjectileData>
     protected override void Initialized(ProjectileData data)
     {
         targetAttack = data.target.center + (Vector3.up * (data.target.characterAttack.height / 2));
+    }
+
+    public IPool<ProjectileData> SetTargetAttackPosition(Vector3 target)
+    {
+        targetAttack = target;
+        return this;
     }
 
     protected override void OnHide()
@@ -89,7 +95,7 @@ public class ProjectileVfx : IPool<ProjectileData>
     }
 
 
-    private void Explosition()
+    protected virtual void Explosition()
     {
         body.velocity = Vector3.zero;
         modelFx.gameObject.SetActive(false);
