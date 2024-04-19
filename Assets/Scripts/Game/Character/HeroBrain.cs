@@ -30,7 +30,7 @@ public class HeroBrain : CharacterBrain
     public UI_SkillButton[] skillButtons { get; private set; }
 
 
-    private readonly float timeDelayNormalAttackToSkill = 10f;
+    private readonly float timeDelayNormalAttackToSkill = 0.5f;
 
     private readonly float[] skillsDamage = new float[3] { 2.5f, 1, 2f };
 
@@ -93,7 +93,7 @@ public class HeroBrain : CharacterBrain
 
     private void Movement()
     {
-        if (currentScene != SceneName.Boss || animatorState.currentState.IsAttack())
+        if ((int)currentScene <= (int)SceneName.Farm || animatorState.currentState.IsAttack())
             return;
 
         if (joyStick.Direction != Vector2.zero)
@@ -131,7 +131,11 @@ public class HeroBrain : CharacterBrain
 
     private void OnTriggerSkill(int skillIndex)
     {
+        if (animatorState.currentState.IsAttack())
+            return;
+
         Shot((AttackType)skillIndex);
+        UI_SkillButton.OnTriggerSkillEvent?.Invoke(skillIndex);
     }
 
     protected override void OnShot(int type)

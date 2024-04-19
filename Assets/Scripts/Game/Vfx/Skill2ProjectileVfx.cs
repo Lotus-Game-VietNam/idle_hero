@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Skill2ProjectileVfx : ProjectileVfx
 {
-    private readonly int[] projectilesEulerAngle = new int[] { -5, 5, 0, 10, -10 };
+    private readonly int[] projectilesEulerAngle = new int[] { -7, 7, 0, 14, -14 };
 
 
     protected override void Awake()

@@ -7,7 +7,7 @@ public class Boss1Brain : MonsterBrain
     private readonly float timesCD = 10f;
     private readonly int totalCountProjectileOnSkill = 3;
     private readonly float skillFireRate = 0.15f;
-    private readonly float normalAttackDelay = 3f;
+    private readonly float normalAttackDelay = 4f;
 
     private float skillDamage => characterStats.ATK * 2;
 

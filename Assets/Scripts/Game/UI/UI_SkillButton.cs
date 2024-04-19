@@ -2,6 +2,7 @@ using DG.Tweening;
 using Lotus.CoreFramework;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UI_SkillButton : MonoUI
@@ -22,9 +23,12 @@ public class UI_SkillButton : MonoUI
     public Button button => this.TryGetComponent(ref _button);
 
 
+    public static UnityEvent<int> OnTriggerSkillEvent = new UnityEvent<int>();
+
 
     private void Awake()
     {
+        OnTriggerSkillEvent.AddListener(OnTriggerSkill);
         button.onClick.AddListener(OnCountingDown);
         dimed.enabled = false;
     }
@@ -36,12 +40,18 @@ public class UI_SkillButton : MonoUI
             return;
 
         this.SendMessage(EventName.OnTriggerSkill, "HeroBrain", skillIndex);
+    }
+
+    private void OnTriggerSkill(int skillIndex)
+    {
+        if (this.skillIndex != skillIndex)
+            return;
 
         isCountingDown = true;
         dimed.fillAmount = 1;
         dimed.enabled = true;
 
-        dimed.DOFillAmount(0, timesCD).OnComplete(() => 
+        dimed.DOFillAmount(0, timesCD).OnComplete(() =>
         {
             dimed.enabled = false;
             isCountingDown = false;
