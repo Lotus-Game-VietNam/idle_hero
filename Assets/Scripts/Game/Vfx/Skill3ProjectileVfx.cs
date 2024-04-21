@@ -5,14 +5,30 @@ using UnityEngine;
 
 public class Skill3ProjectileVfx : ProjectileVfx
 {
+    public CapsuleCollider capsuleCollider = null;
     public ParticleSystem aoeFx = null;
     public List<BezierProjectile> projectiles = new List<BezierProjectile>();
 
+
+    private List<CharacterBrain> enemies = new List<CharacterBrain>();
 
 
     protected override void OnShow()
     {
         Firing();
+    }
+
+    protected override void OnHide()
+    {
+        base.OnHide();
+        foreach (var enemy in enemies) 
+        { 
+            if (enemy == null || !enemy.characterStats.Alive)
+                continue;
+            enemy.characterMovement.SetMoveSpeed(1f);
+            enemy.animatorState.Ator.speed = 1f;
+        }
+        enemies.Clear();
     }
 
     protected override void Firing()
@@ -62,6 +78,26 @@ public class Skill3ProjectileVfx : ProjectileVfx
 
     protected override void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Enemy"))
+        {
+            CharacterBrain enemy = other.GetComponentInParent<CharacterBrain>();
+            enemy.characterMovement.SetMoveSpeed(0.5f);
+            enemy.animatorState.Ator.speed = 0.5f;
+            if (!enemies.Contains(enemy))
+            {
+                enemies.Add(enemy);
+                enemy.TakedDamage(data.damage, data.sender);
+            }
+        }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            CharacterBrain enemy = other.GetComponentInParent<CharacterBrain>();
+            enemy.characterMovement.SetMoveSpeed(1f);
+            enemy.animatorState.Ator.speed = 1f;
+        }
     }
 }
