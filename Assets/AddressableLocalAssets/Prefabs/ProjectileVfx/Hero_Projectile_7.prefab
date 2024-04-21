@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3401245238615548417}
   m_Layer: 3
   m_Name: MuzzleFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4914,7 +4914,7 @@ GameObject:
   - component: {fileID: 3614041400709880595}
   m_Layer: 3
   m_Name: Hero_Projectile_7
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4994,7 +4994,7 @@ GameObject:
   - component: {fileID: 6118500595654147092}
   m_Layer: 3
   m_Name: HitFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9896,7 +9896,7 @@ GameObject:
   - component: {fileID: 2534009842721891481}
   m_Layer: 3
   m_Name: Dirt
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14797,7 +14797,7 @@ GameObject:
   - component: {fileID: 4628234363238028555}
   m_Layer: 3
   m_Name: ModelFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19721,7 +19721,7 @@ GameObject:
   - component: {fileID: 5811016959919917207}
   m_Layer: 3
   m_Name: SlimeSparks
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24563,7 +24563,7 @@ GameObject:
   - component: {fileID: 7070144375881772996}
   m_Layer: 3
   m_Name: Smoke
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29405,7 +29405,7 @@ GameObject:
   - component: {fileID: 9182776840011285957}
   m_Layer: 3
   m_Name: Smoke
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34305,7 +34305,7 @@ GameObject:
   - component: {fileID: 6500863556474232689}
   m_Layer: 3
   m_Name: FlashSparks
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

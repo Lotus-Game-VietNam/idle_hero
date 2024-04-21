@@ -4868,7 +4868,7 @@ GameObject:
   - component: {fileID: 409499876111040137}
   m_Layer: 3
   m_Name: HitFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14627,7 +14627,7 @@ GameObject:
   - component: {fileID: 442973944258368074}
   m_Layer: 3
   m_Name: MuzzleFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19485,7 +19485,7 @@ GameObject:
   - component: {fileID: 7276872621966474354}
   m_Layer: 3
   m_Name: ModelFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29253,7 +29253,7 @@ GameObject:
   - component: {fileID: 366396703840451516}
   m_Layer: 3
   m_Name: Hero_Projectile_1
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

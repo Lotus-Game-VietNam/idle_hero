@@ -32,9 +32,15 @@ public class HeroBrain : CharacterBrain
 
     private readonly float timeDelayNormalAttackToSkill = 0.5f;
 
+    private readonly float timeOnSkill = 1f;
+
     private readonly float[] skillsDamage = new float[3] { 2.5f, 1, 2f };
 
     private float countTimeDelayNormalAttack = 0f;
+
+    private float countTimeOnSkill = 0f;
+
+    private bool onSkill = false;
 
 
 
@@ -48,6 +54,8 @@ public class HeroBrain : CharacterBrain
     {
         base.SetStarterValues();
         countTimeDelayNormalAttack = 0f;
+        countTimeOnSkill = 0f;
+        onSkill = false;
     }
 
     protected override void InitEvents()
@@ -93,7 +101,7 @@ public class HeroBrain : CharacterBrain
 
     private void Movement()
     {
-        if ((int)currentScene <= (int)SceneName.Farm || animatorState.currentState.IsAttack())
+        if ((int)currentScene <= (int)SceneName.Farm || animatorState.currentState.IsAttack() || onSkill)
             return;
 
         if (joyStick.Direction != Vector2.zero)
@@ -104,7 +112,7 @@ public class HeroBrain : CharacterBrain
 
     private void NormalAttack()
     {
-        if (joyStick.Direction != Vector2.zero || animatorState.currentState.IsAttack())
+        if (onSkill || joyStick.Direction != Vector2.zero || animatorState.currentState.IsAttack())
         {
             countTimeDelayNormalAttack = 0f;
             return;
@@ -131,11 +139,27 @@ public class HeroBrain : CharacterBrain
 
     private void OnTriggerSkill(int skillIndex)
     {
-        if (animatorState.currentState.IsAttack())
+        if (animatorState.currentState == AnimationStates.TakeDamage)
             return;
 
+        onSkill = true;
+        animatorState.ChangeState(AnimationStates.Idle);
+        characterMovement.StopRotateCrt();
         Shot((AttackType)skillIndex);
         UI_SkillButton.OnTriggerSkillEvent?.Invoke(skillIndex);
+    }
+
+    private void OnSkill()
+    {
+        if (!onSkill)
+            return;
+
+        countTimeOnSkill += Time.deltaTime;
+        if (countTimeOnSkill >= timeOnSkill)
+        {
+            countTimeOnSkill = 0f;
+            onSkill = false;
+        }
     }
 
     protected override void OnShot(int type)
@@ -148,6 +172,7 @@ public class HeroBrain : CharacterBrain
         base.OnUpdate();
         Movement();
         NormalAttack();
+        OnSkill();
     }
 
     protected override void OnDead()

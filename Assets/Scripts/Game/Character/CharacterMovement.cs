@@ -138,6 +138,7 @@ public class CharacterMovement : MonoBehaviour
             StopCoroutine(rotateCrt);
             rotateCrt = null;
         }
+        crtRotating = false;
     }
 
     public float DistanceToTarget(Vector3 target) => Vector3.Distance(transform.position, new Vector3(target.x, transform.position.y, target.z));

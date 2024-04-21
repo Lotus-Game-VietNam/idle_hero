@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9104830664278436266}
   m_Layer: 3
   m_Name: ModelFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4936,7 +4936,7 @@ GameObject:
   - component: {fileID: 8131406380388876553}
   m_Layer: 3
   m_Name: SubEnergy
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9787,7 +9787,7 @@ GameObject:
   - component: {fileID: 667721660383780269}
   m_Layer: 3
   m_Name: Hero_Projectile_11
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9866,7 +9866,7 @@ GameObject:
   - component: {fileID: 1307667294513721727}
   m_Layer: 3
   m_Name: SparksUp
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14766,7 +14766,7 @@ GameObject:
   - component: {fileID: 374538597519926654}
   m_Layer: 3
   m_Name: Smoke
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19666,7 +19666,7 @@ GameObject:
   - component: {fileID: 2798931393894624617}
   m_Layer: 3
   m_Name: SparksDonw
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24566,7 +24566,7 @@ GameObject:
   - component: {fileID: 6648513145855289429}
   m_Layer: 3
   m_Name: Lightning
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29466,7 +29466,7 @@ GameObject:
   - component: {fileID: 4364138507382486020}
   m_Layer: 3
   m_Name: HitFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

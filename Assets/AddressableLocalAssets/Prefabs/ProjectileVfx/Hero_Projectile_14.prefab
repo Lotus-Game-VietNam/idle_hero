@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7551329588857055246}
   - component: {fileID: 5537182124179218041}
   - component: {fileID: 3824841981506664432}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SparksExplosion
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4911,9 +4911,9 @@ GameObject:
   - component: {fileID: 25753830357624134}
   - component: {fileID: 2351042483400373031}
   - component: {fileID: 8149672803970582284}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Projectile_14
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4991,9 +4991,9 @@ GameObject:
   - component: {fileID: 1091104254960944381}
   - component: {fileID: 1418822289912331208}
   - component: {fileID: 5883220487056402873}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HitFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9899,9 +9899,9 @@ GameObject:
   - component: {fileID: 3258574672438695658}
   - component: {fileID: 4021767827428749714}
   - component: {fileID: 715138115331196354}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14799,9 +14799,9 @@ GameObject:
   - component: {fileID: 8649339073369651707}
   - component: {fileID: 3382399021454644892}
   - component: {fileID: 9212972883938747751}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Darkness
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19699,9 +19699,9 @@ GameObject:
   - component: {fileID: 3430267202748029501}
   - component: {fileID: 2688779565563944601}
   - component: {fileID: 2137265716346769314}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Core
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24601,9 +24601,9 @@ GameObject:
   - component: {fileID: 7556379942948448926}
   - component: {fileID: 4857297522875459610}
   - component: {fileID: 3315796650029141240}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ModelFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29525,9 +29525,9 @@ GameObject:
   - component: {fileID: 3481262462871286832}
   - component: {fileID: 4191834916552672657}
   - component: {fileID: 8781253331672630750}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Halo
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34425,9 +34425,9 @@ GameObject:
   - component: {fileID: 1655365684548899500}
   - component: {fileID: 8634813522450825015}
   - component: {fileID: 2134317586974184036}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MuzzleFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39327,9 +39327,9 @@ GameObject:
   - component: {fileID: 4082626755560724923}
   - component: {fileID: 4188871982031376674}
   - component: {fileID: 4141558247197945309}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trails
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44227,9 +44227,9 @@ GameObject:
   - component: {fileID: 5862329865041790744}
   - component: {fileID: 6493916287836406773}
   - component: {fileID: 2963446073449617083}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flare
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49127,9 +49127,9 @@ GameObject:
   - component: {fileID: 6199852780503960957}
   - component: {fileID: 8433039626501764863}
   - component: {fileID: 3929977498535208447}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trails
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54027,9 +54027,9 @@ GameObject:
   - component: {fileID: 7038714879833117730}
   - component: {fileID: 844683981542896071}
   - component: {fileID: 1019998107236582333}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Waves
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58927,9 +58927,9 @@ GameObject:
   - component: {fileID: 4477305535810708156}
   - component: {fileID: 4613305265908121845}
   - component: {fileID: 4954486657246229435}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flash
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63827,9 +63827,9 @@ GameObject:
   - component: {fileID: 6361603486721380347}
   - component: {fileID: 3030252395929799124}
   - component: {fileID: 6367623952698708248}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SparksBlack
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68745,9 +68745,9 @@ GameObject:
   - component: {fileID: 2439790906162688650}
   - component: {fileID: 6987533629098758305}
   - component: {fileID: 1487623628586415026}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sparks
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73654,9 +73654,9 @@ GameObject:
   - component: {fileID: 7338480456428576826}
   - component: {fileID: 5691561157832967162}
   - component: {fileID: 2282517308397130009}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flash
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

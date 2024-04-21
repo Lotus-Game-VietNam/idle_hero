@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8474207167565516646}
   - component: {fileID: 3603423736786364628}
   - component: {fileID: 6382761605420633943}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero_Projectile_Skill_2
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

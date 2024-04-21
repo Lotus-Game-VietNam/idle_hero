@@ -1,13 +1,11 @@
 ﻿using Lotus.CoreFramework;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Skill3ProjectileVfx : ProjectileVfx
 {
-    
-
+    public ParticleSystem aoeFx = null;
     public List<BezierProjectile> projectiles = new List<BezierProjectile>();
 
 
@@ -38,6 +36,12 @@ public class Skill3ProjectileVfx : ProjectileVfx
 
     private IEnumerator IEFire()
     {
+        projectiles[0].OnArried = () => 
+        {
+            aoeFx.transform.position = data.target.center + (Vector3.up * 0.1f);
+            aoeFx.PlayVfx();
+        };
+
         foreach (BezierProjectile projectile in projectiles)
         {
             float distanceTotarget = Vector3.Distance(transform.position, targetAttack);

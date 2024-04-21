@@ -104,7 +104,7 @@ public class ProjectileVfx : IPool<ProjectileData>
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other == data.sender.characterAttack.capsuleCollider)
+        if (other == data.sender.characterAttack.capsuleCollider || other.CompareTag("Projectile"))
             return;
 
         Explosition();

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7030717916475925536}
   m_Layer: 3
   m_Name: Sparks
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4914,7 +4914,7 @@ GameObject:
   - component: {fileID: 3189299433843086726}
   m_Layer: 3
   m_Name: ModelFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9836,7 +9836,7 @@ GameObject:
   - component: {fileID: 9130020601211185243}
   m_Layer: 3
   m_Name: Debris
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14736,7 +14736,7 @@ GameObject:
   - component: {fileID: 489862488146714763}
   m_Layer: 3
   m_Name: Flash
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19636,7 +19636,7 @@ GameObject:
   - component: {fileID: 4006456910069657098}
   m_Layer: 3
   m_Name: Hit 4
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24550,7 +24550,7 @@ GameObject:
   - component: {fileID: 4140733473906507272}
   m_Layer: 3
   m_Name: MuzzleFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29461,7 +29461,7 @@ GameObject:
   - component: {fileID: 7776395697910328193}
   m_Layer: 3
   m_Name: ShockWave
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34361,7 +34361,7 @@ GameObject:
   - component: {fileID: 4482293301669253167}
   m_Layer: 3
   m_Name: MuzzleFlash
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39261,7 +39261,7 @@ GameObject:
   - component: {fileID: 2311169776503724725}
   m_Layer: 3
   m_Name: Shockwave
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44161,7 +44161,7 @@ GameObject:
   - component: {fileID: 4908936112721197166}
   m_Layer: 3
   m_Name: Flare
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49070,7 +49070,7 @@ GameObject:
   - component: {fileID: 6321446365524753588}
   m_Layer: 3
   m_Name: Hero_Projectile_2
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

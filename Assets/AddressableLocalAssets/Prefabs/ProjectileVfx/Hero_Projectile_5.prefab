@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8344693692620728235}
   m_Layer: 3
   m_Name: ModelFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4937,7 +4937,7 @@ GameObject:
   - component: {fileID: 3550102278701584181}
   m_Layer: 3
   m_Name: HitFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9840,7 +9840,7 @@ GameObject:
   - component: {fileID: 3399301342112680083}
   m_Layer: 3
   m_Name: Derbis
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14740,7 +14740,7 @@ GameObject:
   - component: {fileID: 5834654042900240111}
   m_Layer: 3
   m_Name: SubSparks
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19582,7 +19582,7 @@ GameObject:
   - component: {fileID: 6339891803955959329}
   m_Layer: 3
   m_Name: Sparks
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24491,7 +24491,7 @@ GameObject:
   - component: {fileID: 662856579373863831}
   m_Layer: 3
   m_Name: Hero_Projectile_5
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24571,7 +24571,7 @@ GameObject:
   - component: {fileID: 745531675619963280}
   m_Layer: 3
   m_Name: SubSmoke
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29413,7 +29413,7 @@ GameObject:
   - component: {fileID: 989460700375120837}
   m_Layer: 3
   m_Name: MuzzleFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34314,7 +34314,7 @@ GameObject:
   - component: {fileID: 8792542107607364498}
   m_Layer: 3
   m_Name: Sparks
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39223,7 +39223,7 @@ GameObject:
   - component: {fileID: 7711964531279393063}
   m_Layer: 3
   m_Name: BigSparks
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

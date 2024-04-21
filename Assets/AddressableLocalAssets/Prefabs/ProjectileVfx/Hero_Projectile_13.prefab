@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3804933136261441141}
   m_Layer: 3
   m_Name: Smoke
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4855,7 +4855,7 @@ GameObject:
   - component: {fileID: 7557994487387965731}
   m_Layer: 3
   m_Name: Glow
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9697,7 +9697,7 @@ GameObject:
   - component: {fileID: 2824834190086625929}
   m_Layer: 3
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14597,7 +14597,7 @@ GameObject:
   - component: {fileID: 4273073528723301723}
   m_Layer: 3
   m_Name: MuzzleFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19508,7 +19508,7 @@ GameObject:
   - component: {fileID: 562554530697586208}
   m_Layer: 3
   m_Name: Shockwave
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24408,7 +24408,7 @@ GameObject:
   - component: {fileID: 7423427411424533629}
   m_Layer: 3
   m_Name: Flash
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29308,7 +29308,7 @@ GameObject:
   - component: {fileID: 7971206101979642915}
   m_Layer: 3
   m_Name: Smoke
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34208,7 +34208,7 @@ GameObject:
   - component: {fileID: 2594225204486288562}
   m_Layer: 3
   m_Name: GlowBlack
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39126,7 +39126,7 @@ GameObject:
   - component: {fileID: 7818756746309199471}
   m_Layer: 3
   m_Name: SparksLong
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44027,7 +44027,7 @@ GameObject:
   - component: {fileID: 2363441275995794345}
   m_Layer: 3
   m_Name: ModelFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48970,7 +48970,7 @@ GameObject:
   - component: {fileID: 5596049524862330203}
   m_Layer: 3
   m_Name: Circles
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53830,7 +53830,7 @@ GameObject:
   - component: {fileID: 1505052783529622186}
   m_Layer: 3
   m_Name: Glow
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58748,7 +58748,7 @@ GameObject:
   - component: {fileID: 4030312930390716965}
   m_Layer: 3
   m_Name: Flash
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63648,7 +63648,7 @@ GameObject:
   - component: {fileID: 1592563283948091504}
   m_Layer: 3
   m_Name: HitFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68554,7 +68554,7 @@ GameObject:
   - component: {fileID: 8414593922533319152}
   m_Layer: 3
   m_Name: Hero_Projectile_13
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

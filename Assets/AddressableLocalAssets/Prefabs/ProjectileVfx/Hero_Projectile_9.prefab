@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6099202100219997648}
   m_Layer: 3
   m_Name: ShockWave
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4859,7 +4859,7 @@ GameObject:
   - component: {fileID: 6282137074499792844}
   m_Layer: 3
   m_Name: MuzzleFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9716,7 +9716,7 @@ GameObject:
   - component: {fileID: 8783094229263963789}
   m_Layer: 3
   m_Name: BigSparks
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14572,7 +14572,7 @@ GameObject:
   - component: {fileID: 2558501801327395548}
   m_Layer: 3
   m_Name: ModelFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19522,7 +19522,7 @@ GameObject:
   - component: {fileID: 8504235239690814804}
   m_Layer: 3
   m_Name: BigSparks
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24377,7 +24377,7 @@ GameObject:
   - component: {fileID: 7681436037817754623}
   m_Layer: 3
   m_Name: ShockWave
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29223,7 +29223,7 @@ GameObject:
   - component: {fileID: 8835830654477102789}
   m_Layer: 3
   m_Name: BigRombsExp
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34078,7 +34078,7 @@ GameObject:
   - component: {fileID: 4987608018135542690}
   m_Layer: 3
   m_Name: HitFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38936,7 +38936,7 @@ GameObject:
   - component: {fileID: 819198877326038295}
   m_Layer: 3
   m_Name: SubRombs
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43778,7 +43778,7 @@ GameObject:
   - component: {fileID: 426712690385774992}
   m_Layer: 3
   m_Name: Hero_Projectile_9
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

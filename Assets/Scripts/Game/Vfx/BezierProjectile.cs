@@ -1,10 +1,15 @@
 using Lotus.CoreFramework;
+using System;
 using UnityEngine;
 
 public class BezierProjectile : MonoBehaviour
 {
-    public float duration = 1f; 
+    public ParticleSystem modelFx;
+    public ParticleSystem hitFx;
+    public float duration = 1f;
 
+
+    public Action OnArried = null;
 
     private float time = 0f;
 
@@ -22,19 +27,25 @@ public class BezierProjectile : MonoBehaviour
 
         time = 0;
         transform.localPosition = transform.localEulerAngles = Vector3.zero;
-        gameObject.SetActive(true);
+        modelFx.PlayVfx();
     }
 
 
     private void Update()
     {
+        if (time >= 1)
+            return;
+
         time += Time.deltaTime / duration;
         Vector3 direction = Extensions.GetQuadBezierPoint(p0, p1, p2, p3, time);
         transform.position = direction;
         transform.rotation = Quaternion.LookRotation(Extensions.GetBezierFirstDerivative(p0, p1, p2, p3, time));
-        //transform.LookAt(direction);
 
         if (time >= 1)
-            gameObject.SetActive(false);
+        {
+            modelFx.StopVfx();
+            hitFx.PlayVfx();
+            OnArried?.Invoke();
+        }
     }
 }

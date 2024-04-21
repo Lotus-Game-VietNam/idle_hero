@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 513395848032012772}
   m_Layer: 3
   m_Name: Hero_Projectile_12
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5206482665705371861}
   m_Layer: 3
   m_Name: ModelFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5038,7 +5038,7 @@ GameObject:
   - component: {fileID: 7497457554187212260}
   m_Layer: 3
   m_Name: SemicirclesDark
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9938,7 +9938,7 @@ GameObject:
   - component: {fileID: 3067112720114569659}
   m_Layer: 3
   m_Name: Shockwave
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14838,7 +14838,7 @@ GameObject:
   - component: {fileID: 3983683137531622483}
   m_Layer: 3
   m_Name: SparksDark
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19689,7 +19689,7 @@ GameObject:
   - component: {fileID: 1331722084965800807}
   m_Layer: 3
   m_Name: MuzzleFlash
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24589,7 +24589,7 @@ GameObject:
   - component: {fileID: 6866425026021686712}
   m_Layer: 3
   m_Name: SparksLight
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29498,7 +29498,7 @@ GameObject:
   - component: {fileID: 7550351827594547283}
   m_Layer: 3
   m_Name: MuzzleFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34410,7 +34410,7 @@ GameObject:
   - component: {fileID: 6828035408707405870}
   m_Layer: 3
   m_Name: Sparks
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39319,7 +39319,7 @@ GameObject:
   - component: {fileID: 6351512632051495120}
   m_Layer: 3
   m_Name: SemicirclesLight
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44161,7 +44161,7 @@ GameObject:
   - component: {fileID: 428237937153380193}
   m_Layer: 3
   m_Name: SemicirclesDark
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49003,7 +49003,7 @@ GameObject:
   - component: {fileID: 1745154284483215251}
   m_Layer: 3
   m_Name: SemicirclesLight
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53903,7 +53903,7 @@ GameObject:
   - component: {fileID: 8136836479799830962}
   m_Layer: 3
   m_Name: SparksLight
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58754,7 +58754,7 @@ GameObject:
   - component: {fileID: 8328344763810711790}
   m_Layer: 3
   m_Name: SparksDark
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63663,7 +63663,7 @@ GameObject:
   - component: {fileID: 5795525634098085675}
   m_Layer: 3
   m_Name: HitFx
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
