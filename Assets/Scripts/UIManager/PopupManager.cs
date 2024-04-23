@@ -47,9 +47,17 @@ namespace Lotus.CoreFramework
                 popup = popups[popupName][0];
 
             if (popup == null)
-                popup = UIPopup.Get(popupName).GetComponent<PopupBase>();
+            {
+                UIPopup _popup = UIPopup.Get(popupName);
+                popup = _popup.GetComponent<PopupBase>();
+            }    
+                
             else
-                popups[popupName].Remove(popup); popup.SetParent(visibleParent);
+            {
+                popups[popupName].Remove(popup);
+            }
+
+            popup.SetParent(visibleParent);
 
             popup.popup.OnHiddenCallback.Event.RemoveAllListeners();
 
@@ -71,10 +79,16 @@ namespace Lotus.CoreFramework
             if (visibleParent.childCount <= 0)
                 return null;
 
-            PopupBase currentPopup = visibleParent.GetChild(visibleParent.childCount - 1).GetComponent<PopupBase>();
+            for (int i = 0; i < visibleParent.childCount; i++)
+            {
+                PopupBase currentPopup = visibleParent.GetChild(i).GetComponent<PopupBase>();
 
-            if (currentPopup.popupName.Equals(popupName))
-                return currentPopup;
+                if (currentPopup == null)
+                    continue;
+
+                if (currentPopup.popupName.Equals(popupName))
+                    return currentPopup;
+            }
 
             return null;
         }

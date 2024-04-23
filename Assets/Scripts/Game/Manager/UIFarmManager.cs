@@ -103,4 +103,9 @@ public class UIFarmManager : MonoUI
         sellTextObj.SetActive(!show);
         sellValueText.text = GetSellItemTextValue();
     }
+
+    public void ShowBossPopup()
+    {
+        PopupManager.Instance.Dequeue("BossPopup").Show();
+    }
 }

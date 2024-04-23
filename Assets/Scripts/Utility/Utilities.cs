@@ -51,6 +51,10 @@ namespace Lotus.CoreFramework
                 return value.ToString();
         }
 
+        public static bool IsOnBattle(this SceneName sceneName) => (int)sceneName % 2 == 1;
+
+        public static bool IsOnFarm(this SceneName sceneName) => (int)sceneName % 2 == 0;
+
 
         public static AnimationStates Convert(this AttackType type) => (AnimationStates)((int)AnimationStates.NormalAttack + (int)type);
 

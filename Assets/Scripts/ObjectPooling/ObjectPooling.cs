@@ -10,6 +10,7 @@ namespace Lotus.CoreFramework
     public class ObjectPooling : Singleton<ObjectPooling>
     {
         private readonly string charactersPath = "Assets/AddressableLocalAssets/Prefabs/Character/{0}.prefab";
+        private readonly string modelsRenderPath = "Assets/AddressableLocalAssets/Prefabs/Render/{0}.prefab";
         private readonly string projectileVfxsPath = "Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/{0}.prefab";
         private readonly string effectsPath = "Assets/AddressableLocalAssets/Prefabs/Effects/{0}.prefab";
         private readonly string iconsPath = "Assets/AddressableLocalAssets/Prefabs/Icons/{0}.prefab";
@@ -17,6 +18,7 @@ namespace Lotus.CoreFramework
 
 
         private Dictionary<string, List<CharacterBrain>> characters = new Dictionary<string, List<CharacterBrain>>();
+        private Dictionary<string, List<RenderModel>> modelsRender = new Dictionary<string, List<RenderModel>>();
         private Dictionary<string, List<ProjectileVfx>> projectileVfxs = new Dictionary<string, List<ProjectileVfx>>();
         private Dictionary<string, List<EffectBase>> effects = new Dictionary<string, List<EffectBase>>();
         private Dictionary<string, List<IconSprite>> icons = new Dictionary<string, List<IconSprite>>();
@@ -24,6 +26,7 @@ namespace Lotus.CoreFramework
 
 
         private Transform  charactersContainer = null;
+        private Transform modelsRenderContainer = null;
         private Transform projectileVfxsContainer = null;
         private Transform effectsContainer = null;
         private Transform iconsContainer = null;
@@ -47,7 +50,13 @@ namespace Lotus.CoreFramework
             this.CreateContainer("Effects", ref effectsContainer);
             this.CreateContainer("Icons", ref iconsContainer);
             this.CreateContainer("Items", ref itemsContainer);
+            this.CreateContainer("Models Redner", ref modelsRenderContainer);
         }
+
+
+        public RenderModel DequeueRenderModel(string modelName, Transform newParent = null) => Dequeue(modelName, modelsRender, string.Format(modelsRenderPath, modelName), newParent);
+
+        public void PushRenderModel(RenderModel model) => Push(model, modelsRender, modelsRenderContainer).Hide();
 
 
 

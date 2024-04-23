@@ -8,6 +8,7 @@ public class FarmManager : MonoBehaviour
 {
     [Title("Initial Setting")]
     [SerializeField] private Transform[] spawnPoint = null;
+    [SerializeField] private Transform bossRenderParent = null;
 
 
     [Title("Assets Reference")]
@@ -37,6 +38,8 @@ public class FarmManager : MonoBehaviour
         Transform point = spawnPoint[UnityEngine.Random.Range(1, spawnPoint.Length)];
         monsterFarm.SetTargetAttack(hero).Initial(ConfigManager.GetMonster(monsterFarm.type))
             .SetPosition(point.position).SetRotation(point.rotation).Show();
+
+        ComponentReference.BossRenderParent = () => bossRenderParent;
     }
 
     private void OnEnable()

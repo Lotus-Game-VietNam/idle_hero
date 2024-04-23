@@ -87,6 +87,21 @@ namespace Lotus.CoreFramework
             ObjectPooling.Instance.PushItem(item);
         }
 
+        public static RenderModel DequeueRenderModel(this MonoBehaviour mono, string type, Transform newParent = null)
+        {
+            return ObjectPooling.Instance.DequeueRenderModel(type, newParent);
+        }
+
+        public static void PushRenderModel(this MonoBehaviour mono, RenderModel model)
+        {
+            ObjectPooling.Instance.PushRenderModel(model);
+        }
+
+        public static void PushRenderModel(this RenderModel model)
+        {
+            ObjectPooling.Instance.PushRenderModel(model);
+        }
+
         #endregion
 
 

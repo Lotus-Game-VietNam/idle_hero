@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: UIPopupDatabase
   m_EditorClassIdentifier: 
   Database:
+  - {fileID: 11400000, guid: 720cb1a25ef8002498de682e9b337a3a, type: 2}
+  - {fileID: 11400000, guid: ccf8d48f915ca104da10fc5f77dc9c0b, type: 2}
   - {fileID: 11400000, guid: 133a5b0a3435c424a951fcfedb6cbc4d, type: 2}
   - {fileID: 11400000, guid: 9cfc9665aed030446bcab743e91bfad3, type: 2}
   - {fileID: 11400000, guid: 4d8b44d5990791b4390addc59c0ffe67, type: 2}
-  - {fileID: 11400000, guid: ccf8d48f915ca104da10fc5f77dc9c0b, type: 2}
+  - {fileID: 11400000, guid: 9e3f4755f983c73479c26f0ded4277d3, type: 2}

@@ -101,7 +101,7 @@ public class HeroBrain : CharacterBrain
 
     private void Movement()
     {
-        if ((int)currentScene <= (int)SceneName.Farm || animatorState.currentState.IsAttack() || onSkill)
+        if (!currentScene.IsOnBattle() || animatorState.currentState.IsAttack() || onSkill)
             return;
 
         if (joyStick.Direction != Vector2.zero)
@@ -112,6 +112,9 @@ public class HeroBrain : CharacterBrain
 
     private void NormalAttack()
     {
+        if (!currentScene.IsOnBattle())
+            return;
+
         if (onSkill || joyStick.Direction != Vector2.zero || animatorState.currentState.IsAttack())
         {
             countTimeDelayNormalAttack = 0f;
