@@ -32,13 +32,6 @@ public class BossPopup : PopupBase
 
     public void Fighting()
     {
-        Hide();
-        popup.OnHiddenCallback.Event.AddListener(() => 
-        {
-            PopupBase _popup = PopupManager.Instance.Dequeue("LoadingPopup");
-            _popup.Show();
-            _popup.GetComponent<LoadingPopup>().LoadSceneAsync(((DataManager.WorldData.currentLevel - 1) * 2) + 1, 1);
-        });
-        
+        this.LoadSceneAsync((SceneName)((DataManager.WorldData.currentLevel - 1) * 2) + 3, 0.5f);
     }
 }

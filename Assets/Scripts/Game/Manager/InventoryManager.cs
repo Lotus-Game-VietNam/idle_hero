@@ -72,7 +72,7 @@ public class InventoryManager : MonoBehaviour
 
     private void OnDisable()
     {
-        this.RemoveSubscribers();
+        this.RemoveListener(EventName.BuyItem);
     }
 
 

@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 namespace Lotus.CoreFramework
@@ -170,6 +171,13 @@ namespace Lotus.CoreFramework
 
 
         #region Helper
+
+        public static void LoadSceneAsync(this MonoBehaviour mono, SceneName sceneName, float delaytime)
+        {
+            LoadingScene.Initialized(sceneName, delaytime);
+            SceneManager.LoadScene((int)SceneName.Loading, LoadSceneMode.Single);
+        }
+
 
         public static void PlayVfx(this ParticleSystem vfx)
         {

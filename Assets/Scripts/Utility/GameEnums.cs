@@ -2,8 +2,10 @@
 
 public enum SceneName
 {
-    Farm,
-    Boss
+    Begin,
+    Loading,
+    Farm_1,
+    Boss_1
 }
 
 
@@ -58,7 +60,8 @@ public enum AnimationStates
     SkillTrue,
     SkillThird,
     TakeDamage,
-    Die
+    Die,
+    Cheer
 }
 
 
@@ -71,5 +74,6 @@ public enum EventName
     ShowShellValue,
     ChangeCostume,
     RefreshMonsterTarget,
-    OnTriggerSkill
+    OnTriggerSkill,
+    OnWin
 }

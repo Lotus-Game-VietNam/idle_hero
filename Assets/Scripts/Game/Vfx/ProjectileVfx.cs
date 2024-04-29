@@ -38,7 +38,7 @@ public class ProjectileVfx : IPool<ProjectileData>
     protected virtual void Awake()
     {
         body.useGravity = false;
-        moveSpeed *= (SceneName)SceneManager.GetActiveScene().buildIndex == SceneName.Farm ? 1 : 2;
+        moveSpeed *= ((SceneName)SceneManager.GetActiveScene().buildIndex).IsOnFarm() ? 1 : 2;
     }
 
     protected override void Initialized(ProjectileData data)

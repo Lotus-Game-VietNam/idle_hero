@@ -245,7 +245,7 @@ namespace Lotus.CoreFramework
             {
                 foreach (var subs in eventName.Value)
                 {
-                    if (subs.Equals(subscribers))
+                    if (subs.Key.Equals(subscribers))
                         m_Events[eventName.Key].Remove(subs.Key);
                 }
             }

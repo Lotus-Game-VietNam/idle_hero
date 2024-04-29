@@ -172,7 +172,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     private void Farm()
     {
-        if (currentScene != SceneName.Farm)
+        if (!currentScene.IsOnFarm())
             return;
 
         OnFarm();
@@ -197,6 +197,9 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
             return;
 
         if (animatorState.currentState == AnimationStates.TakeDamage)
+            return;
+
+        if (targetAttack != null && !targetAttack.characterStats.Alive)
             return;
 
         if (animatorState.currentState.IsAttack() && !characterMovement.crtRotating)

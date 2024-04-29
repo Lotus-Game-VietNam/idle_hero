@@ -52,8 +52,12 @@ public class FarmManager : MonoBehaviour
 
     private void OnDisable()
     {
-        this.RemoveSubscribers();
+        this.RemoveListener(EventName.RefreshMonsterTarget);
+        this.RemoveListener(EventName.OnCharacterDead);
+        this.RemoveListener(EventName.X2Income);
+        this.RemoveListener(EventName.AutoTap);
     }
+
 
     private CharacterBrain SpawnHero()
     {

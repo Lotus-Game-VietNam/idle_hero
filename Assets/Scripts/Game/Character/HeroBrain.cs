@@ -1,3 +1,4 @@
+using Cinemachine;
 using DG.Tweening;
 using Lotus.CoreFramework;
 using System.Linq;
@@ -10,6 +11,8 @@ public class HeroBrain : CharacterBrain
 
     private HeroCostumes _heroCostumes = null;
     public HeroCostumes heroCostumes => this.TryGetComponentInChildren(ref _heroCostumes);
+
+    private CinemachineVirtualCamera winCamera = null;
 
     private Transform _mainCamera = null;
     public Transform mainCamera
@@ -44,6 +47,13 @@ public class HeroBrain : CharacterBrain
 
 
 
+    protected override void Awake()
+    {
+        base.Awake();
+        winCamera = GetComponentInChildren<CinemachineVirtualCamera>();
+    }
+
+
     protected override void Initialized(CharacterConfig data)
     {
         base.Initialized(data);
@@ -63,6 +73,7 @@ public class HeroBrain : CharacterBrain
         base.InitEvents();
         this.AddListener<ItemType, int>(EventName.ChangeCostume, ChangeCostume);
         this.AddListener<int>(EventName.OnTriggerSkill, OnTriggerSkill);
+        this.AddListener(EventName.OnWin, OnWin);
     }
 
     public override void SetJoystick(Joystick joystick) => this.joyStick = joystick;
@@ -176,6 +187,12 @@ public class HeroBrain : CharacterBrain
         Movement();
         NormalAttack();
         OnSkill();
+    }
+
+    private void OnWin()
+    {
+        animatorState.ChangeState(AnimationStates.Cheer);
+        winCamera.Priority = 100;
     }
 
     protected override void OnDead()

@@ -19,6 +19,9 @@ public class BattleManager : MonoBehaviour
 
 
     [Title("Game UI")]
+    [SerializeField] private RectTransform mainRect = null;
+    [SerializeField] private CanvasGroup manipulationCvgr = null;
+    [SerializeField] private UIWin uiWin = null;
     [SerializeField] private Joystick joystick = null;
     [SerializeField] private UI_SkillButton[] skillButtons = null;
 
@@ -43,17 +46,21 @@ public class BattleManager : MonoBehaviour
             .SetPosition(spawnPoint[1].position).SetRotation(spawnPoint[1].rotation).Show();
 
         topdownCamera.Follow = hero.animatorState.transform;
+        ComponentReference.MainRect = () => mainRect;
     }
 
     private void OnEnable()
     {
         this.AddListener<CharacterBrain>(EventName.OnCharacterDead, OnCharacterDead);
+        this.AddListener(EventName.OnWin, OnWin);
     }
 
     private void OnDisable()
     {
-        this.RemoveSubscribers();
+        this.RemoveListener(EventName.OnCharacterDead);
+        this.RemoveListener(EventName.OnWin);
     }
+
 
     private CharacterBrain SpawnHero()
     {
@@ -75,7 +82,22 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-
+            this.SendMessage(EventName.OnWin);
         }
+    }
+
+    private void OnWin()
+    {
+        manipulationCvgr.DeActive();
+        uiWin.canvasGr.Active();
+        uiWin.selectAnimator.speed = 1;
+    }
+
+
+    [Title("Debugger")]
+    [Button("Win Now")]
+    public void WinNow()
+    {
+        boss.TakedDamage(99999999, hero);
     }
 }
