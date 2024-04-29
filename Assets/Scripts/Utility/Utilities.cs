@@ -9,6 +9,11 @@ namespace Lotus.CoreFramework
 {
     public static class Utilities
     {
+        public static SceneName GetCurrentFarmScene() => (SceneName)((DataManager.WorldData.currentLevel - 1) * 2) + 2;
+
+        public static SceneName GetCurrentBattleScene() => (SceneName)((DataManager.WorldData.currentLevel - 1) * 2) + 3;
+
+
         public static List<string> units = new List<string> { "K", "M", "B", "T", "P", "E", "Z" };
 
 

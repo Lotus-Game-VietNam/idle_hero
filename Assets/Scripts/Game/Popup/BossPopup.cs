@@ -32,6 +32,6 @@ public class BossPopup : PopupBase
 
     public void Fighting()
     {
-        this.LoadSceneAsync((SceneName)((DataManager.WorldData.currentLevel - 1) * 2) + 3, 0.5f);
+        this.LoadSceneAsync(Utilities.GetCurrentBattleScene(), 0.5f);
     }
 }

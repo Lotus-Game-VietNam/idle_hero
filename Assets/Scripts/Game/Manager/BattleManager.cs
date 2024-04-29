@@ -82,15 +82,14 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            this.SendMessage(EventName.OnWin);
+            this.DelayCall(2f, () => { this.SendMessage(EventName.OnWin); });
         }
     }
 
     private void OnWin()
     {
         manipulationCvgr.DeActive();
-        uiWin.canvasGr.Active();
-        uiWin.selectAnimator.speed = 1;
+        uiWin.UpdateContent();
     }
 
 

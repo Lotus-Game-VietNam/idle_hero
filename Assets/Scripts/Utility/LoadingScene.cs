@@ -1,3 +1,4 @@
+using Lotus.CoreFramework;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class LoadingScene : MonoBehaviour
 {
     public TMP_Text progressTxt = null;
     public Slider progressBar = null;
+    public CanvasGroup battleLoad = null;
 
 
     private AsyncOperation _asyncOp;
@@ -15,6 +17,12 @@ public class LoadingScene : MonoBehaviour
     public static SceneName sceneToLoad;
     public static float delayTime;
 
+
+
+    private void Awake()
+    {
+        SetBattleLoadContent();
+    }
 
 
     private void Start()
@@ -27,7 +35,6 @@ public class LoadingScene : MonoBehaviour
         sceneToLoad = _sceneToLoad;
         delayTime = _delayTime;
     }
-
 
     private IEnumerator IELoadSceneAsync(int scene, float delayTime)
     {
@@ -61,5 +68,15 @@ public class LoadingScene : MonoBehaviour
         }
 
         Application.backgroundLoadingPriority = ThreadPriority.BelowNormal;
+    }
+
+    private void SetBattleLoadContent()
+    {
+        bool isBattle = sceneToLoad.IsOnBattle();
+        if (!isBattle)
+            return;
+
+        battleLoad.Active(isBattle);
+
     }
 }

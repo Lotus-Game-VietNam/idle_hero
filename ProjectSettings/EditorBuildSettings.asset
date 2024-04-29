@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Battle_1.unity
     guid: 1a37b1ddd60a9e14c9acfd3f5e4fa21c
+  - enabled: 1
+    path: Assets/Scenes/Farm_2.unity
+    guid: c0a3cc6324167f049b7c2e908975f069
+  - enabled: 1
+    path: Assets/Scenes/Battle_2.unity
+    guid: 80a5c66ebc6c25e4cbb563b5e9216b87
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: eee549520bb31ba48811bdd4f8144bff,
       type: 2}

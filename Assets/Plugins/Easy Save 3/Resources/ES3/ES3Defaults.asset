@@ -36,6 +36,7 @@ MonoBehaviour:
     - CFXRDemo
     - CFXRRuntime
     - Cinemachine
+    - Coffee.UIParticle
     - Dissolve.Scripts
     - Doozy.Runtime
     - DOTween.Modules

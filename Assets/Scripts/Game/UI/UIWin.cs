@@ -5,6 +5,8 @@ public class UIWin : MonoUI
 {
     public Transform[] pointLeftRight = null;
     public Transform selected = null;
+    public Transform nothankButton = null;
+    public GameObject vfx = null;
 
 
     private CanvasGroup _canvasGr = null;
@@ -16,9 +18,17 @@ public class UIWin : MonoUI
     public Animator selectAnimator { get; private set; }
 
 
+
     protected void Awake()
     {
         selectAnimator = selected.GetComponent<Animator>();
+    }
+
+    public void UpdateContent()
+    {
+        canvasGr.Active();
+        selectAnimator.speed = 1;
+        vfx.SetActive(true);
     }
 
     public void OnClaimXReward()
@@ -33,14 +43,27 @@ public class UIWin : MonoUI
 
         int segment = Mathf.FloorToInt(ratio * 5);
 
-        int gemsToAdd = DataManager.WorldData.GetGemsReward() * xRewardsValue[segment];
+        CollectionIcons.Instance.Show(20, selected.position);
 
-        CollectionIcons.Instance.Show(10, selected.position);
+        canvasGr.DeActive();
 
-        this.DelayCall(1, () => 
-        {
-            ResourceManager.Gem += gemsToAdd; 
-            DataManager.WorldData.NextLevel().Save();
-        });
+        this.DelayCall(1, () => { OnClaimReward(xRewardsValue[segment]); });
+    }
+
+    public void OnClaimNormalReward()
+    {
+        CollectionIcons.Instance.Show(10, nothankButton.position);
+        canvasGr.DeActive();
+        this.DelayCall(1, () => { OnClaimReward(1); });
+    }
+
+    private void OnClaimReward(int xValue)
+    {
+        int gemsToAdd = DataManager.WorldData.GetGemsReward() * xValue;
+
+        ResourceManager.Gem += gemsToAdd;
+        DataManager.WorldData.NextLevel().Save();
+
+        this.DelayCall(1, () => { this.LoadSceneAsync(Utilities.GetCurrentFarmScene(), 0.5f); });
     }
 }
