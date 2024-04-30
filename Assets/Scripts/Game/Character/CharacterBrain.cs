@@ -180,6 +180,8 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected abstract void OnDead();
 
+    protected abstract void OnTargetDead();
+
     protected virtual void OnUpdate()
     {
         Farm();
@@ -200,7 +202,10 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
             return;
 
         if (targetAttack != null && !targetAttack.characterStats.Alive)
+        {
+            OnTargetDead();
             return;
+        }
 
         if (animatorState.currentState.IsAttack() && !characterMovement.crtRotating)
             characterMovement.RotateToTarget(targetAttack.center);

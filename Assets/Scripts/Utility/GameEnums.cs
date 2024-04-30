@@ -75,5 +75,6 @@ public enum EventName
     ChangeCostume,
     RefreshMonsterTarget,
     OnTriggerSkill,
-    OnWin
+    OnWin,
+    OnRevive
 }

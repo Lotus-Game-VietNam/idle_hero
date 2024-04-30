@@ -57,9 +57,15 @@ public class MonsterBrain : CharacterBrain
         Shot(AttackType.NormalAttack);
     }
 
+    protected override void OnTargetDead()
+    {
+        
+    }
+
     protected override void OnUpdate()
     {
         base.OnUpdate();
+
         if (animatorState.currentState != AnimationStates.Run)
             blendSpeed = 0f;
     }

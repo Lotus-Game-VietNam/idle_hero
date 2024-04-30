@@ -14,6 +14,7 @@ public class CharacterStats : MonoUI
     public WorldSpaceCanvas uiCanvas = null;
     public Slider HPBar = null;
     public Slider HPBGBar = null;
+    public ParticleSystem healingFx = null;
 
     [Title("Dissolve Setting")]
     public SkinnedMeshRenderer skinnedMeshRenderer = null;
@@ -102,6 +103,14 @@ public class CharacterStats : MonoUI
         }
 
         Callback?.Invoke();
+    }
+
+    public void Revive()
+    {
+        currentHP = MaxHP;
+        OnHealthChanged(MaxHP);
+        ActiveUIStats(true);
+        healingFx.PlayVfx();
     }
 
     public void ActiveUIStats(bool value) => uiCanvas.gameObject.SetActive(value);

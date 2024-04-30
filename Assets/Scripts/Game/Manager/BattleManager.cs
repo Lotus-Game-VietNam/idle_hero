@@ -22,6 +22,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private RectTransform mainRect = null;
     [SerializeField] private CanvasGroup manipulationCvgr = null;
     [SerializeField] private UIWin uiWin = null;
+    [SerializeField] private UILose uiLose = null;
     [SerializeField] private Joystick joystick = null;
     [SerializeField] private UI_SkillButton[] skillButtons = null;
 
@@ -53,6 +54,7 @@ public class BattleManager : MonoBehaviour
     {
         this.AddListener<CharacterBrain>(EventName.OnCharacterDead, OnCharacterDead);
         this.AddListener(EventName.OnWin, OnWin);
+        this.AddListener(EventName.OnRevive, OnRevive);
     }
 
     private void OnDisable()
@@ -78,7 +80,7 @@ public class BattleManager : MonoBehaviour
     {
         if (character.CharacterType == CharacterType.Hero)
         {
-
+            OnLose();
         }
         else
         {
@@ -92,11 +94,28 @@ public class BattleManager : MonoBehaviour
         uiWin.UpdateContent();
     }
 
+    private void OnLose()
+    {
+        manipulationCvgr.DeActive();
+        uiLose.UpdateContent();
+    }
+
+    private void OnRevive()
+    {
+        manipulationCvgr.Active();
+    }
+
 
     [Title("Debugger")]
     [Button("Win Now")]
     public void WinNow()
     {
         boss.TakedDamage(99999999, hero);
+    }
+
+    [Button("Lose Now")]
+    public void LoseNow()
+    {
+        hero.TakedDamage(99999999, boss);
     }
 }

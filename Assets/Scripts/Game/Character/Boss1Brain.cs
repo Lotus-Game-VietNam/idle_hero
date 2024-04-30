@@ -87,6 +87,11 @@ public class Boss1Brain : MonsterBrain
         }
     }
 
+    protected override void OnTargetDead()
+    {
+        animatorState.ChangeState(AnimationStates.Idle);
+    }
+
 
     protected override void OnUpdate()
     {

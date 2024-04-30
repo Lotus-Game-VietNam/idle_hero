@@ -74,6 +74,7 @@ public class HeroBrain : CharacterBrain
         this.AddListener<ItemType, int>(EventName.ChangeCostume, ChangeCostume);
         this.AddListener<int>(EventName.OnTriggerSkill, OnTriggerSkill);
         this.AddListener(EventName.OnWin, OnWin);
+        this.AddListener(EventName.OnRevive, OnRevive);
     }
 
     public override void SetJoystick(Joystick joystick) => this.joyStick = joystick;
@@ -191,9 +192,25 @@ public class HeroBrain : CharacterBrain
 
     private void OnWin()
     {
-        animatorState.ChangeState(AnimationStates.Cheer);
         winCamera.Priority = 100;
     }
+
+    protected override void OnTargetDead()
+    {
+        //if (!currentScene.IsOnBattle())
+        //    return;
+
+        //animatorState.ChangeState(AnimationStates.Cheer);
+    }
+
+    private void OnRevive()
+    {
+        characterStats.Revive();
+        animatorState.Ator.Rebind();
+        animatorState.ChangeState(AnimationStates.Idle);
+        characterMovement.ActiveAgent(true);
+        characterAttack.ActiveCollider(true);
+    }    
 
     protected override void OnDead()
     {
