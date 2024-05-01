@@ -54,7 +54,7 @@ public class Boss1Brain : MonsterBrain
         base.Shot(type);
     }
 
-    private IEnumerator IEFireSkill()
+    protected virtual IEnumerator IEFireSkill()
     {
         if (animatorState.currentState == AnimationStates.NormalAttack)
             yield break;

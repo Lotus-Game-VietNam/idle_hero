@@ -1,3 +1,6 @@
+using System.Collections;
+using UnityEngine;
+
 public class Boss3Brain : Boss1Brain
 {
 
@@ -9,6 +12,17 @@ public class Boss3Brain : Boss1Brain
 
 
 
+    private bool onSkill = false;
+
+
+
+    protected override void SetStarterValues()
+    {
+        base.SetStarterValues();
+        onSkill = false;
+    }
+
+
     protected override string GetProjectileName(AttackType type)
     {
         return type == AttackType.SkillOne ? "Boss_2_Projectile_2" : "Boss_2_Projectile_1";
@@ -17,5 +31,34 @@ public class Boss3Brain : Boss1Brain
     protected override void SetAttackRange()
     {
         characterAttack.SetAttackRange(!onSkillCD ? 25 : -1);
+    }
+
+    protected override void OnShotFinish()
+    {
+        base.OnShotFinish();
+        onSkill = false;
+    }
+
+    protected override IEnumerator IEFireSkill()
+    {
+        if (animatorState.currentState == AnimationStates.NormalAttack)
+            yield break;
+
+        onSkillCD = true;
+        onSkill = true;
+
+        for (int i = 0; i < totalCountProjectileOnSkill; i++)
+        {
+            base.OnShot((int)AttackType.SkillOne);
+            yield return new WaitForSeconds(skillFireRate);
+        }
+    }
+
+    public override void TakedDamage(float damage, CharacterBrain sender)
+    {
+        if (onSkill)
+            return;
+
+        base.TakedDamage(damage, sender);
     }
 }
