@@ -407,6 +407,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c7d9861c446c5c47a8df46d716895e3
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Character/Boss_3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7cbb8d362b5a6084aa70f171bda5de7c
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Boss_2_Projectile_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3ece1e13ae2be25429cf299318a1d498, type: 2}
   m_SchemaSet:

@@ -5,16 +5,18 @@ public class Boss1Brain : MonsterBrain
 {
 
     private readonly float timesCD = 10f;
-    private readonly int totalCountProjectileOnSkill = 3;
-    private readonly float skillFireRate = 0.15f;
     private readonly float normalAttackDelay = 4f;
 
-    private float skillDamage => characterStats.ATK * 2;
+    protected virtual float skillFireRate => 0.15f;
 
-    private bool onSkillCD = false;
+    protected virtual int totalCountProjectileOnSkill => 3;
 
-    private float countNormalAttack = 0f;
-    private float countTimeSkill = 0f;
+    protected virtual float skillDamage => characterStats.ATK * 2;
+
+    protected bool onSkillCD = false;
+
+    protected float countNormalAttack = 0f;
+    protected float countTimeSkill = 0f;
     
 
 
@@ -92,7 +94,7 @@ public class Boss1Brain : MonsterBrain
         animatorState.ChangeState(AnimationStates.Idle);
     }
 
-    private void SetAttackRange()
+    protected virtual void SetAttackRange()
     {
         characterAttack.SetAttackRange(!onSkillCD ? 20 : -1);
     }
