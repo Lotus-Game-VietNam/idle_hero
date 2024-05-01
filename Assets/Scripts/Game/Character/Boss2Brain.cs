@@ -4,18 +4,24 @@ using UnityEngine;
 public class Boss2Brain : MonsterBrain
 {
     private readonly float timesCD = 10f;
-    private readonly int totalCountNovaOnSkill = 3;
-    private readonly float skillFireRate = 0.15f;
     private readonly float normalAttackDelay = 4f;
     private readonly float skillStunTime = 1f;
 
     private float skillDamage => characterStats.ATK * 0.8f;
 
     private bool onSkillCD = false;
+    private bool onSkill = false;
 
     private float countNormalAttack = 0f;
     private float countTimeSkill = 0f;
 
+
+
+    protected override void SetStarterValues()
+    {
+        base.SetStarterValues();
+        onSkill = false;
+    }
 
 
     protected override string GetProjectileName(AttackType type)
@@ -46,11 +52,25 @@ public class Boss2Brain : MonsterBrain
         base.Shot(type);
     }
 
+    protected override void OnShotFinish()
+    {
+        base.OnShotFinish();
+        onSkill = false;
+    }
+
     private void OnSkill()
     {
         onSkillCD = true;
+        onSkill = true;
         this.DequeueEffect("Boss2_Skill", null).SetPosition(center).
             Initial(new EffectData(new float[] { skillDamage, skillStunTime }, null, new CharacterBrain[] { this, targetAttack })).Show();
+    }
+
+    public override void TakedDamage(float damage, CharacterBrain sender)
+    {
+        if (onSkill)
+            return;
+        base.TakedDamage(damage, sender);
     }
 
     private bool NormalAttack()
