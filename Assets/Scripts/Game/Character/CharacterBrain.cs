@@ -165,6 +165,14 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
     {
         if (stunCrt != null)
             StopCoroutine(stunCrt);
+
+        if (!characterStats.Alive)
+        {
+            if (animatorState.currentState != AnimationStates.Die)
+                animatorState.ChangeState(AnimationStates.Die);
+            return;
+        }
+
         onStun = true;
         animatorState.ChangeState(AnimationStates.Stun);
         stunCrt = this.DelayCall(time, () => 

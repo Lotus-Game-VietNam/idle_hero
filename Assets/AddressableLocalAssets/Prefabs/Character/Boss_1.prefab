@@ -310,7 +310,7 @@ MonoBehaviour:
   - {fileID: 4697555864139518155}
   - {fileID: 122276383881779133}
   _collider: {fileID: 852620352029980837}
-  _attackRange: 20
+  _attackRange: 40
 --- !u!1 &2663399131024697342
 GameObject:
   m_ObjectHideFlags: 0

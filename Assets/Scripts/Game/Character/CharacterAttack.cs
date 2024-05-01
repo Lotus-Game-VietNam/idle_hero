@@ -19,6 +19,15 @@ public class CharacterAttack : MonoBehaviour
     public float height => capsuleCollider.height * capsuleCollider.transform.localScale.y * transform.parent.localScale.y;
 
 
+    private float defaultAttackRange;
+
+
+    private void Awake()
+    {
+        defaultAttackRange = _attackRange;
+    }
+
+
     public void Initialized()
     {
         ActiveCollider(true);
@@ -34,7 +43,7 @@ public class CharacterAttack : MonoBehaviour
 
     public bool OnAttackRange(Vector3 target) => Vector3.Distance(transform.position, target) <= attackRange; 
 
-    public void SetAttackRange(float range) => _attackRange = range;
+    public void SetAttackRange(float range) => _attackRange = range == -1 ? defaultAttackRange : range;
 
     public void ActiveCollider(bool value)
     {

@@ -92,6 +92,11 @@ public class Boss1Brain : MonsterBrain
         animatorState.ChangeState(AnimationStates.Idle);
     }
 
+    private void SetAttackRange()
+    {
+        characterAttack.SetAttackRange(!onSkillCD ? 20 : -1);
+    }
+
 
     protected override void OnUpdate()
     {
@@ -99,5 +104,6 @@ public class Boss1Brain : MonsterBrain
         FollowTarget();
         Shot(!onSkillCD ? AttackType.SkillOne : AttackType.NormalAttack);
         SkillCountingDown();
+        SetAttackRange();
     }
 }
