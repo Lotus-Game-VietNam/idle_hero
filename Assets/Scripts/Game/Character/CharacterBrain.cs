@@ -107,6 +107,11 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
     protected float blendSpeed = 0f;
 
+    private Coroutine stunCrt = null;
+
+    public bool onStun { get; protected set; }
+
+
 
     protected virtual float GetFinalDamage(int attackType) => characterStats.ATK;
 
@@ -154,6 +159,21 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
 
         animatorState.ChangeState(AnimationStates.Run);
         characterMovement.MoveToTarget(targetAttack.center, characterAttack.attackRange);
+    }
+
+    public virtual void Stun(float time)
+    {
+        if (stunCrt != null)
+            StopCoroutine(stunCrt);
+        onStun = true;
+        animatorState.ChangeState(AnimationStates.Stun);
+        stunCrt = this.DelayCall(time, () => 
+        { 
+            onStun = false;
+            animatorState.Ator.Play("Movement");
+            animatorState.ChangeState(AnimationStates.Idle);
+        });
+        LogTool.LogEditorOnly($"Stun: {time}s");
     }
 
     private void Dead()
@@ -206,6 +226,9 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
             OnTargetDead();
             return;
         }
+
+        if (onStun)
+            return;
 
         if (animatorState.currentState.IsAttack() && !characterMovement.crtRotating)
             characterMovement.RotateToTarget(targetAttack.center);

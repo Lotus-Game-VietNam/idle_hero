@@ -34,6 +34,8 @@ public class CharacterAttack : MonoBehaviour
 
     public bool OnAttackRange(Vector3 target) => Vector3.Distance(transform.position, target) <= attackRange; 
 
+    public void SetAttackRange(float range) => _attackRange = range;
+
     public void ActiveCollider(bool value)
     {
         if (value)

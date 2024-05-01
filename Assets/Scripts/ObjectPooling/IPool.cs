@@ -44,7 +44,7 @@ namespace Lotus.CoreFramework
 
         protected abstract void Initialized(T data);
 
-        public virtual IPool<T> Initial(T data)
+        public IPool<T> Initial(T data)
         {
             this.data = data;
             Initialized(data);

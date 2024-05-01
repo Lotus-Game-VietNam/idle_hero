@@ -118,4 +118,11 @@ public class BattleManager : MonoBehaviour
     {
         hero.TakedDamage(99999999, boss);
     }
+
+    [Button("Set Boss Level")]
+    public void SetBossLevel(int level)
+    {
+        DataManager.WorldData.currentLevel = level;
+        DataManager.WorldData.Save();
+    }
 }

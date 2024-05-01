@@ -310,7 +310,7 @@ MonoBehaviour:
   - {fileID: 4697555864139518155}
   - {fileID: 122276383881779133}
   _collider: {fileID: 852620352029980837}
-  _attackRange: 15
+  _attackRange: 20
 --- !u!1 &2663399131024697342
 GameObject:
   m_ObjectHideFlags: 0
@@ -5711,6 +5711,7 @@ MonoBehaviour:
   uiCanvas: {fileID: 7787881667139650428}
   HPBar: {fileID: 8786020890152123936}
   HPBGBar: {fileID: 3467062722918526410}
+  healingFx: {fileID: 0}
   skinnedMeshRenderer: {fileID: 8509268978190864304}
   defaultMaterial: {fileID: 2100000, guid: 5e3ccb57516870442b99809c30118b65, type: 2}
   dissolveMaterial: {fileID: 2100000, guid: 24b4b3652de3a4b4fb0f5e9c40834855, type: 2}

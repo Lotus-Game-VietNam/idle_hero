@@ -61,7 +61,8 @@ public enum AnimationStates
     SkillThird,
     TakeDamage,
     Die,
-    Cheer
+    Cheer,
+    Stun
 }
 
 

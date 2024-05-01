@@ -397,6 +397,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc4c1d1396b437146a11a7d2d49e3967
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Character/Boss_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c29de2b9fed07254dba27176b56883d6
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Effects/Boss2_Skill.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3ece1e13ae2be25429cf299318a1d498, type: 2}
   m_SchemaSet:
