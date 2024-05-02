@@ -201,6 +201,9 @@ public class HeroBrain : CharacterBrain
         //    return;
 
         //animatorState.ChangeState(AnimationStates.Cheer);
+
+        if (currentScene.IsOnFarm())
+            Shot(AttackType.NormalAttack);
     }
 
     private void OnRevive()

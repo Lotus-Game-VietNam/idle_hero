@@ -267,23 +267,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c5cd7c00f11cb41469d77997235b738c
-    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Bow_1.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ccf31ef6856238f4bbfac48d484fb9d4
     m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Cloth_0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3449a458ffedcab4b88fb0f202ed1d04
+  - m_GUID: ab56ed72c52b1e246a22a49055c103ef
     m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Cloth_1.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3221e0293fd2e454896841c07dbca818
-    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Wing_1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -414,6 +404,21 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7cbb8d362b5a6084aa70f171bda5de7c
     m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Boss_2_Projectile_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 39afbdfae4779494ea7c9df2059a4675
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Boss_2_Projectile_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea32a24d0560622498cb837400e43d9d
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Bow_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f8ba0ac59318e2c4294a3f5e36ef171c
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Wing_1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

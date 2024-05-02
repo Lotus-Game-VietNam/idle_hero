@@ -40,8 +40,9 @@ public class ItemsDesignWindows : EditorWindow
             {
                 var manager = GameObject.FindGameObjectWithTag("InventoryManager");
                 inventoryManager = manager.GetComponent<InventoryManager>();
-                inventoryManager.SpawnItemEditor(ConfigManager.GetItem(ItemType, itemLevel));
             }
+
+            inventoryManager.SpawnItemEditor(ConfigManager.GetItem(ItemType, itemLevel));
         }
 
 
