@@ -20,11 +20,12 @@ public class InventoryItem : IPool<ItemData>
 
     private void Awake()
     {
-        dragAndDrop.Initialized(this);
+        
     }
 
     protected override void Initialized(ItemData data)
     {
+        dragAndDrop.Initialized(this);
         levelText.text = (data.itemLevel + 1).ToString();
     }
 

@@ -55,13 +55,16 @@ namespace Lotus.CoreFramework
         public virtual void Initialized(T data)
         {
             this.data = data;
+
+            if (mainCamera == null)
+                mainCamera = Camera.main;
+
+            initialDistance = Vector3.Distance(transform.position, mainCamera.transform.position);
         }
 
         private void Awake()
         {
             initialScale = transform.localScale;
-            mainCamera = Camera.main;
-            initialDistance = Vector3.Distance(transform.position, mainCamera.transform.position);
         }
 
 
