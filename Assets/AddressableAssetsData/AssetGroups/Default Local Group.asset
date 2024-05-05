@@ -233,7 +233,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a5297e838cf5a9c4481ce80bfd27f4db
-    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Wing_2.prefab
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Wing_1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 08762525b6b473b4798b371189519e32
-    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Cloth_2.prefab
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Cloth_1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -253,27 +253,27 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5151254061625cc4bab187cf97dd73d3
-    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Bow_2.prefab
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Bow_1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8233a1b813eaadb42b4b094d09567a96
-    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Wing_0.prefab
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Wing_2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 48a441837e7dbdf47988b71afd291822
-    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Bow_0.prefab
+  - m_GUID: 5b4622536b3c8d84d9a0bed36b0b7077
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Bow_2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ccf31ef6856238f4bbfac48d484fb9d4
-    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Cloth_0.prefab
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Cloth_2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ab56ed72c52b1e246a22a49055c103ef
-    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Cloth_1.prefab
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Cloth_0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -413,12 +413,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ea32a24d0560622498cb837400e43d9d
-    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Bow_1.prefab
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Bow_0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f8ba0ac59318e2c4294a3f5e36ef171c
-    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Wing_1.prefab
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Wing_0.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

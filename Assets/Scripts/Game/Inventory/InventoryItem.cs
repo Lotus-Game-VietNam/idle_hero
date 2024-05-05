@@ -18,10 +18,6 @@ public class InventoryItem : IPool<ItemData>
     public ItemDragAndDrop dragAndDrop => this.TryGetComponent(ref _dragAndDrop);
 
 
-    private void Awake()
-    {
-        
-    }
 
     protected override void Initialized(ItemData data)
     {
