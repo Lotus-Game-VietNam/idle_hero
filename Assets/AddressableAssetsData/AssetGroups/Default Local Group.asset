@@ -77,7 +77,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: dd1bc06ea5a28f34ca259e759fdeed7c
+  - m_GUID: d2ae8f02ec4cdc248be198b06a1cc585
     m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Wing_3.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
