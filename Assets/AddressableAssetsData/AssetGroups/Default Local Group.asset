@@ -17,7 +17,7 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 4769610922bb87d4d991da432004575b
   m_SerializeEntries:
-  - m_GUID: bdcf01421dd51e742b1e5f8f2e145158
+  - m_GUID: ffeb133db548c2c4f986d452512c90ea
     m_Address: Assets/AddressableLocalAssets/Prefabs/Character/MainHero.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
