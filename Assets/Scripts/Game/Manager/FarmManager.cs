@@ -98,7 +98,7 @@ public class FarmManager : MonoBehaviour
     private void AutoTap(bool value)
     {
         onAutoTap = value;
-        hero.animatorState.Ator.speed = value ? 1.5f : 1f;
+        hero.animatorState.SetSpeed(value ? 1.5f : 1f);
         StartCoroutine(IEAuraFollowHero());
     }
 

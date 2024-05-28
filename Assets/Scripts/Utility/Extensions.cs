@@ -103,6 +103,21 @@ namespace Lotus.CoreFramework
             ObjectPooling.Instance.PushRenderModel(model);
         }
 
+        public static CostumeModel DequeueCostumeModel(this MonoBehaviour mono, string type, Transform newParent = null)
+        {
+            return ObjectPooling.Instance.DequeueCostumeModel(type, newParent);
+        }
+
+        public static void PushCostumeModel(this MonoBehaviour mono, CostumeModel model)
+        {
+            ObjectPooling.Instance.PushCostumeModel(model);
+        }
+
+        public static void PushCostumeModel(this CostumeModel model)
+        {
+            ObjectPooling.Instance.PushCostumeModel(model);
+        }
+
         #endregion
 
 

@@ -1,4 +1,6 @@
+using Codice.CM.Common;
 using Sirenix.OdinInspector;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 
@@ -6,6 +8,9 @@ namespace Lotus.CoreFramework
 {
     public class AnimatorStates : MonoBehaviour
     {
+        [Title("Object Reference")]
+        public Animator[] animators = null;
+
         [Title("State Debug")]
         public AnimationStates currentState;
 
@@ -13,20 +18,9 @@ namespace Lotus.CoreFramework
         public string[] parameter = null;
 
 
-
-        private Animator _ator = null;
-        public Animator Ator => this.TryGetComponent(ref _ator);
-
-
         private AnimationEvents _events = null;
         public AnimationEvents events => this.TryGetComponent(ref _events);
 
-
-        public bool ApplyRootMotion
-        {
-            get => Ator.applyRootMotion;
-            set => Ator.applyRootMotion = value;
-        }
 
 
         private string currentTrigger = "";
@@ -46,7 +40,7 @@ namespace Lotus.CoreFramework
                 return;
 
             if (!string.IsNullOrEmpty(currentTrigger))
-                Ator.ResetTrigger(currentTrigger);
+                ResetTrigger(currentTrigger);
 
             currentTrigger = state.stringParameter;
             currentState = (AnimationStates)state.intParameter;
@@ -61,10 +55,10 @@ namespace Lotus.CoreFramework
             if (Utilities.IsMovement(state))
                 SetBlend(state, AnimationStates.Idle, "Speed");
             else
-                Ator.SetFloat("Speed", 0);
+                SetFloat("Speed", 0);
 
             if (!state.IsMovement())
-                Ator.SetFloat("Speed", 0);
+                SetFloat("Speed", 0);
 
             if (state.IsAttack())
                 SetBlend(state, AnimationStates.NormalAttack, "AttackType");
@@ -72,20 +66,56 @@ namespace Lotus.CoreFramework
             string param = GetParam(state);
 
             if (!string.IsNullOrEmpty(currentTrigger))
-                Ator.ResetTrigger(currentTrigger);
+                ResetTrigger(currentTrigger);
 
             currentTrigger = param;
             currentState = state;
 
-            Ator.SetTrigger(param);
+            SetTrigger(param);
         }
 
 
+        public void SetTrigger(string param)
+        {
+            foreach (var ator in animators)
+                ator.SetTrigger(param);
+        }
 
-        private void SetBlend(AnimationStates state, AnimationStates firstBlend, string param)
+        public void SetFloat(string param, float value)
+        {
+            foreach (var ator in animators)
+                ator.SetFloat(param, value);
+        }
+
+        public void ResetTrigger(string param)
+        {
+            foreach (var ator in animators)
+                ator.ResetTrigger(param);
+        }
+
+        public void SetSpeed(float speed)
+        {
+            foreach (var ator in animators)
+                ator.speed = speed;
+        }
+
+        public void PlayAnimation(string stateName)
+        {
+            foreach (var ator in animators)
+                ator.Play(stateName);
+        }
+
+
+        public void SetBlend(AnimationStates state, AnimationStates firstBlend, string param)
         {
             float value = (int)state - (int)firstBlend;
-            Ator.SetFloat(param, value);
+            SetFloat(param, value);
+        }
+
+        public void Rebind()
+        {
+            foreach (var ator in animators)
+                ator.Rebind();
         }
 
 

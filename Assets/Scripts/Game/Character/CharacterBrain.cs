@@ -178,7 +178,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
         stunCrt = this.DelayCall(time, () => 
         { 
             onStun = false;
-            animatorState.Ator.Play("Movement");
+            animatorState.PlayAnimation("Movement");
             animatorState.ChangeState(AnimationStates.Idle);
         });
         LogTool.LogEditorOnly($"Stun: {time}s");
@@ -261,7 +261,7 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
     protected virtual void SetBlendSpeed(float speed)
     {
         blendSpeed = Mathf.Lerp(blendSpeed, speed, 5f * Time.deltaTime);
-        animatorState.Ator.SetFloat("Speed", blendSpeed);
+        animatorState.SetFloat("Speed", blendSpeed);
         characterMovement.SetMoveSpeed(blendSpeed);
     }
 

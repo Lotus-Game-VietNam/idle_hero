@@ -23,13 +23,13 @@ public class HeroCostumes : MonoBehaviour
 
     public void Initialized()
     {
-        currentCostumes = new Dictionary<ItemType, GameObject>();
+        //currentCostumes = new Dictionary<ItemType, GameObject>();
 
-        foreach (var item in DataManager.HeroData.items)
-        {
-            currentCostumes.Add(item.Key, costumesParent[(int)item.Key].GetChild(item.Value.itemLevel).gameObject);
-            currentCostumes[item.Key].SetActive(true);
-        }
+        //foreach (var item in DataManager.HeroData.items)
+        //{
+        //    currentCostumes.Add(item.Key, costumesParent[(int)item.Key].GetChild(item.Value.itemLevel).gameObject);
+        //    currentCostumes[item.Key].SetActive(true);
+        //}
     }
 
     private void ChangeCostume(ItemType itemType, int itemLevel)

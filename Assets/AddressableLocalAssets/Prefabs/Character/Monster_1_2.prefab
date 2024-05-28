@@ -857,6 +857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fb51ca57c9e6f488b1f1b2a606531f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animators:
+  - {fileID: 870590332254445041}
   currentState: 0
   parameter:
   - 
@@ -1501,6 +1503,7 @@ MonoBehaviour:
   uiCanvas: {fileID: 3819916721998126959}
   HPBar: {fileID: 2375992312075035187}
   HPBGBar: {fileID: 7568989894889550297}
+  healingFx: {fileID: 0}
   skinnedMeshRenderer: {fileID: 39290670262816739}
   defaultMaterial: {fileID: 2100000, guid: 2c070d54c866e944e8f1233a1734b0c8, type: 2}
   dissolveMaterial: {fileID: 2100000, guid: 9fddcdce8261b6e469bd42ee8438e25c, type: 2}

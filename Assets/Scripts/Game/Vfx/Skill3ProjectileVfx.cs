@@ -26,7 +26,7 @@ public class Skill3ProjectileVfx : ProjectileVfx
             if (enemy == null || !enemy.characterStats.Alive)
                 continue;
             enemy.characterMovement.SetMoveSpeed(1f);
-            enemy.animatorState.Ator.speed = 1f;
+            enemy.animatorState.SetSpeed(1f);
         }
         enemies.Clear();
     }
@@ -82,7 +82,7 @@ public class Skill3ProjectileVfx : ProjectileVfx
         {
             CharacterBrain enemy = other.GetComponentInParent<CharacterBrain>();
             enemy.characterMovement.SetMoveSpeed(0.5f);
-            enemy.animatorState.Ator.speed = 0.5f;
+            enemy.animatorState.SetSpeed(0.5f);
             if (!enemies.Contains(enemy))
             {
                 enemies.Add(enemy);
@@ -97,7 +97,7 @@ public class Skill3ProjectileVfx : ProjectileVfx
         {
             CharacterBrain enemy = other.GetComponentInParent<CharacterBrain>();
             enemy.characterMovement.SetMoveSpeed(1f);
-            enemy.animatorState.Ator.speed = 1f;
+            enemy.animatorState.SetSpeed(1f);
         }
     }
 }

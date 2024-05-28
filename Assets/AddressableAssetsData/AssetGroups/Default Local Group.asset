@@ -17,7 +17,7 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 4769610922bb87d4d991da432004575b
   m_SerializeEntries:
-  - m_GUID: ffeb133db548c2c4f986d452512c90ea
+  - m_GUID: d1b0eae1bc584e24fab2a0bec6738174
     m_Address: Assets/AddressableLocalAssets/Prefabs/Character/MainHero.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
@@ -419,6 +419,76 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f8ba0ac59318e2c4294a3f5e36ef171c
     m_Address: Assets/AddressableLocalAssets/Prefabs/Items/Wing_0.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b590d3dc59a29a48839f4eaef02a81b
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Cloth_0.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3398ad3e36e8939449149c464b7eec37
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Bow_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6f6eba7785e25b419f56fccebf9f2c7
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Wing_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9cb97a8cc92ae54fb4b3a5abb1e5c8e
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Bow_0.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f09b42cf12f322a479f17cf9dbf210fd
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Wing_0.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d2dfa4eeca12fe49b9e5cfd64675848
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Cloth_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f752a1caedea6994a8e0434be11b0c26
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Bow_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79e2a99b87881cb419d6bbdb3ea77b3d
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Cloth_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 54291f514519a4a468858eb4f69f2195
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Cloth_3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 455d93380bd6f4346a5cdebee1dbf337
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Bow_3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 73b7aada08aaee04c895fed8d1f78857
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Wing_3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f09ec17bfbd4c3f4187abb80e71c3356
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Cloth_4.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fcd3b41d78e60564da3f9b9a188f70c7
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Bow_4.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 769fc972e6c29f347b3c920ce2ef6c59
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Costumes/Wing_4.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

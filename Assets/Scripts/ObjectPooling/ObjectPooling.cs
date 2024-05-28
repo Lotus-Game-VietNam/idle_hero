@@ -15,6 +15,7 @@ namespace Lotus.CoreFramework
         private readonly string effectsPath = "Assets/AddressableLocalAssets/Prefabs/Effects/{0}.prefab";
         private readonly string iconsPath = "Assets/AddressableLocalAssets/Prefabs/Icons/{0}.prefab";
         private readonly string itemsPath = "Assets/AddressableLocalAssets/Prefabs/Items/{0}.prefab";
+        private readonly string costumesPath = "Assets/AddressableLocalAssets/Prefabs/Costumes/{0}.prefab";
 
 
         private Dictionary<string, List<CharacterBrain>> characters = new Dictionary<string, List<CharacterBrain>>();
@@ -23,6 +24,7 @@ namespace Lotus.CoreFramework
         private Dictionary<string, List<EffectBase>> effects = new Dictionary<string, List<EffectBase>>();
         private Dictionary<string, List<IconSprite>> icons = new Dictionary<string, List<IconSprite>>();
         private Dictionary<string, List<InventoryItem>> items = new Dictionary<string, List<InventoryItem>>();
+        private Dictionary<string, List<CostumeModel>> costumes = new Dictionary<string, List<CostumeModel>>();
 
 
         private Transform  charactersContainer = null;
@@ -31,6 +33,7 @@ namespace Lotus.CoreFramework
         private Transform effectsContainer = null;
         private Transform iconsContainer = null;
         private Transform itemsContainer = null;
+        private Transform costumesContainer = null;
 
 
 
@@ -50,8 +53,14 @@ namespace Lotus.CoreFramework
             this.CreateContainer("Effects", ref effectsContainer);
             this.CreateContainer("Icons", ref iconsContainer);
             this.CreateContainer("Items", ref itemsContainer);
-            this.CreateContainer("Models Redner", ref modelsRenderContainer);
+            this.CreateContainer("Models Render", ref modelsRenderContainer);
+            this.CreateContainer("Costumes", ref costumesContainer);
         }
+
+
+        public CostumeModel DequeueCostumeModel(string modelName, Transform newParent = null) => Dequeue(modelName, costumes, string.Format(costumesPath, modelName), newParent);
+
+        public void PushCostumeModel(CostumeModel model) => Push(model, costumes, costumesContainer).Hide();
 
 
         public RenderModel DequeueRenderModel(string modelName, Transform newParent = null) => Dequeue(modelName, modelsRender, string.Format(modelsRenderPath, modelName), newParent);

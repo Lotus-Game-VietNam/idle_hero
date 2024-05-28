@@ -87,6 +87,14 @@ namespace Lotus.CoreFramework
             return this;
         }
 
+        public IPool<T> ResetLocalTransform()
+        {
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+            transform.localScale = Vector3.one;
+            return this;
+        }
+
         public IPool<T> SetPosition(Vector3 position)
         {
             transform.position = position;
