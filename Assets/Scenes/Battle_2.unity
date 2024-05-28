@@ -2453,7 +2453,7 @@ MonoBehaviour:
   - {fileID: 1443831529}
   - {fileID: 17545687}
   heroAsset:
-    m_AssetGUID: bdcf01421dd51e742b1e5f8f2e145158
+    m_AssetGUID: d1b0eae1bc584e24fab2a0bec6738174
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -2461,6 +2461,7 @@ MonoBehaviour:
   mainRect: {fileID: 2030784525}
   manipulationCvgr: {fileID: 730120551}
   uiWin: {fileID: 8589011226435270607}
+  uiLose: {fileID: 0}
   joystick: {fileID: 875493813}
   skillButtons:
   - {fileID: 886470694}
@@ -120533,6 +120534,7 @@ MonoBehaviour:
   - {fileID: 8238521374115846677}
   - {fileID: 5308573663899712403}
   selected: {fileID: 6426211268408279327}
+  nothankButton: {fileID: 0}
   vfx: {fileID: 1038204379}
 --- !u!225 &8589011226435270608
 CanvasGroup:

@@ -4591,7 +4591,7 @@ MonoBehaviour:
   - {fileID: 1039198877}
   bossRenderParent: {fileID: 32790743}
   heroAsset:
-    m_AssetGUID: bdcf01421dd51e742b1e5f8f2e145158
+    m_AssetGUID: d1b0eae1bc584e24fab2a0bec6738174
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
