@@ -5,6 +5,19 @@ public class MonsterBrain : CharacterBrain
 {
     public override CharacterType CharacterType => CharacterType.Monster;
 
+
+    public int star { get; protected set; }
+
+
+
+
+    protected override void SetStarterValues()
+    {
+        base.SetStarterValues();
+        star = ((DataManager.WorldData.currentLevel - 1) / 5) + 1;
+    }
+
+
     protected override string GetProjectileName(AttackType type)
     {
         return "Monster_Projectile_1_1";

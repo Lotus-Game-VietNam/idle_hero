@@ -57,7 +57,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!agent.CalculatePath(target, navmeshPath))
         {
-            LogTool.LogErrorEditorOnly(GetComponentInParent<HeroBrain>().gameObject.name + " calculatePath fail");
+            LogTool.LogErrorEditorOnly(GetComponentInParent<CharacterBrain>().gameObject.name + " calculatePath fail");
             return;
         }
 
@@ -65,7 +65,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (!agent.isOnNavMesh)
         {
-            LogTool.LogErrorEditorOnly(GetComponentInParent<HeroBrain>().gameObject.name + " not is on Navmesh");
+            LogTool.LogErrorEditorOnly(GetComponentInParent<CharacterBrain>().gameObject.name + " not is on Navmesh");
             return;
         }
 
