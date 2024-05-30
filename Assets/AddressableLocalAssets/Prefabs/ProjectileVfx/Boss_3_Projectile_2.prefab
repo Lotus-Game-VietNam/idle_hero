@@ -64096,9 +64096,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8354518528205521201}
   - component: {fileID: 1140148954545554576}
-  - component: {fileID: 576846782884201135}
+  - component: {fileID: 6198629966964851853}
   m_Layer: 3
-  m_Name: Boss_2_Projectile_1
+  m_Name: Boss_3_Projectile_2
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64149,7 +64149,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &576846782884201135
+--- !u!114 &6198629966964851853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64158,14 +64158,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7171826544434730265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 030f6d1df6770c146aa9e12825edf741, type: 3}
+  m_Script: {fileID: 11500000, guid: 94785fc18b27d864587c06bdc50b16f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   modelFx: {fileID: 2158428484496522840}
   muzzleFx: {fileID: 7497121318958122399}
   hitFx: {fileID: 3324652626338017455}
-  hideAffterTime: 4
-  moveSpeed: 600
+  hideAffterTime: 3
+  moveSpeed: 2.3
 --- !u!1 &7539653405564708709
 GameObject:
   m_ObjectHideFlags: 0

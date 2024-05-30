@@ -25,7 +25,7 @@ public class Boss3Brain : Boss1Brain
 
     protected override string GetProjectileName(AttackType type)
     {
-        return type == AttackType.SkillOne ? "Boss_2_Projectile_2" : "Boss_2_Projectile_1";
+        return type == AttackType.SkillOne ? "Boss_3_Projectile_2" : "Boss_3_Projectile_1";
     }
 
     protected override void SetAttackRange()

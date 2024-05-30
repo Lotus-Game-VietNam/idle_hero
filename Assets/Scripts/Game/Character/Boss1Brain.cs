@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Boss1Brain : MonsterBrain
 {
-    private readonly float normalAttackDelay = 4f;
+    protected readonly float normalAttackDelay = 4f;
 
     protected virtual float skillFireRate => 0.15f;
 
@@ -14,7 +14,7 @@ public class Boss1Brain : MonsterBrain
     protected bool onSkillCD = false;
     protected bool isOnSkill = false;
 
-    private float timesCD = 10f;
+    protected float timesCD = 10f;
     protected float countNormalAttack = 0f;
     protected float countTimeSkill = 0f;
     
@@ -25,6 +25,7 @@ public class Boss1Brain : MonsterBrain
         base.SetStarterValues();
         //star = 3;
         timesCD = star >= 2 ? 13 : 10;
+        isOnSkill = false;
     }
 
 
@@ -38,7 +39,7 @@ public class Boss1Brain : MonsterBrain
         return attackType == 0 ? base.GetFinalDamage(attackType) : skillDamage;
     }
 
-    private AttackType GetAttackType()
+    protected AttackType GetAttackType()
     {
         if (onSkillCD)
             return AttackType.NormalAttack;
@@ -129,6 +130,7 @@ public class Boss1Brain : MonsterBrain
 
         isOnSkill = false;
     }
+
 
     private bool NormalAttack()
     {
