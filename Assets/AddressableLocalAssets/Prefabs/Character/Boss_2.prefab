@@ -5895,6 +5895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fb51ca57c9e6f488b1f1b2a606531f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animators:
+  - {fileID: 7563102194812470212}
   currentState: 0
   parameter:
   - 

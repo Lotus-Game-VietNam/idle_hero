@@ -49,7 +49,8 @@ public class Boss3Brain : Boss1Brain
 
         for (int i = 0; i < totalCountProjectileOnSkill; i++)
         {
-            base.OnShot((int)AttackType.SkillOne);
+            int type = (int)AttackType.SkillOne;
+            characterAttack.Shot((AttackType)type, new ProjectileData(GetProjectileName((AttackType)type), GetFinalDamage(type), this, targetAttack));
             yield return new WaitForSeconds(skillFireRate);
         }
     }
