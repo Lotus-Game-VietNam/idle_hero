@@ -10,6 +10,12 @@ public class MonsterBrain : CharacterBrain
 
 
 
+    protected override void Awake()
+    {
+        base.Awake();
+        animatorState.events.OnAttackEvent = OnAttack;
+    }
+
 
     protected override void SetStarterValues()
     {
@@ -42,6 +48,12 @@ public class MonsterBrain : CharacterBrain
         }
 
         base.Shot(type);
+    }
+
+    protected virtual void OnAttack()
+    {
+        this.DequeueEffect("MonsterHitFx").SetPosition(targetAttack.center + (Vector3.up * (targetAttack.characterAttack.height / 2))).Show();
+        targetAttack.TakedDamage(characterStats.ATK, this);
     }
 
     protected override void FollowTarget()

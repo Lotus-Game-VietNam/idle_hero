@@ -22,12 +22,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fba5175307234bf488ba3148e265f9c4
+  - m_GUID: 2cd0c4c0ee098064b86f9b80107dc373
     m_Address: Assets/AddressableLocalAssets/Prefabs/Character/Monster_1_1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ce3d0132f6f5b1949a2dce4d0dd27f81
+  - m_GUID: 7e92530e9a815604097fbe7b6f1a973c
     m_Address: Assets/AddressableLocalAssets/Prefabs/Character/Monster_1_2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
@@ -509,6 +509,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fa55726befb5cdf4faf5ba099c7126de
     m_Address: Assets/AddressableLocalAssets/Prefabs/Effects/Boss_2_Aura.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5961c8ebc711dcc43a9286e77e2d16fc
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Effects/MonsterHitFx.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

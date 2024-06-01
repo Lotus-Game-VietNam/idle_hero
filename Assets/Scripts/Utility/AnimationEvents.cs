@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class AnimationEvents : MonoBehaviour
 {
+    public Action OnAttackEvent = null;
+
     public Action<int> OnShotEvent = null;
 
     public Action OnShotFinishEvent = null;
@@ -11,6 +13,12 @@ public class AnimationEvents : MonoBehaviour
     public Action Event1 = null;
     public Action Event2 = null;
     public Action Event3 = null;
+
+
+    public void OnAttack()
+    {
+        OnAttackEvent?.Invoke();
+    }
 
 
     public void OnShot(int type)
