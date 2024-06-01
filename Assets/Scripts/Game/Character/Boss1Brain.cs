@@ -98,7 +98,7 @@ public class Boss1Brain : MonsterBrain
         isOnSkill = false;
     }
 
-    private IEnumerator IESkill2()
+    protected virtual IEnumerator IESkill2()
     {
         if (animatorState.currentState == AnimationStates.NormalAttack)
             yield break;

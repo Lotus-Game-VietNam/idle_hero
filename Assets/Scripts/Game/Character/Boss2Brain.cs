@@ -9,26 +9,39 @@ public class Boss2Brain : MonsterBrain
 
     private float skillDamage => characterStats.ATK * 0.8f;
     
-    private bool onSkillCD = false;
+    private bool onSkillCD_1 = false;
+    private bool onSkillCD_2 = false;
+
     private bool onSkill = false;
 
-    private float timesCD = 10f;
+    private readonly float timesCD_1 = 10f;
+    private readonly float timesCD_2 = 11f;
+
     private float countNormalAttack = 0f;
-    private float countTimeSkill = 0f;
+    private float countTimeSkill_1 = 0f;
+    private float countTimeSkill_2 = 0f;
 
 
+
+    protected override void Awake()
+    {
+        base.Awake();
+        animatorState.events.Event1 = OnStartSkill2;
+        animatorState.events.Event2 = OnSkill2;
+    }
 
     protected override void SetStarterValues()
     {
         base.SetStarterValues();
         star = 3;
-        timesCD = star >= 2 ? 11 : 10;
         onSkill = false;
+        onSkillCD_1 = onSkillCD_2 = false;
+        countTimeSkill_1 = countTimeSkill_2 = countNormalAttack = 0;
     }
 
     protected override string GetProjectileName(AttackType type)
     {
-        return type == AttackType.SkillTrue ? "Boss_2_Projectile_2" : "Boss_1_Projectile_1";
+        return type == AttackType.SkillTrue ? "Boss_2_Projectile_2" : "Boss_2_Projectile_1";
     }
 
     protected override float GetFinalDamage(int attackType)
@@ -39,7 +52,7 @@ public class Boss2Brain : MonsterBrain
 
     protected AttackType GetAttackType()
     {
-        if (onSkillCD)
+        if (onSkillCD_1 && onSkillCD_2)
             return AttackType.NormalAttack;
 
         if (star == 1)
@@ -48,11 +61,21 @@ public class Boss2Brain : MonsterBrain
             return AttackType.SkillTrue;
         else if (star == 3)
         {
-            float random = Random.Range(0, 100f);
-            if (random < 65)
-                return AttackType.SkillTrue;
+            if (!onSkillCD_1 && !onSkillCD_2)
+            {
+                float random = Random.Range(0, 100f);
+                if (random < 65)
+                    return AttackType.SkillTrue;
+                else
+                    return AttackType.SkillOne;
+            }
             else
-                return AttackType.SkillOne;
+            {
+                if (!onSkillCD_1)
+                    return AttackType.SkillOne;
+                else
+                    return AttackType.SkillTrue;
+            }
         }
 
         return AttackType.NormalAttack;
@@ -67,8 +90,6 @@ public class Boss2Brain : MonsterBrain
             base.OnShot(type);
         else if (attackType == AttackType.SkillOne)
             StartCoroutine(IESkill1());
-        else if (attackType == AttackType.SkillTrue)
-            StartCoroutine(IESkill2());
     }
 
     protected override void Shot(AttackType type)
@@ -82,14 +103,19 @@ public class Boss2Brain : MonsterBrain
         base.Shot(type);
     }
 
-
-    private IEnumerator IESkill2()
+    private void OnStartSkill2()
     {
         if (animatorState.currentState == AnimationStates.NormalAttack)
-            yield break;
+            return;
 
         onSkill = true;
-        onSkillCD = true;
+        onSkillCD_2 = true;
+        this.DequeueEffect("Boss_2_Aura").SetPosition(transform.position).Show();
+        StartCoroutine(IEStartSkill2());
+    }
+
+    private IEnumerator IEStartSkill2()
+    {
         float countTime = 0f;
         while (countTime < 2)
         {
@@ -97,7 +123,15 @@ public class Boss2Brain : MonsterBrain
             countTime += Time.deltaTime;
             yield return null;
         }
+    }
 
+    private void OnSkill2()
+    {
+        StartCoroutine(IESkill2());
+    }
+
+    private IEnumerator IESkill2()
+    {
         for (int i = 0; i < 5; i++)
         {
             ProjectileData projectileData = new ProjectileData("Boss_2_Projectile_2", characterStats.ATK * 1.5f, this, targetAttack);
@@ -112,14 +146,17 @@ public class Boss2Brain : MonsterBrain
 
     private IEnumerator IESkill1()
     {
-        onSkillCD = true;
+        onSkillCD_1 = true;
         onSkill = true;
-        for (int i = 0;i < 3; i++)
-        {
-            this.DequeueEffect("Boss2_Skill", null).SetPosition(center).
+        this.DequeueEffect("Boss2_Skill", null).SetPosition(center).
             Initial(new EffectData(new float[] { skillDamage, skillStunTime }, null, new CharacterBrain[] { this, targetAttack })).Show();
-            yield return new WaitForSeconds(0.5f);
-        }
+        //for (int i = 0;i < 3; i++)
+        //{
+        //    this.DequeueEffect("Boss2_Skill", null).SetPosition(center).
+        //    Initial(new EffectData(new float[] { skillDamage, skillStunTime }, null, new CharacterBrain[] { this, targetAttack })).Show();
+        //    yield return new WaitForSeconds(0.5f);
+        //}
+        yield return null;
         onSkill = false;
     }
 
@@ -139,22 +176,35 @@ public class Boss2Brain : MonsterBrain
         return true;
     }
 
-    private void SkillCountingDown()
+    private void Skill1CountingDown()
     {
-        if (!onSkillCD)
+        if (!onSkillCD_1)
             return;
 
-        countTimeSkill += Time.deltaTime;
-        if (countTimeSkill >= timesCD)
+        countTimeSkill_1 += Time.deltaTime;
+        if (countTimeSkill_1 >= timesCD_1)
         {
-            countTimeSkill = 0f;
-            onSkillCD = false;
+            countTimeSkill_1 = 0f;
+            onSkillCD_1 = false;
+        }
+    }
+
+    private void Skill2CountingDown()
+    {
+        if (!onSkillCD_2)
+            return;
+
+        countTimeSkill_2 += Time.deltaTime;
+        if (countTimeSkill_2 >= timesCD_2)
+        {
+            countTimeSkill_2 = 0f;
+            onSkillCD_2 = false;
         }
     }
 
     private void SetAttackRange()
     {
-        characterAttack.SetAttackRange(!onSkillCD ? 15 : -1);
+        characterAttack.SetAttackRange(!onSkillCD_1 ? 15 : -1);
     }
 
     protected override void OnTargetDead()
@@ -167,8 +217,12 @@ public class Boss2Brain : MonsterBrain
     {
         base.OnUpdate();
         FollowTarget();
-        Shot(GetAttackType());
-        SkillCountingDown();
+
+        if (!onSkill)
+            Shot(GetAttackType());
+
+        Skill1CountingDown();
+        Skill2CountingDown();
         SetAttackRange();
     }
 }

@@ -387,7 +387,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fc4c1d1396b437146a11a7d2d49e3967
+  - m_GUID: cae93857a0160384aa3fe5d4108752e8
     m_Address: Assets/AddressableLocalAssets/Prefabs/Character/Boss_2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
@@ -499,6 +499,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: abb61d885a5846247b7292b58aa47f5b
     m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Boss_2_Projectile_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee76583f706b37d4989226a1ecbff8eb
+    m_Address: Assets/AddressableLocalAssets/Prefabs/ProjectileVfx/Boss_2_Projectile_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa55726befb5cdf4faf5ba099c7126de
+    m_Address: Assets/AddressableLocalAssets/Prefabs/Effects/Boss_2_Aura.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
