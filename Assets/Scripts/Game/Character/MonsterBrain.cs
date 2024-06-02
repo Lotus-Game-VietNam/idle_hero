@@ -1,5 +1,6 @@
 using Lotus.CoreFramework;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MonsterBrain : CharacterBrain
 {
@@ -16,11 +17,25 @@ public class MonsterBrain : CharacterBrain
         animatorState.events.OnAttackEvent = OnAttack;
     }
 
+    protected override void Initialized(CharacterConfig data)
+    {
+        InitEvents();
+        characterMovement.Initialized(GetComponent<NavMeshAgent>());
+        characterStats.Initialized(new System.Collections.Generic.Dictionary<CharacterAttributes, float> 
+        {
+            { CharacterAttributes.HP, DataManager.WorldData.currentLevel * 10 },
+            { CharacterAttributes.ATK, DataManager.WorldData.currentLevel * 2 },
+        });
+        animatorState.Initialized();
+        characterAttack.Initialized();
+        SetStarterValues();
+    }
+
 
     protected override void SetStarterValues()
     {
         base.SetStarterValues();
-        star = ((DataManager.WorldData.currentLevel - 1) / 5) + 1;
+        star = (DataManager.WorldData.currentLevel + 3) % 3 == 0 ? 3 : (DataManager.WorldData.currentLevel + 3) % 3;
     }
 
 

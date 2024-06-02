@@ -61,7 +61,6 @@ public abstract class CharacterBrain : IPool<CharacterConfig>
         animatorState.Initialized();
         characterAttack.Initialized();
         SetStarterValues();
-        
     }
 
     protected virtual void SetStarterValues()

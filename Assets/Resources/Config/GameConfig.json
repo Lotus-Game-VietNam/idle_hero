@@ -612,6 +612,18 @@
 				"ATK" : 2
 			}
 		},
+		"Monster_2_1" : {
+			"attributes" : {
+				"HP" : 10,
+				"ATK" : 2
+			}
+		},
+		"Monster_2_2" : {
+			"attributes" : {
+				"HP" : 10,
+				"ATK" : 2
+			}
+		},
 		"Boss_1" : {
 			"attributes" : {
 				"HP" : 200,

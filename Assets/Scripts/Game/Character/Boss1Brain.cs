@@ -1,3 +1,4 @@
+using Lotus.CoreFramework;
 using System.Collections;
 using UnityEngine;
 
@@ -11,21 +12,34 @@ public class Boss1Brain : MonsterBrain
 
     protected virtual float skillDamage => characterStats.ATK * 2;
 
-    protected bool onSkillCD = false;
+    protected bool onSkillCD_1 = false;
+    protected bool onSkillCD_2 = false;
+
     protected bool isOnSkill = false;
 
-    protected float timesCD = 10f;
-    protected float countNormalAttack = 0f;
-    protected float countTimeSkill = 0f;
-    
+    protected readonly float timesCD_1 = 10f;
+    protected readonly float timesCD_2 = 13f;
 
+    protected float countNormalAttack = 0f;
+    protected float countTimeSkill_1 = 0f;
+    protected float countTimeSkill_2 = 0f;
+
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+        animatorState.events.Event1 = OnStartSkill2;
+        animatorState.events.Event2 = OnSkill2;
+    }
 
     protected override void SetStarterValues()
     {
         base.SetStarterValues();
         //star = 3;
-        timesCD = star >= 2 ? 13 : 10;
         isOnSkill = false;
+        onSkillCD_1 = onSkillCD_2 = false;
+        countTimeSkill_1 = countTimeSkill_2 = countNormalAttack = 0;
     }
 
 
@@ -41,20 +55,30 @@ public class Boss1Brain : MonsterBrain
 
     protected AttackType GetAttackType()
     {
-        if (onSkillCD)
+        if (onSkillCD_1 && onSkillCD_2)
             return AttackType.NormalAttack;
 
-        if (star == 1)
+        if (star == 1 && !onSkillCD_1)
             return AttackType.SkillOne;
-        else if (star == 2)
+        else if (star == 2 && !onSkillCD_2)
             return AttackType.SkillTrue;
         else if (star == 3)
         {
-            float random = Random.Range(0, 100f);
-            if (random < 65)
-                return AttackType.SkillTrue;
+            if (!onSkillCD_1 && !onSkillCD_2)
+            {
+                float random = Random.Range(0, 100f);
+                if (random < 65)
+                    return AttackType.SkillTrue;
+                else
+                    return AttackType.SkillOne;
+            }
             else
-                return AttackType.SkillOne;
+            {
+                if (!onSkillCD_1)
+                    return AttackType.SkillOne;
+                else
+                    return AttackType.SkillTrue;
+            }
         }
 
         return AttackType.NormalAttack;
@@ -68,8 +92,6 @@ public class Boss1Brain : MonsterBrain
             base.OnShot(type);
         else if (attackType == AttackType.SkillOne)
             StartCoroutine(IEFireSkill());
-        else if (attackType == AttackType.SkillTrue)
-            StartCoroutine(IESkill2());
     }
 
     protected override void Shot(AttackType type)
@@ -89,7 +111,7 @@ public class Boss1Brain : MonsterBrain
             yield break;
 
         isOnSkill = true;
-        onSkillCD = true;
+        onSkillCD_1 = true;
         for (int i = 0; i < totalCountProjectileOnSkill; i++)
         {
             base.OnShot((int)AttackType.SkillOne);
@@ -98,13 +120,18 @@ public class Boss1Brain : MonsterBrain
         isOnSkill = false;
     }
 
-    protected virtual IEnumerator IESkill2()
+    private void OnStartSkill2()
     {
         if (animatorState.currentState == AnimationStates.NormalAttack)
-            yield break;
+            return;
 
         isOnSkill = true;
-        onSkillCD = true;
+        onSkillCD_2 = true;
+        StartCoroutine(IEStartSkill2());
+    }
+
+    private IEnumerator IEStartSkill2()
+    {
         float countTime = 0f;
         while (countTime < 2)
         {
@@ -112,8 +139,16 @@ public class Boss1Brain : MonsterBrain
             countTime += Time.deltaTime;
             yield return null;
         }
+    }
 
-        countTime = 0;
+    private void OnSkill2()
+    {
+        StartCoroutine(IESkill2());
+    }
+
+    protected virtual IEnumerator IESkill2()
+    {
+        float countTime = 0;
         bool isTrigger = false;
         while (countTime < 0.5f)
         {
@@ -141,18 +176,32 @@ public class Boss1Brain : MonsterBrain
         return true;
     }
 
-    private void SkillCountingDown()
+    private void Skill1CountingDown()
     {
-        if (!onSkillCD)
+        if (!onSkillCD_1)
             return;
 
-        countTimeSkill += Time.deltaTime;
-        if (countTimeSkill >= timesCD)
+        countTimeSkill_1 += Time.deltaTime;
+        if (countTimeSkill_1 >= timesCD_1)
         {
-            countTimeSkill = 0f;
-            onSkillCD = false;
+            countTimeSkill_1 = 0f;
+            onSkillCD_1 = false;
         }
     }
+
+    private void Skill2CountingDown()
+    {
+        if (!onSkillCD_2)
+            return;
+
+        countTimeSkill_2 += Time.deltaTime;
+        if (countTimeSkill_2 >= timesCD_2)
+        {
+            countTimeSkill_2 = 0f;
+            onSkillCD_2 = false;
+        }
+    }
+
 
     protected override void OnTargetDead()
     {
@@ -161,7 +210,7 @@ public class Boss1Brain : MonsterBrain
 
     protected virtual void SetAttackRange()
     {
-        characterAttack.SetAttackRange(!onSkillCD ? 20 : -1);
+        characterAttack.SetAttackRange(!onSkillCD_1 && !onSkillCD_2 ? 20 : -1);
     }
 
     protected override void FollowTarget()
@@ -176,8 +225,13 @@ public class Boss1Brain : MonsterBrain
     {
         base.OnUpdate();
         FollowTarget();
-        Shot(GetAttackType());
-        SkillCountingDown();
+
+        if (!isOnSkill)
+            Shot(GetAttackType());
+
+        Skill1CountingDown();
+        Skill2CountingDown();
+
         SetAttackRange();
     }
 }

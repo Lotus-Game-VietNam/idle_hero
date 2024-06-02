@@ -72,7 +72,7 @@ public class BattleManager : MonoBehaviour
 
     private CharacterBrain SpawnMonster()
     {
-        string monsterName = $"Boss_{DataManager.WorldData.currentLevel}";
+        string monsterName = $"Boss_{((DataManager.WorldData.currentLevel - 1) / 3) + 1}";
         return this.DequeueCharacter(monsterName);
     }
 
@@ -92,6 +92,7 @@ public class BattleManager : MonoBehaviour
     {
         manipulationCvgr.DeActive();
         uiWin.UpdateContent();
+        hero.animatorState.ChangeState(AnimationStates.Cheer);
     }
 
     private void OnLose()

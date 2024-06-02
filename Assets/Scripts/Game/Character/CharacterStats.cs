@@ -59,6 +59,11 @@ public class CharacterStats : MonoUI
         transform.localPosition = transform.localEulerAngles = Vector3.zero;
     }
 
+    public void UpdateAttributes(Dictionary<CharacterAttributes, float> attributes)
+    {
+        this.attributes = attributes;
+    }
+
     public void OnHealthChanged(float changeValue)
     {
         if (!Alive)

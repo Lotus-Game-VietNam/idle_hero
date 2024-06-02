@@ -68,7 +68,7 @@ public class FarmManager : MonoBehaviour
     private CharacterBrain SpawnMonster()
     {
         int monsterIndex = UnityEngine.Random.Range(0, 100) % 2 == 0 ? 1 : 2;
-        string monsterName = $"Monster_{DataManager.WorldData.currentLevel}_{monsterIndex}";
+        string monsterName = $"Monster_{((DataManager.WorldData.currentLevel - 1) / 3) + 1}_{monsterIndex}";
         return this.DequeueCharacter(monsterName);
     }
 

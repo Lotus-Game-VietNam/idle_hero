@@ -9,9 +9,9 @@ namespace Lotus.CoreFramework
 {
     public static class Utilities
     {
-        public static SceneName GetCurrentFarmScene() => (SceneName)((DataManager.WorldData.currentLevel - 1) * 2) + 2;
+        public static SceneName GetCurrentFarmScene() => (SceneName)(((DataManager.WorldData.currentLevel - 1) / 3) * 2) + 2;
 
-        public static SceneName GetCurrentBattleScene() => (SceneName)((DataManager.WorldData.currentLevel - 1) * 2) + 3;
+        public static SceneName GetCurrentBattleScene() => (SceneName)(((DataManager.WorldData.currentLevel - 1) / 3) * 2) + 3;
 
 
         public static List<string> units = new List<string> { "K", "M", "B", "T", "P", "E", "Z" };
@@ -62,6 +62,8 @@ namespace Lotus.CoreFramework
 
 
         public static AnimationStates Convert(this AttackType type) => (AnimationStates)((int)AnimationStates.NormalAttack + (int)type);
+
+        public static AttackType Convert(this AnimationStates type) => (AttackType)((int)type -  (int)AnimationStates.NormalAttack);
 
         public static bool IsMovement(this AnimationStates state)
         {

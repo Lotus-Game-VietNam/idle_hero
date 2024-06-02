@@ -24,7 +24,7 @@ public class BossPopup : PopupBase
     protected override void UpdateContent()
     {
         if (currentModelRender == null)
-            currentModelRender = this.DequeueRenderModel($"Boss_{DataManager.WorldData.currentLevel}", renderParent);
+            currentModelRender = this.DequeueRenderModel($"Boss_{((DataManager.WorldData.currentLevel - 1) / 3) + 1}", renderParent);
 
         currentModelRender.Initial(null).Show();
     }

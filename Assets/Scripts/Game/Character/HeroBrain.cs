@@ -114,13 +114,14 @@ public class HeroBrain : CharacterBrain
         //animatorState.animators[(int)itemType + 1].ForceStateNormalizedTime(animatorState.animators[0].GetCurrentAnimatorStateInfo(0).normalizedTime);
         animatorState.Rebind();
 
-
         ItemData costumeData = ConfigManager.GetItem(itemType, itemLevel);
         newCostume.Initial(costumeData).ResetLocalTransform().Show();
         currentCostumes[itemType] = newCostume;
 
         DataManager.HeroData.items[itemType] = costumeData;
         DataManager.HeroData.Save();
+
+        characterStats.UpdateAttributes(DataManager.HeroData.GetAttributes());
     }
 
     protected override void OnShotFinish()

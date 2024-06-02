@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boss2Brain : MonsterBrain
 {
-    private readonly float normalAttackDelay = 4f;
+    private readonly float normalAttackDelay = 3f;
     private readonly float skillStunTime = 1f;
 
     private float skillDamage => characterStats.ATK * 0.8f;
@@ -15,7 +15,7 @@ public class Boss2Brain : MonsterBrain
     private bool onSkill = false;
 
     private readonly float timesCD_1 = 10f;
-    private readonly float timesCD_2 = 11f;
+    private readonly float timesCD_2 = 15f;
 
     private float countNormalAttack = 0f;
     private float countTimeSkill_1 = 0f;
@@ -33,7 +33,7 @@ public class Boss2Brain : MonsterBrain
     protected override void SetStarterValues()
     {
         base.SetStarterValues();
-        star = 3;
+        //star = 3;
         onSkill = false;
         onSkillCD_1 = onSkillCD_2 = false;
         countTimeSkill_1 = countTimeSkill_2 = countNormalAttack = 0;
@@ -52,12 +52,15 @@ public class Boss2Brain : MonsterBrain
 
     protected AttackType GetAttackType()
     {
+        if (animatorState.currentState.IsAttack())
+            return animatorState.currentState.Convert();
+
         if (onSkillCD_1 && onSkillCD_2)
             return AttackType.NormalAttack;
 
-        if (star == 1)
+        if (star == 1 && !onSkillCD_1)
             return AttackType.SkillOne;
-        else if (star == 2)
+        else if (star == 2 && !onSkillCD_2)
             return AttackType.SkillTrue;
         else if (star == 3)
         {

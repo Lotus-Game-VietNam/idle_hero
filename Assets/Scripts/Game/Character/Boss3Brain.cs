@@ -28,7 +28,7 @@ public class Boss3Brain : Boss1Brain
 
     protected override void SetAttackRange()
     {
-        characterAttack.SetAttackRange(!onSkillCD ? 25 : -1);
+        characterAttack.SetAttackRange(!onSkillCD_1 && !onSkillCD_2 ? 25 : -1);
     }
 
 
@@ -37,7 +37,7 @@ public class Boss3Brain : Boss1Brain
         if (animatorState.currentState == AnimationStates.NormalAttack)
             yield break;
 
-        onSkillCD = true;
+        onSkillCD_1 = true;
         isOnSkill = true;
 
         for (int i = 0; i < totalCountProjectileOnSkill; i++)
@@ -56,7 +56,7 @@ public class Boss3Brain : Boss1Brain
             yield break;
 
         isOnSkill = true;
-        onSkillCD = true;
+        onSkillCD_2 = true;
         float countTime = 0f;
         while (countTime < 2)
         {
