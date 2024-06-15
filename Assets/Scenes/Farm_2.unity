@@ -5212,6 +5212,8 @@ MonoBehaviour:
   costBuyItemText: {fileID: 363143989}
   costUpgradeIncomeText: {fileID: 434313264}
   sellValueText: {fileID: 2083778481}
+  stageText: {fileID: 663130582}
+  landText: {fileID: 597491428}
   sellTextObj: {fileID: 2088109413}
   sellValueObj: {fileID: 673576941}
   autoTapCountingDown: {fileID: 88407431}
@@ -7783,6 +7785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  addBtn: {fileID: 402261882}
 --- !u!1 &1931759939
 GameObject:
   m_ObjectHideFlags: 0

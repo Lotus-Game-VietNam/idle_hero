@@ -1,62 +1,153 @@
 using Lotus.CoreFramework;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Boss3Brain : Boss1Brain
+public class Boss3Brain : MonsterBrain
 {
 
-    protected override float skillDamage => characterStats.ATK;
+    protected readonly float normalAttackDelay = 4f;
 
-    protected override int totalCountProjectileOnSkill => 5;
+    protected virtual float skillFireRate => 0.15f;
 
-    protected override float skillFireRate => 0.5f;
+    protected virtual int totalCountProjectileOnSkill => 3;
+
+    protected virtual float skillDamage => characterStats.ATK * 2;
+
+    protected bool onSkillCD_1 = false;
+    protected bool onSkillCD_2 = false;
+
+    protected bool isOnSkill = false;
+
+    protected readonly float timesCD_1 = 10f;
+    protected readonly float timesCD_2 = 13f;
+
+    protected float countNormalAttack = 0f;
+    protected float countTimeSkill_1 = 0f;
+    protected float countTimeSkill_2 = 0f;
 
 
 
+    protected override void Awake()
+    {
+        base.Awake();
+        animatorState.events.Event1 = OnStartSkill2;
+        animatorState.events.Event2 = OnSkill2;
+    }
+
+    protected override void Initialized(CharacterConfig data)
+    {
+        InitEvents();
+        characterMovement.Initialized(GetComponent<NavMeshAgent>());
+        characterStats.Initialized(new System.Collections.Generic.Dictionary<CharacterAttributes, float>
+        {
+            { CharacterAttributes.HP, DataManager.WorldData.currentLevel * 200 },
+            { CharacterAttributes.ATK, DataManager.WorldData.currentLevel * 5 },
+        });
+        animatorState.Initialized();
+        characterAttack.Initialized();
+        SetStarterValues();
+    }
 
     protected override void SetStarterValues()
     {
         base.SetStarterValues();
-        star = 2;
+        //star = 3;
+        isOnSkill = false;
+        onSkillCD_1 = onSkillCD_2 = false;
+        countTimeSkill_1 = countTimeSkill_2 = countNormalAttack = 0;
     }
 
 
     protected override string GetProjectileName(AttackType type)
     {
-        return "Boss_3_Projectile_1";
+        return "Boss_1_Projectile_1";
     }
 
-    protected override void SetAttackRange()
+    protected override float GetFinalDamage(int attackType)
     {
-        characterAttack.SetAttackRange(!onSkillCD_1 && !onSkillCD_2 ? 25 : -1);
+        return attackType == 0 ? base.GetFinalDamage(attackType) : skillDamage;
     }
 
+    protected AttackType GetAttackType()
+    {
+        if (onSkillCD_1 && onSkillCD_2)
+            return AttackType.NormalAttack;
 
-    protected override IEnumerator IEFireSkill()
+        if (star == 1 && !onSkillCD_1)
+            return AttackType.SkillOne;
+        else if (star == 2 && !onSkillCD_2)
+            return AttackType.SkillTrue;
+        else if (star == 3)
+        {
+            if (!onSkillCD_1 && !onSkillCD_2)
+            {
+                float random = Random.Range(0, 100f);
+                if (random < 65)
+                    return AttackType.SkillTrue;
+                else
+                    return AttackType.SkillOne;
+            }
+            else
+            {
+                if (!onSkillCD_1)
+                    return AttackType.SkillOne;
+                else
+                    return AttackType.SkillTrue;
+            }
+        }
+
+        return AttackType.NormalAttack;
+    }
+
+    protected override void OnShot(int type)
+    {
+        AttackType attackType = (AttackType)type;
+
+        if (attackType == AttackType.NormalAttack)
+            base.OnShot(type);
+        else if (attackType == AttackType.SkillOne)
+            StartCoroutine(IEFireSkill());
+    }
+
+    protected override void Shot(AttackType type)
+    {
+        if (type == AttackType.NormalAttack && !NormalAttack())
+            return;
+
+        if (isOnSkill)
+            return;
+
+        base.Shot(type);
+    }
+
+    protected virtual IEnumerator IEFireSkill()
     {
         if (animatorState.currentState == AnimationStates.NormalAttack)
             yield break;
 
-        onSkillCD_1 = true;
         isOnSkill = true;
-
+        onSkillCD_1 = true;
         for (int i = 0; i < totalCountProjectileOnSkill; i++)
         {
-            int type = (int)AttackType.SkillOne;
-            characterAttack.Shot((AttackType)type, new ProjectileData("Boss_3_Projectile_2", GetFinalDamage(type), this, targetAttack));
+            base.OnShot((int)AttackType.SkillOne);
             yield return new WaitForSeconds(skillFireRate);
         }
-
         isOnSkill = false;
     }
 
-    protected override IEnumerator IESkill2()
+    private void OnStartSkill2()
     {
         if (animatorState.currentState == AnimationStates.NormalAttack)
-            yield break;
+            return;
 
         isOnSkill = true;
         onSkillCD_2 = true;
+        StartCoroutine(IEStartSkill2());
+    }
+
+    private IEnumerator IEStartSkill2()
+    {
         float countTime = 0f;
         while (countTime < 2)
         {
@@ -64,23 +155,99 @@ public class Boss3Brain : Boss1Brain
             countTime += Time.deltaTime;
             yield return null;
         }
+    }
 
-        for (int i = 0; i < 5; i++)
+    private void OnSkill2()
+    {
+        StartCoroutine(IESkill2());
+    }
+
+    protected virtual IEnumerator IESkill2()
+    {
+        float countTime = 0;
+        bool isTrigger = false;
+        while (countTime < 0.5f)
         {
-            ProjectileData projectileData = new ProjectileData("Boss_2_Projectile_2", characterStats.ATK * 1.5f, this, targetAttack);
-            Vector3 startPos = targetAttack.center + Vector3.up * 50 - Vector3.right * 20;
-            this.DequeueProjectileVfx(projectileData.projectileName).Initial(projectileData).SetPosition(startPos).Show();
-            yield return new WaitForSeconds(1);
+            characterMovement.agent.Move(transform.forward * 60f * Time.deltaTime);
+            countTime += Time.deltaTime;
+            if (!isTrigger && characterMovement.DistanceToTarget(targetAttack.center) <= characterMovement.agent.radius * 3f)
+            {
+                isTrigger = true;
+                targetAttack.animatorState.ChangeState(AnimationStates.TakeDamage);
+                targetAttack.TakedDamage(characterStats.ATK * 2.5f, this);
+            }
+            yield return null;
         }
 
         isOnSkill = false;
     }
 
-    public override void TakedDamage(float damage, CharacterBrain sender)
+
+    private bool NormalAttack()
+    {
+        countNormalAttack += Time.deltaTime;
+        if (countNormalAttack < normalAttackDelay)
+            return false;
+        countNormalAttack = 0;
+        return true;
+    }
+
+    private void Skill1CountingDown()
+    {
+        if (!onSkillCD_1)
+            return;
+
+        countTimeSkill_1 += Time.deltaTime;
+        if (countTimeSkill_1 >= timesCD_1)
+        {
+            countTimeSkill_1 = 0f;
+            onSkillCD_1 = false;
+        }
+    }
+
+    private void Skill2CountingDown()
+    {
+        if (!onSkillCD_2)
+            return;
+
+        countTimeSkill_2 += Time.deltaTime;
+        if (countTimeSkill_2 >= timesCD_2)
+        {
+            countTimeSkill_2 = 0f;
+            onSkillCD_2 = false;
+        }
+    }
+
+
+    protected override void OnTargetDead()
+    {
+        animatorState.ChangeState(AnimationStates.Idle);
+    }
+
+    protected virtual void SetAttackRange()
+    {
+        characterAttack.SetAttackRange(!onSkillCD_1 && !onSkillCD_2 ? 20 : -1);
+    }
+
+    protected override void FollowTarget()
     {
         if (isOnSkill)
             return;
 
-        base.TakedDamage(damage, sender);
+        base.FollowTarget();
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+        FollowTarget();
+
+        if (!isOnSkill)
+            Shot(GetAttackType());
+
+        Skill1CountingDown();
+        Skill2CountingDown();
+
+        SetAttackRange();
     }
 }

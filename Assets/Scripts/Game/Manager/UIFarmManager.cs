@@ -10,6 +10,8 @@ public class UIFarmManager : MonoUI
     [SerializeField] private TMP_Text costBuyItemText = null;
     [SerializeField] private TMP_Text costUpgradeIncomeText = null;
     [SerializeField] private TMP_Text sellValueText = null;
+    [SerializeField] private TMP_Text stageText = null;
+    [SerializeField] private TMP_Text landText = null;
 
     [Title("Game Object")]
     [SerializeField] private GameObject sellTextObj = null;
@@ -44,6 +46,8 @@ public class UIFarmManager : MonoUI
     {
         costBuyItemText.text = GetCostBuyItemTextValue();
         costUpgradeIncomeText.text = GetCostUpgradeIncomeTextValue();
+        stageText.text = $"STAGE {DataManager.WorldData.currentLevel}:";
+        landText.text = GameConstants.landName[((DataManager.WorldData.currentLevel - 1) / 3)].ToUpper();
     }
 
 

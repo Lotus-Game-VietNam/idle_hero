@@ -88,7 +88,7 @@ public class FarmManager : MonoBehaviour
     private void ReciveRewards()
     {
         float gemToAdd = onX2Income ? GetGemsReward() * 2 : GetGemsReward();
-        hero.characterStats.OnHealthChanged(10);
+        hero.characterStats.OnHealthChanged(100);
         CollectionIcons.Instance.Show(onAutoTap ? 10 : 5, monsterFarm.center.ConvertToRectTransform());
         this.DelayCall(1, () => { ResourceManager.Gem += gemToAdd; });
     }

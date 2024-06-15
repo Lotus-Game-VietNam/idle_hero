@@ -3,6 +3,7 @@ using Doozy.Runtime.Reactor.Animators;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
@@ -12,6 +13,8 @@ namespace Lotus.CoreFramework
     {
         [Title("Configuration")]
         public ResourceType type;
+        public Button addBtn = null;
+
 
         private TMP_Text _valueTxt = null;
         public TMP_Text valueTxt => this.TryGetComponentInChildren(ref _valueTxt);
@@ -26,6 +29,7 @@ namespace Lotus.CoreFramework
 
         private void Awake()
         {
+            addBtn.onClick.AddListener(AddResource);
             OnResourceChanged(type, ResourceManager.Resources[type]);
         }
 
@@ -62,6 +66,11 @@ namespace Lotus.CoreFramework
             {
                 valueTxt.text = newValue.Convert();
             }
+        }
+
+        private void AddResource()
+        {
+            ResourceManager.SetValue(type, ResourceManager.Resources[type] + 10000);
         }
     }
 }
